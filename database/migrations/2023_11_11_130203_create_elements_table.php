@@ -11,16 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('lakes', function (Blueprint $table) {
+        Schema::create('elements', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('name_ky')->nullable();
-            $table->string('X_coordinate')->nullable();
-            $table->string('Y_coordinate')->nullable();
-            $table->string('logo')->nullable();
-            $table->text('address')->nullable();
+            $table->string('name')->unique();
             $table->longText('description')->nullable();
-            $table->longText('description_ky')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('lakes');
+        Schema::dropIfExists('elements');
     }
 };

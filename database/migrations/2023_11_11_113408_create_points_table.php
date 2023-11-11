@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('control_point_id');
             $table->string('name')->nullable();
-            $table->string('name_ru')->nullable();
+            $table->string('name_ky')->nullable();
             $table->integer('distance')->nullable();
             $table->integer('depth')->nullable();
             $table->date('date')->nullable();
@@ -23,7 +23,10 @@ return new class extends Migration
             $table->string('Y_coordinate')->nullable();
             $table->timestamps();
 
-
+            $table->index('control_point_id', 'point_control_point_idx');
+            $table->foreign('control_point_id', 'point_control_point_fk')
+                ->on('control_points')
+                ->references('id');
         });
     }
 

@@ -16,9 +16,9 @@ return new class extends Migration
             $table->unsignedBigInteger('like_id');
             $table->string('number')->nullable();
             $table->string('name');
-            $table->string('name_ru')->nullable();
+            $table->string('name_ky')->nullable();
             $table->longText('description')->nullable();
-            $table->longText('description_ru')->nullable();
+            $table->longText('description_ky')->nullable();
             $table->string('X_coordinate')->nullable();
             $table->string('Y_coordinate')->nullable();
 
