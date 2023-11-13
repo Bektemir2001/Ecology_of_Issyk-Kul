@@ -16,8 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('control_point_id');
             $table->string('name')->nullable();
             $table->string('name_ky')->nullable();
-            $table->integer('distance')->nullable();
-            $table->integer('depth')->nullable();
+            $table->float('distance')->nullable();
+            $table->float('depth')->nullable();
             $table->date('date')->nullable();
             $table->string('X_coordinate')->nullable();
             $table->string('Y_coordinate')->nullable();
