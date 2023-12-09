@@ -6,8 +6,8 @@
 
                 <div class="card-header d-flex justify-content-between">
                     <div class="header-title">
-                        <h4 class="card-title">Domains</h4>
-                        <a href="{{route('admin.domains.create')}}" class="btn btn-outline-primary rounded-pill mt-2">Add</a>
+                        <h4 class="card-title">Lakes</h4>
+                        <a href="{{route('admin.lakes.create')}}" class="btn btn-outline-primary rounded-pill mt-2">Add</a>
                     </div>
                     <div class="header-action">
                         <i data-toggle="collapse" data-target="#datatable-1" aria-expanded="false">

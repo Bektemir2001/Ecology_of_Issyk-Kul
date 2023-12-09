@@ -8,6 +8,6 @@ Route::group(['prefix' => 'admin'], function (){
     Route::get('/', [IndexController::class, 'index'])->name('admin.index');
 
     Route::group(['prefix' => 'lake'], function (){
-        Route::get('/', [LakeController::class, 'index']);
+        Route::get('/', [LakeController::class, 'index'])->name('admin.lakes.index');
     });
 });

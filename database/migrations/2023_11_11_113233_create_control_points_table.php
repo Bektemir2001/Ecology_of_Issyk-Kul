@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('control_points', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('like_id');
+            $table->unsignedBigInteger('lake_id');
             $table->string('number')->nullable();
             $table->string('name');
             $table->string('name_ky')->nullable();
@@ -24,12 +24,11 @@ return new class extends Migration
 
             $table->timestamps();
 
-            $table->index('like_id', 'point_like_idx');
+            $table->index('lake_id', 'point_lake_idx');
 
-            $table->foreign('like_id', 'point_like_fk')
-                ->on('likes')
+            $table->foreign('lake_id', 'point_lake_fk')
+                ->on('lakes')
                 ->references('id');
-            $table->timestamps();
         });
     }
 

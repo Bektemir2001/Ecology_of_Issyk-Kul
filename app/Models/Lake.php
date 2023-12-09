@@ -9,6 +9,6 @@ class Lake extends Model
 {
     use HasFactory;
 
-    protected $table = 'likes';
+    protected $table = 'lakes';
     protected $guarded = false;
 }
