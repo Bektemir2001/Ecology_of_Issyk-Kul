@@ -52,7 +52,7 @@ class MajorIonController extends Controller
 
     public function show(MajorIon $majorIon)
     {
-        return view('admin.major_ions.show', compact('majorIon'));
+        return view('admin.major_ions.show', compact(['item' => $majorIon]));
     }
     public function delete()
     {

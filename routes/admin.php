@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\ElementController;
+use App\Http\Controllers\Admin\ElementTypeController;
 use App\Http\Controllers\Admin\IndexController;
 use App\Http\Controllers\Admin\LakeController;
 use App\Http\Controllers\Admin\MajorIonController;
@@ -33,5 +34,14 @@ Route::group(['prefix' => 'admin'], function (){
         Route::get('/edit/{major_ion}', [MajorIonController::class, 'edit'])->name('admin.major_ions.edit');
         Route::get('/show/{major_ion}', [MajorIonController::class, 'show'])->name('admin.major_ions.show');
         Route::get('/delete/{major_ion}', [MajorIonController::class, 'delete'])->name('admin.major_ions.delete');
+    });
+
+    Route::group(['prefix' => 'element_type'], function (){
+        Route::get('/', [ElementTypeController::class, 'index'])->name('admin.element_types.index');
+        Route::post('/', [ElementTypeController::class, 'store'])->name('admin.element_types.store');
+        Route::get('/create', [ElementTypeController::class, 'create'])->name('admin.element_types.create');
+        Route::get('/edit/{element_type}', [ElementTypeController::class, 'edit'])->name('admin.element_types.edit');
+        Route::get('/show/{element_type}', [ElementTypeController::class, 'show'])->name('admin.element_types.show');
+        Route::get('/delete/{element_type}', [ElementTypeController::class, 'delete'])->name('admin.element_types.delete');
     });
 });

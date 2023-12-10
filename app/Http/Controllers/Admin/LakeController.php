@@ -52,7 +52,7 @@ class LakeController extends Controller
 
     public function show(Lake $lake)
     {
-        return view('admin.lake.show', compact('lake'));
+        return view('admin.lake.show', compact(['item' => $lake]));
     }
 
     public function delete()
