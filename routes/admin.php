@@ -9,5 +9,9 @@ Route::group(['prefix' => 'admin'], function (){
 
     Route::group(['prefix' => 'lake'], function (){
         Route::get('/', [LakeController::class, 'index'])->name('admin.lakes.index');
+        Route::post('/', [LakeController::class, 'store'])->name('admin.lakes.store');
+        Route::get('/create', [LakeController::class, 'create'])->name('admin.lakes.create');
+        Route::get('/edit/{lake}', [LakeController::class, 'edit'])->name('admin.lakes.edit');
+        Route::get('/show/{lake}', [LakeController::class, 'show'])->name('admin.lakes.show');
     });
 });

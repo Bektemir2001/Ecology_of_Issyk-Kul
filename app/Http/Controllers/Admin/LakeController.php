@@ -33,13 +33,22 @@ class LakeController extends Controller
     {
         $data = $request->validated();
         $result = $this->lakeService->store($data);
-        return redirect()->route('admin.lake.index')->with(['notification' => $result['message']]);
+        return redirect()->route('admin.lakes.index')->with(['notification' => $result['message']]);
     }
 
+    public function edit(Lake $lake)
+    {
+        return view('admin.lake.edit', compact('lake'));
+    }
     public function update(UpdateRequest $request, Lake $lake)
     {
         $data = $request->validated();
         $result = $this->lakeService->update($data, $lake);
-        return redirect()->route('admin.lake.index')->with(['notification' => $result['message']]);
+        return redirect()->route('admin.lakes.index')->with(['notification' => $result['message']]);
+    }
+
+    public function show(Lake $lake)
+    {
+        return view('admin.lake.show', compact('lake'));
     }
 }

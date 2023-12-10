@@ -7,9 +7,19 @@ use Exception;
 
 class LakeService
 {
+    protected UploadFileService $uploadFileService;
+    public function __construct(UploadFileService $uploadFileService)
+    {
+        $this->uploadFileService = $uploadFileService;
+    }
+
     public function store(array $data): array
     {
         try{
+            if(array_key_exists('logo', $data))
+            {
+                $data['logo'] = $this->uploadFileService->upload($data['logo'], 'images/logos');
+            }
             Lake::create($data);
             return ['message' => __('success'), 'code' => 200];
         }

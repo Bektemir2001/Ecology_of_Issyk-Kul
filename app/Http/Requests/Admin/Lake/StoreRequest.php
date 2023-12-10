@@ -22,7 +22,14 @@ class StoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-
+            'name' => 'required|max:255',
+            'name_ky' => 'required|max:255',
+            'X_coordinate' => 'nullable',
+            'Y_coordinate' => 'nullable',
+            'address' => 'nullable',
+            'logo' => 'required',
+            'description' => 'nullable',
+            'description_ky' => 'nullable'
         ];
     }
 }
