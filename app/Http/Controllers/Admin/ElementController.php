@@ -51,4 +51,8 @@ class ElementController extends Controller
     {
 
     }
+    public function delete()
+    {
+
+    }
 }

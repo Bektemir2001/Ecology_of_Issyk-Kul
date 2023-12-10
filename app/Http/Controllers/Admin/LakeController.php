@@ -54,4 +54,9 @@ class LakeController extends Controller
     {
         return view('admin.lake.show', compact('lake'));
     }
+
+    public function delete()
+    {
+
+    }
 }
