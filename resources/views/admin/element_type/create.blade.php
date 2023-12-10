@@ -4,7 +4,7 @@
     <div class="card">
         <div class="card-header d-flex justify-content-between">
             <div class="header-title">
-                <h4 class="card-title">Add Major Ion</h4>
+                <h4 class="card-title">Add Type of Element</h4>
             </div>
             <div class="header-action">
                 <i data-toggle="collapse" data-target="#form-element-9" aria-expanded="false">
@@ -18,11 +18,28 @@
             <div class="collapse" id="form-element-9">
                 <div class="card"></div>
             </div>
-            <form action="{{route('admin.major_ions.store')}}" method="POST">
+            <form action="{{route('admin.element_types.store')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-row mb-4">
                     <div class="col">
                         <input type="text" class="form-control" name="name" placeholder="Name">
+                    </div>
+                </div>
+                <label class="form-label" for="">Element</label>
+                <div class="form-row mb-4">
+
+                    <div class="col">
+                        <select class="form-control" id="element_id" name="element_id">
+                            @foreach($elements as $element)
+                                <option value="{{$element->id}}">{{$element->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row mb-4">
+                    <div class="col">
+                        <label for="image">Image</label>
+                        <input type="file" class="form-control" id="image" name="image" placeholder="Image">
                     </div>
                 </div>
                 <div class="form-row mb-4">

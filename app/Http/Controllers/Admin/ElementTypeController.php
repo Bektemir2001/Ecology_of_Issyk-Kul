@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ElementType\StoreRequest;
 use App\Http\Requests\Admin\ElementType\UpdateRequest;
+use App\Models\Element;
 use App\Models\ElementType;
 use App\Services\ElementTypeService;
 use Illuminate\Http\Request;
@@ -29,14 +30,15 @@ class ElementTypeController extends Controller
 
     public function create()
     {
-        return view('admin.element_type.create');
+        $elements = Element::all();
+        return view('admin.element_type.create', compact('elements'));
     }
 
     public function store(StoreRequest $request)
     {
         $data = $request->validated();
         $result = $this->elementTypeService->store($data);
-        return redirect()->route('admin.element_type.index')->with(['notification' => $result['message']]);
+        return redirect()->route('admin.element_types.index')->with(['notification' => $result['message']]);
     }
 
     public function edit(ElementType $elementType)
@@ -52,7 +54,7 @@ class ElementTypeController extends Controller
 
     public function show(ElementType $elementType)
     {
-        return view('admin.element_types.show', compact(['item' => $elementType]));
+        return view('admin.element_type.show', compact(['item' => $elementType]));
     }
     public function delete()
     {
