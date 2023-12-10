@@ -19,7 +19,10 @@ class ElementController extends Controller
     public function index()
     {
         $data = Element::all();
-        return view('admin.element.index', compact('data'));
+        $create_route = "admin.elements.create";
+        $title = "Elements";
+        $key = 'elements';
+        return view('admin.element.index', compact('data', 'create_route', 'title', 'key'));
     }
 
     public function show(Element $element)

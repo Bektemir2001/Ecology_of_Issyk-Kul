@@ -21,7 +21,10 @@ class LakeController extends Controller
     public function index()
     {
         $data = Lake::all();
-        return view('admin.lake.index', compact('data'));
+        $create_route = "admin.lakes.create";
+        $title = 'Lakes';
+        $key = 'lakes';
+        return view('admin.lake.index', compact('data', 'create_route', 'title', 'key'));
     }
 
     public function create()
