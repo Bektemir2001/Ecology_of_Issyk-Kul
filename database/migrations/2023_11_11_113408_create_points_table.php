@@ -22,7 +22,6 @@ return new class extends Migration
             $table->string('X_coordinate')->nullable();
             $table->string('Y_coordinate')->nullable();
             $table->timestamps();
-
             $table->index('control_point_id', 'point_control_point_idx');
             $table->foreign('control_point_id', 'point_control_point_fk')
                 ->on('control_points')

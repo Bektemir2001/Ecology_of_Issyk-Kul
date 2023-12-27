@@ -8,44 +8,41 @@
     <title>Document</title>
 </head>
 <body>
-    <div>
-        <input type="text" id="name">
-        <input type="number" id="number">
-        <input type="file" id="video">
-        <button onclick="clickButton()">submit</button>
-    </div>
 
-    <script>
-        function clickButton()
-        {
-            let name = document.getElementById('name');
-            let number = document.getElementById('number');
-            let video = document.getElementById('video');
-            console.log(video.files[0])
-            let data = new FormData();
-            data.append('name', name.value);
-            data.append('number', number.value);
-            data.append('video', video.files[0]);
-            post(data);
-        }
-
-        function post(data)
-        {
-            let url = "{{route('post')}}";
-            console.log("{{csrf_token()}}");
-            fetch(url, {
-                method: "POST",
-                headers: {
-                    'X-CSRF-TOKEN' : "{{csrf_token()}}"
-                },
-                body: data
-
-            })
-                .then(response => response.json())
-                .then(res => {
-                    console.log(res);
-                });
-        }
-    </script>
+<script>
+    let url = "https://api.anthropic.com/v1/complete";
+    let token = "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"
+    let headers = {
+        "accept": "application/json",
+        "anthropic-version": "2023-06-01",
+        "content-type": "application/json",
+        "x-api-key": token
+    };
+    let data = {
+        "model": "claude-2",
+        "prompt": "\n\nHuman: Жашоонун маңызы эмне!\n\nAssistant:",
+        "max_tokens_to_sample": 512,
+        "stream": true
+    }
+    fetch(url, {
+        method: "POST",
+        headers: headers,
+        body: data
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json(); // или response.text(), response.blob(), и т. д.
+        })
+        .then(data => {
+            // Обработка данных, полученных от сервера
+            console.log(data);
+        })
+        .catch(error => {
+            // Обработка ошибок
+            console.error('There was a problem with the fetch operation:', error);
+        });
+</script>
 </body>
 </html>

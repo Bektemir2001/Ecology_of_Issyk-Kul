@@ -33,7 +33,7 @@
                         <input type="text" class="form-control" name="X_coordinate" placeholder="X coordinate">
                     </div>
                     <div class="col">
-                        <input type="text" class="form-control" name="Y_coordinate" placeholder="X coordinate">
+                        <input type="text" class="form-control" name="Y_coordinate" placeholder="Y coordinate">
                     </div>
                 </div>
                 <div class="form-row mb-4">

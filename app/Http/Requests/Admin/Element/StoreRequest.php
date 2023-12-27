@@ -24,7 +24,8 @@ class StoreRequest extends FormRequest
         return [
             'name' => 'required|max:255',
             'image' => 'nullable',
-            'description' => 'nullable'
+            'description' => 'nullable',
+            'parent' => 'nullable'
         ];
     }
 }

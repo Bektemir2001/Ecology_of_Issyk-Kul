@@ -4,7 +4,7 @@
     <div class="card">
         <div class="card-header d-flex justify-content-between">
             <div class="header-title">
-                <h4 class="card-title">Add Element</h4>
+                <h4 class="card-title">Add Control Point</h4>
             </div>
             <div class="header-action">
                 <i data-toggle="collapse" data-target="#form-element-9" aria-expanded="false">
@@ -18,18 +18,26 @@
             <div class="collapse" id="form-element-9">
                 <div class="card"></div>
             </div>
-            <form action="{{route('admin.elements.store')}}" method="POST" enctype="multipart/form-data">
+            <form action="{{route('admin.control_points.store')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-row mb-4">
                     <div class="col">
                         <label for="name">Name</label>
                         <input type="text" class="form-control" name="name" placeholder="Name" id="name">
                     </div>
+                    <div class="col">
+                        <label for="name">Name KY</label>
+                        <input type="text" class="form-control" name="name_ky" placeholder="Name" id="name">
+                    </div>
                 </div>
                 <div class="form-row mb-4">
                     <div class="col">
-                        <label for="logo">Image</label>
-                        <input type="file" class="form-control" id="image" name="image" placeholder="Image">
+                        <label for="X_coordinate">X coordinate</label>
+                        <input type="text" class="form-control" name="X_coordinate" id="X_coordinate" placeholder="X coordinate">
+                    </div>
+                    <div class="col">
+                        <label for="Y_coordinate">Y_coordinate</label>
+                        <input type="text" class="form-control" name="Y_coordinate" id="Y_coordinate" placeholder="Y coordinate">
                     </div>
                 </div>
                 <div class="form-row mb-4">
@@ -38,20 +46,23 @@
                         <textarea class="form-control" name="description" id="description" placeholder="Description"></textarea>
                     </div>
                 </div>
-                @if(count($elements))
-                    <div class="form-row mb-4">
-                        <div class="col">
-                            <label for="parent">Parent</label>
-                            <select id="parent" name="parent" class="form-control">
-                                <option></option>
-                                @foreach($elements as $element)
-                                    <option value="{{$element->id}}">{{$element->name}}</option>
-                                @endforeach
-                            </select>
-
-                        </div>
+                <div class="form-row mb-4">
+                    <div class="col">
+                        <label for="number">Number</label>
+                        <input type="text" class="form-control" name="number" id="number" placeholder="Number">
                     </div>
-                @endif
+                </div>
+                <div class="form-row mb-4">
+                    <div class="col">
+                        <label for="lake_id">Lake</label>
+                        <select id="lake_id" name="lake_id" class="form-control">
+                            @foreach($lakes as $lake)
+                                <option value="{{$lake->id}}">{{$lake->name}}</option>
+                            @endforeach
+                        </select>
+
+                    </div>
+                </div>
                 <div class="form-group mb-0">
                     <button type="submit" class="btn btn-primary mr-2">Submit</button>
                 </div>

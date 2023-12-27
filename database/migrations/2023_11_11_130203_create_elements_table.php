@@ -16,7 +16,13 @@ return new class extends Migration
             $table->string('name')->unique();
             $table->string('image')->nullable();
             $table->longText('description')->nullable();
+            $table->unsignedBigInteger('parent')->nullable();
             $table->timestamps();
+
+            $table->index('parent', 'element_parent_idx');
+            $table->foreign('parent', 'element_parent_fk')
+                ->on('elements')
+                ->references('id');
         });
     }
 

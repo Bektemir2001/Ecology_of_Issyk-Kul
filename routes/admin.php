@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ControlPointController;
 use App\Http\Controllers\Admin\ElementController;
 use App\Http\Controllers\Admin\ElementTypeController;
 use App\Http\Controllers\Admin\IndexController;
@@ -43,5 +44,13 @@ Route::group(['prefix' => 'admin'], function (){
         Route::get('/edit/{element_type}', [ElementTypeController::class, 'edit'])->name('admin.element_types.edit');
         Route::get('/show/{element_type}', [ElementTypeController::class, 'show'])->name('admin.element_types.show');
         Route::get('/delete/{element_type}', [ElementTypeController::class, 'delete'])->name('admin.element_types.delete');
+    });
+    Route::group(['prefix' => 'control_point'], function (){
+        Route::get('/', [ControlPointController::class, 'index'])->name('admin.control_points.index');
+        Route::post('/', [ControlPointController::class, 'store'])->name('admin.control_points.store');
+        Route::get('/create', [ControlPointController::class, 'create'])->name('admin.control_points.create');
+        Route::get('/edit/{control_point}', [ControlPointController::class, 'edit'])->name('admin.control_points.edit');
+        Route::get('/show/{control_point}', [ControlPointController::class, 'show'])->name('admin.control_points.show');
+        Route::get('/delete/{control_point}', [ControlPointController::class, 'delete'])->name('admin.control_points.delete');
     });
 });

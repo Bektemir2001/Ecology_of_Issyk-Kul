@@ -32,9 +32,9 @@ class ElementController extends Controller
 
     public function create()
     {
-        return view('admin.element.create');
+        $elements = Element::where('parent', '=', null)->get();
+        return view('admin.element.create', compact('elements'));
     }
-
     public function store(StoreRequest $request)
     {
         $data = $request->validated();
