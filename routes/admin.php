@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\ElementTypeController;
 use App\Http\Controllers\Admin\IndexController;
 use App\Http\Controllers\Admin\LakeController;
 use App\Http\Controllers\Admin\MajorIonController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'admin'], function (){
@@ -52,5 +53,13 @@ Route::group(['prefix' => 'admin'], function (){
         Route::get('/edit/{control_point}', [ControlPointController::class, 'edit'])->name('admin.control_points.edit');
         Route::get('/show/{control_point}', [ControlPointController::class, 'show'])->name('admin.control_points.show');
         Route::get('/delete/{control_point}', [ControlPointController::class, 'delete'])->name('admin.control_points.delete');
+    });
+    Route::group(['prefix' => 'user'], function (){
+        Route::get('/', [UserController::class, 'index'])->name('admin.users.index');
+        Route::post('/', [UserController::class, 'store'])->name('admin.users.store');
+        Route::get('/create', [UserController::class, 'create'])->name('admin.users.create');
+        Route::get('/edit/{user}', [UserController::class, 'edit'])->name('admin.users.edit');
+        Route::get('/show/{user}', [UserController::class, 'show'])->name('admin.users.show');
+        Route::get('/delete/{user}', [UserController::class, 'delete'])->name('admin.users.delete');
     });
 });
