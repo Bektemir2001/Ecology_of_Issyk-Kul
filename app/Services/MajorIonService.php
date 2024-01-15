@@ -5,7 +5,7 @@ namespace App\Services;
 use App\Models\MajorIon;
 use Exception;
 
-class MajorIonService
+class MajorIonService extends Service
 {
     public function store(array $data) : array
     {

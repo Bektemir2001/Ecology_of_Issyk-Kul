@@ -22,34 +22,38 @@
                 @csrf
                 <div class="form-row mb-4">
                     <div class="col">
-                        <input type="text" class="form-control" name="name" placeholder="Name">
-                    </div>
-                    <div class="col">
-                        <input type="text" class="form-control" name="name_ky" placeholder="Name ky">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Name" required autofocus>
                     </div>
                 </div>
                 <div class="form-row mb-4">
                     <div class="col">
-                        <input type="text" class="form-control" name="X_coordinate" placeholder="X coordinate">
-                    </div>
-                    <div class="col">
-                        <input type="text" class="form-control" name="Y_coordinate" placeholder="Y coordinate">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Email" required autofocus>
                     </div>
                 </div>
                 <div class="form-row mb-4">
                     <div class="col">
-                        <input type="text" class="form-control" id="address" name="address" placeholder="Address">
+                        <label for="inn">INN</label>
+                        <input type="text" class="form-control" name="inn" id="inn" placeholder="INN">
                     </div>
                 </div>
                 <div class="form-row mb-4">
                     <div class="col">
-                        <label for="logo">Logo</label>
-                        <input type="file" class="form-control" id="logo" name="logo" placeholder="Logo">
+                        <label for="phone">Phone</label>
+                        <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone">
                     </div>
                 </div>
                 <div class="form-row mb-4">
                     <div class="col">
-                        <textarea class="form-control" name="description" placeholder="Description"></textarea>
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Password" required autofocus>
+                    </div>
+                </div>
+                <div class="form-row mb-4">
+                    <div class="col">
+                        <label for="image">Image</label>
+                        <input type="file" class="form-control" id="image" name="image" placeholder="Image">
                     </div>
                 </div>
                 <div class="form-group mb-0">

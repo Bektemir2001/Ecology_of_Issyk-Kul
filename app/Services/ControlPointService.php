@@ -5,15 +5,8 @@ namespace App\Services;
 use App\Models\ControlPoint;
 use Exception;
 
-class ControlPointService
+class ControlPointService extends Service
 {
-
-    protected UploadFileService $uploadFileService;
-    public function __construct(UploadFileService $uploadFileService)
-    {
-        $this->uploadFileService = $uploadFileService;
-    }
-
     public function store(array $data): array
     {
         try {

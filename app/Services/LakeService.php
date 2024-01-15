@@ -5,14 +5,8 @@ namespace App\Services;
 use App\Models\Lake;
 use Exception;
 
-class LakeService
+class LakeService extends Service
 {
-    protected UploadFileService $uploadFileService;
-    public function __construct(UploadFileService $uploadFileService)
-    {
-        $this->uploadFileService = $uploadFileService;
-    }
-
     public function store(array $data): array
     {
         try{
