@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\ControlPoint;
 use App\Models\User;
 use Exception;
 
@@ -28,4 +29,9 @@ class UserService extends Service
 
     }
 
+    public function addControlPoint(User $user, ControlPoint $controlPoint): array
+    {
+
+        return [];
+    }
 }
