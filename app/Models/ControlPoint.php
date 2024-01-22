@@ -11,4 +11,9 @@ class ControlPoint extends Model
 
     protected $table = 'control_points';
     protected $guarded = false;
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'user_control_points');
+    }
 }

@@ -38,7 +38,7 @@
                         </div>
                         <div class="d-flex justify-content-center">
 
-                                <a href="#" class="btn btn-primary">edit</a>
+                                <a href="{{route('admin.users.edit', $item->id)}}" class="btn btn-primary">edit</a>
 
                         </div>
                     </div>

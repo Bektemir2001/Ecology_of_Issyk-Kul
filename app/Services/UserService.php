@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\ControlPoint;
 use App\Models\User;
+use App\Models\UserControlPoint;
 use Exception;
 
 class UserService extends Service
@@ -29,9 +30,19 @@ class UserService extends Service
 
     }
 
-    public function addControlPoint(User $user, ControlPoint $controlPoint): array
+    public function addControlPoint(User $user, int $controlPointId): array
     {
+        try{
+            UserControlPoint::create([
+                'user_id' => $user->id,
+                'control_point_id' => $controlPointId
+            ]);
+            return ['message' => 'success', 'code' => 200];
+        }
+        catch (Exception $e)
+        {
+            return ['message' => $e->getMessage(), 'code' => $e->getCode()];
+        }
 
-        return [];
     }
 }

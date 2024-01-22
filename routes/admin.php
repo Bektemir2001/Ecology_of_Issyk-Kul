@@ -60,6 +60,7 @@ Route::group(['prefix' => 'admin'], function (){
         Route::get('/create', [UserController::class, 'create'])->name('admin.users.create');
         Route::get('/edit/{user}', [UserController::class, 'edit'])->name('admin.users.edit');
         Route::get('/show/{user}', [UserController::class, 'show'])->name('admin.users.show');
+        Route::patch('/add/control_point/{user}', [UserController::class, 'addControlPoint'])->name('admin.users.add.control_point');
         Route::get('/delete/{user}', [UserController::class, 'delete'])->name('admin.users.delete');
     });
 });
