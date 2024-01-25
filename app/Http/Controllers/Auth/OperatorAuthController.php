@@ -9,7 +9,7 @@ use App\Models\Lake;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
-class StaffAuthController extends Controller
+class OperatorAuthController extends Controller
 {
     public function loginIndex() : View
     {

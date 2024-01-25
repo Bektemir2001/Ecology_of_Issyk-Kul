@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role'
     ];
 
     /**
@@ -42,7 +43,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    const ROLE_ADMIN = 1;
+    const ROLE_OPERATOR = 2;
+    const ROLE_USER = 0;
 
+    public static function getRoles(){
+        return [
+            self::ROLE_ADMIN => 'Admin',
+            self::ROLE_OPERATOR => 'Operator',
+            self::ROLE_USER => 'User'
+        ];
+    }
     public function controlPoints()
     {
         return $this->belongsToMany(ControlPoint::class, 'user_control_points');

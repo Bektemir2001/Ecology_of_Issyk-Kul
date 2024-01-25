@@ -22,7 +22,8 @@
                 @csrf
                 <div class="form-row mb-4">
                     <div class="col">
-                        <input type="text" class="form-control" name="name" placeholder="Name">
+                        <label for="ckeditor">Name</label>
+                        <textarea style="height: 20px;" name="name" id="ckeditor" required autofocus oninvalid="this.setCostomValidity('пожалуйста, заполните это поле')" oninput="this.setCostomValidity('')"></textarea>
                     </div>
                 </div>
                 <div class="form-row mb-4">
@@ -36,4 +37,10 @@
             </form>
         </div>
     </div>
+    <script src="//cdn.ckeditor.com/4.18.0/full/ckeditor.js"></script>
+    <script>
+        var editor = CKEDITOR.replace( 'ckeditor',{
+            filebrowserUploadMethod: 'form'
+        } );
+    </script>
 @endsection
