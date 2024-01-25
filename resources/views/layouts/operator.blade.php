@@ -28,8 +28,8 @@
 
 </style>
 <div class="wrapper">
-    @include('includes.staff_site_bar')
-    @include('includes.staff_navbar')
+    @include('includes.operator_site_bar')
+    @include('includes.operator_navbar')
 
     <div class="content-page">
         <div class="container-fluid">

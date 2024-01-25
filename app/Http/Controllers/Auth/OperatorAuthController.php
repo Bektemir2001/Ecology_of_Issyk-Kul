@@ -19,7 +19,7 @@ class OperatorAuthController extends Controller
         {
             $control_points = ControlPoint::where('lake_id', $lakes[0]->id)->get();
         }
-        return view('auth.staff.login', compact('lakes', 'control_points'));
+        return view('auth.operator.login', compact('lakes', 'control_points'));
     }
 
     public function login(LoginRequest $request)

@@ -1,3 +1,3 @@
-@extends('layouts.staff')
+@extends('layouts.operator')
 @section('content')
 @endsection

@@ -10,7 +10,7 @@
                                 <img src="{{asset('admin_files/assets/images/logo.png')}}" class="img-fluid rounded-normal" alt="logo">
                             </div>
                             <h2 class="mb-2 text-center">Sign In</h2>
-                            <form action="{{route('auth.staff.login')}}" method="POST">
+                            <form action="{{route('auth.operator.login')}}" method="POST">
                                 @csrf
                                 <div class="row">
                                     <div class="col-lg-12">
