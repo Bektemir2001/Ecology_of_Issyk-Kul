@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\ElementTypeController;
 use App\Http\Controllers\Admin\IndexController;
 use App\Http\Controllers\Admin\LakeController;
 use App\Http\Controllers\Admin\MajorIonController;
+use App\Http\Controllers\Admin\OrganicSubstanceController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -36,6 +37,14 @@ Route::group(['prefix' => 'admin'], function (){
         Route::get('/edit/{major_ion}', [MajorIonController::class, 'edit'])->name('admin.major_ions.edit');
         Route::get('/show/{major_ion}', [MajorIonController::class, 'show'])->name('admin.major_ions.show');
         Route::get('/delete/{major_ion}', [MajorIonController::class, 'delete'])->name('admin.major_ions.delete');
+    });
+    Route::group(['prefix' => 'organic_substances'], function (){
+        Route::get('/', [OrganicSubstanceController::class, 'index'])->name('admin.organic_substances.index');
+        Route::post('/', [OrganicSubstanceController::class, 'store'])->name('admin.organic_substances.store');
+        Route::get('/create', [OrganicSubstanceController::class, 'create'])->name('admin.organic_substances.create');
+        Route::get('/edit/{organic_substances}', [OrganicSubstanceController::class, 'edit'])->name('admin.organic_substances.edit');
+        Route::get('/show/{organic_substances}', [OrganicSubstanceController::class, 'show'])->name('admin.organic_substances.show');
+        Route::get('/delete/{organic_substances}', [OrganicSubstanceController::class, 'delete'])->name('admin.organic_substances.delete');
     });
 
     Route::group(['prefix' => 'element_type'], function (){

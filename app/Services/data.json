@@ -1,0 +1,5 @@
+[
+    {"prompt": "Компаниянын аты эмне?", "completion": "Биздин компаниянын аты DO(dream on) кыялдан дегн маанини билдирет"},
+    {"prompt": "Силер эмне иш кыласыңар?", "completion": "Биз негизинен IT тармагында "},
+    {"prompt": "<prompt text>", "completion": "<ideal generated text>"}
+]

@@ -18,7 +18,7 @@ class OperatorMiddleWare
     {
         if(auth()->user() == null)
         {
-            return redirect()->route('auth.staff.login.index');
+            return redirect()->route('auth.operator.login.index');
         }
         if(auth()->user()->role == User::ROLE_OPERATOR)
         {

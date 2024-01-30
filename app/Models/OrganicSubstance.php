@@ -5,15 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Element extends Model
+class OrganicSubstance extends Model
 {
     use HasFactory;
 
-    protected $table = 'elements';
+    protected $table = 'organic_substances';
     protected $guarded = false;
-
-    public function children()
-    {
-        return $this->hasMany(Element::class, 'parent');
-    }
 }

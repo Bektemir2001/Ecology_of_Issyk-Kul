@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ElementController;
 use App\Http\Controllers\IndexController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,3 +21,6 @@ Route::get('/', function () {
 
 Route::get('/index', [IndexController::class, 'index']);
 Route::post('/index/post', [IndexController::class, 'postData'])->name('post');
+Route::group(['prefix' => 'elements'], function (){
+    Route::get('/get/all', [ElementController::class, 'getAll'])->name('elements.get.all');
+});

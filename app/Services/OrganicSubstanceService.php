@@ -2,11 +2,10 @@
 
 namespace App\Services;
 
-use App\Models\Element;
+use App\Models\OrganicSubstance;
 use Exception;
-use Illuminate\Support\Facades\DB;
 
-class ElementService extends Service
+class OrganicSubstanceService extends Service
 {
     public function store(array $data): array
     {
@@ -16,12 +15,17 @@ class ElementService extends Service
                 $data['image'] = $this->uploadFileService->upload($data['image'], 'images/elements');
             }
 
-            Element::create($data);
+            OrganicSubstance::create($data);
             return ['message' => 'success', 'code' => 200];
         }
         catch (Exception $e)
         {
             return ['message' => $e->getMessage(), 'code' => $e->getCode()];
         }
+    }
+
+    public function update()
+    {
+
     }
 }

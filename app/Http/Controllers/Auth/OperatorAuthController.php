@@ -33,7 +33,7 @@ class OperatorAuthController extends Controller
             {
                 $request->session()->regenerate();
                 session(['control_point' => $data['control_point']]);
-                return redirect()->route('staff.index');
+                return redirect()->route('operator.index');
             }
             Auth::logout();
             return back()->withErrors([

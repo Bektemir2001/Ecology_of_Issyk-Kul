@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Element\StoreRequest;
+use App\Http\Resources\ElementResource;
 use App\Models\Element;
 use App\Services\ElementService;
 
@@ -54,5 +55,10 @@ class ElementController extends Controller
     public function delete()
     {
 
+    }
+
+    public function getAll()
+    {
+        return ElementResource::collection(Element::where('parent', '=', null)->get());
     }
 }
