@@ -21,6 +21,11 @@
                                     Major ions
                                 </a>
                             </li>
+                            <li class="col-md-3 p-0">
+                                <a class="nav-link" data-toggle="pill" href="#organic-substances">
+                                    Organic substances
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -29,11 +34,16 @@
         <div class="col-lg-12">
             <div class="iq-edit-list-data">
                 <div class="tab-content">
-                    @include('operator.data.includes.location_and_date')
-                    @include('operator.data.includes.elements')
-                    @include('operator.data.includes.major_ions')
+                        @include('operator.data.includes.location_and_date')
+                        @include('operator.data.includes.elements')
+                        @include('operator.data.includes.major_ions')
+                        @include('operator.data.includes.organic_substances')
                 </div>
             </div>
         </div>
+    </div>
+    <div>
+        <button type="reset" class="btn btn-outline-primary mr-2">Cancel</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
     </div>
 @endsection

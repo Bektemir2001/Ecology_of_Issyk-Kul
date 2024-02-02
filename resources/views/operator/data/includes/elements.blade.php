@@ -6,7 +6,6 @@
             </div>
         </div>
         <div class="card-body">
-            <form>
                 <div class="form-group">
                     <label for="cpass">Current Password:</label>
                     <a href="javascripe:void();" class="float-right">Forgot Password</a>
@@ -20,9 +19,6 @@
                     <label for="vpass">Verify Password:</label>
                     <input type="Password" class="form-control" id="vpass" value="">
                 </div>
-                <button type="reset" class="btn btn-outline-primary mr-2">Cancel</button>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
         </div>
     </div>
 </div>

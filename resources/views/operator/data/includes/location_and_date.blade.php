@@ -6,43 +6,35 @@
             </div>
         </div>
         <div class="card-body">
-            <form>
                 <div class=" row align-items-center">
                     <div class="form-group col-sm-6">
-                        <label for="fname">Control Point</label>
-                        <input type="text" class="form-control" id="fname" value="{{$control_point->name}}" disabled>
+                        <label for="control_point">Control Point</label>
+                        <input type="text" class="form-control" id="control_point" value="{{$control_point->name}}" disabled>
                     </div>
                     <div class="form-group col-sm-6">
-                        <label for="lname">Date</label>
-                        <input type="date" class="form-control" id="exampleInputdate" name="date" value="2019-12-18">
+                        <label for="date">Date</label>
+                        <input type="date" class="form-control" id="date" name="date" value="2019-12-18">
                     </div>
                     <div class="form-group col-sm-6">
-                        <label for="uname">User Name:</label>
-                        <input type="text" class="form-control" id="uname" value="Barry@01">
+                        <label for="from_starting_point">Distance from the starting point</label>
+                        <input type="text" class="form-control" id="from_starting_point" placeholder="0 meter">
                     </div>
                     <div class="form-group col-sm-6">
-                        <label for="cname">City:</label>
-                        <input type="text" class="form-control" id="cname" value="Atlanta">
-                    </div>
-                    <div class="form-group col-sm-6">
-                        <label class="d-block">Gender:</label>
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="customRadio6" name="customRadio1" class="custom-control-input" checked="">
-                            <label class="custom-control-label" for="customRadio6"> Male </label>
+                        <label for="depth">Depth</label>
+                        <div class="d-flex justify-content-between">
+                            <div class="col-6">
+                                <select class="form-control" id="depth">
+                                    <option value="from_below">from below</option>
+                                    <option value="from_the_surface">from the surface</option>
+                                </select>
+                            </div>
+                            <div class="col-6">
+                                <input class="form-control" placeholder="0 meter" id="depth">
+                            </div>
                         </div>
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="customRadio7" name="customRadio1" class="custom-control-input">
-                            <label class="custom-control-label" for="customRadio7"> Female </label>
-                        </div>
-                    </div>
-                    <div class="form-group col-sm-6">
-                        <label for="dob">Date Of Birth:</label>
-                        <input  class="form-control" id="dob" value="1984-01-24">
+
                     </div>
                 </div>
-                <button type="reset" class="btn btn-outline-primary mr-2">Cancel</button>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
         </div>
     </div>
 </div>
