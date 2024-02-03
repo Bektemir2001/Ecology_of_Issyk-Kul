@@ -88,6 +88,12 @@
                             <input type="number" id="choiceElement${childrenElements[i].id}" class="form-control"/>`
                 ElementsContent.appendChild(divElement)
                 input_elements[childrenElements[i].id] = document.getElementById(`choiceElement${childrenElements[i].id}`);
+
+                input_elements[childrenElements[i].id].addEventListener('input', function () {
+                if (isValidInput(input_elements[childrenElements[i].id].value)) {
+                    input_elements[childrenElements[i].id].classList.remove('is-invalid');
+                }
+            });
             }
             return 'finish';
         }
@@ -97,6 +103,11 @@
                             <input type="number" id="choiceElement${element.id}" class="form-control"/>`;
         ElementsContent.appendChild(divElement)
         input_elements[element.id] = document.getElementById(`choiceElement${element.id}`);
+        input_elements[element.id].addEventListener('input', function () {
+            if (isValidInput(input_elements[element.id].value)) {
+                input_elements[element.id].classList.remove('is-invalid');
+            }
+        });
         return 'finish';
     }
     function validate_elements()

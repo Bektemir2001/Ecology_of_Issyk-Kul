@@ -82,6 +82,11 @@
                             <input type="number" id="choiceIon${ion.id}" class="form-control"/>`;
         IonsContent.appendChild(divElement);
         input_ions[ion.id] = document.getElementById(`choiceIon${ion.id}`);
+        input_ions[ion.id].addEventListener('input', function () {
+            if (isValidInput(input_ions[ion.id].value)) {
+                input_ions[ion.id].classList.remove('is-invalid');
+            }
+        });
         return 'finish';
     }
 

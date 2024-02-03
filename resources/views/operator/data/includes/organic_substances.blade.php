@@ -83,6 +83,11 @@
                             <input type="number" id="choiceOrganicSubstance${element.id}" class="form-control"/>`;
         OrganicSubstancesContent.appendChild(divElement);
         input_organic_sentences[element.id] = document.getElementById(`choiceOrganicSubstance${element.id}`);
+        input_organic_sentences[element.id].addEventListener('input', function () {
+            if (isValidInput(input_organic_sentences[element.id].value)) {
+                input_organic_sentences[element.id].classList.remove('is-invalid');
+            }
+        });
         return 'finish';
     }
 

@@ -128,4 +128,7 @@
         input.className = "form-control is-invalid";
         return false;
     }
+    function isValidInput(value) {
+        return value.trim() !== '';
+    }
 </script>

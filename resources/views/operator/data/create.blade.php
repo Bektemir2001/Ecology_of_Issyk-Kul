@@ -57,18 +57,25 @@
             let elements = validate_elements();
             let major_ions = validate_major_ions();
             let organic_substances = validate_organic_substances();
-
-            for(let key in location_and_data)
+            if(elements && major_ions && organic_substances && physical_properties_and_gas_composition && location_and_data)
             {
-                data.append(key, location_and_data[key]);
+                for(let key in location_and_data)
+                {
+                    data.append(key, location_and_data[key]);
+                }
+                for(let key in physical_properties_and_gas_composition)
+                {
+                    data.append(key, physical_properties_and_gas_composition[key]);
+                }
+                data.append('elements', JSON.stringify(elements));
+                data.append('major_ions', JSON.stringify(major_ions));
+                data.append('organic_substances', JSON.stringify(organic_substances));
             }
-            for(let key in physical_properties_and_gas_composition)
+            else
             {
-                data.append(key, physical_properties_and_gas_composition[key]);
+                alert('fill in all the fields');
+                return;
             }
-            data.append('elements', JSON.stringify(elements));
-            data.append('major_ions', JSON.stringify(major_ions));
-            data.append('organic_substances', JSON.stringify(organic_substances));
             let url = "{{route('operator.data.store')}}";
             fetch(url, {
                 method: 'POST',
@@ -83,5 +90,15 @@
                 });
 
         }
+
+
+        let inputElements = document.querySelectorAll('.form-control');
+        inputElements.forEach(function (inputElement) {
+            inputElement.addEventListener('input', function () {
+                if (isValidInput(inputElement.value)) {
+                    inputElement.classList.remove('is-invalid');
+                }
+            });
+        });
     </script>
 @endsection
