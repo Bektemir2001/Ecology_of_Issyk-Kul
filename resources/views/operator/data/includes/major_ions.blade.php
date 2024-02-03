@@ -76,16 +76,17 @@
 
     function displayIonToInput(ion, IonsContent)
     {
-        IonsContent.innerHTML += `<div class="form-group">
-                            <label for="choiceIon${ion.id}">${ion.name}</label>
-                            <input type="number" id="choiceIon${ion.id}" class="form-control"/>
-                        </div>`;
+        let divElement = document.createElement('div');
+        divElement.className = "form-group";
+        divElement.innerHTML = `<label for="choiceIon${ion.id}">${ion.name}</label>
+                            <input type="number" id="choiceIon${ion.id}" class="form-control"/>`;
+        IonsContent.appendChild(divElement);
         input_ions[ion.id] = document.getElementById(`choiceIon${ion.id}`);
         return 'finish';
     }
 
     function validate_major_ions()
     {
-        return validate_and_get_form_data(input_ions);
+        return validate_and_get_data(input_ions);
     }
 </script>

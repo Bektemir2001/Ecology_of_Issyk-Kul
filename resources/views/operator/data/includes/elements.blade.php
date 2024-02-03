@@ -82,24 +82,25 @@
             let childrenElements = element.children;
             for(let i = 0; i < childrenElements.length; i++)
             {
-                ElementsContent.innerHTML += `<div class="form-group">
-                            <label for="choiceElement${childrenElements[i].id}">${element.name}(${childrenElements[i].name})</label>
-                            <input type="number" id="choiceElement${childrenElements[i].id}" class="form-control"/>
-                        </div>`;
+                let divElement = document.createElement('div');
+                divElement.className = "form-group";
+                divElement.innerHTML = `<label for="choiceElement${childrenElements[i].id}">${element.name}(${childrenElements[i].name})</label>
+                            <input type="number" id="choiceElement${childrenElements[i].id}" class="form-control"/>`
+                ElementsContent.appendChild(divElement)
                 input_elements[childrenElements[i].id] = document.getElementById(`choiceElement${childrenElements[i].id}`);
             }
             return 'finish';
         }
-        ElementsContent.innerHTML += `<div class="form-group">
-                            <label for="choiceElement${element.id}">${element.name}</label>
-                            <input type="number" id="choiceElement${element.id}" class="form-control"/>
-                        </div>`;
+        let divElement = document.createElement('div');
+        divElement.className = "form-group";
+        divElement.innerHTML = `<label for="choiceElement${element.id}">${element.name}</label>
+                            <input type="number" id="choiceElement${element.id}" class="form-control"/>`;
+        ElementsContent.appendChild(divElement)
         input_elements[element.id] = document.getElementById(`choiceElement${element.id}`);
         return 'finish';
     }
-
     function validate_elements()
     {
-        return validate_and_get_form_data(input_elements);
+        return validate_and_get_data(input_elements);
     }
 </script>

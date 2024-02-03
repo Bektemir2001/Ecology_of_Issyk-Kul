@@ -36,7 +36,6 @@
             .then(data => {
                 organic_substances = data.data;
                 not_choice_organic_substances = data.data;
-                console.log(not_choice_organic_substances)
                 displayOrganicSubstanceInSelect();
             });
     }
@@ -78,16 +77,17 @@
 
     function displayOrganicSubstanceToInput(element, OrganicSubstancesContent)
     {
-        OrganicSubstancesContent.innerHTML += `<div class="form-group">
-                            <label for="choiceOrganicSubstance${element.id}">${element.name}</label>
-                            <input type="number" id="choiceOrganicSubstance${element.id}" class="form-control"/>
-                        </div>`;
+        let divElement = document.createElement('div');
+        divElement.className = "form-group";
+        divElement.innerHTML = `<label for="choiceOrganicSubstance${element.id}">${element.name}</label>
+                            <input type="number" id="choiceOrganicSubstance${element.id}" class="form-control"/>`;
+        OrganicSubstancesContent.appendChild(divElement);
         input_organic_sentences[element.id] = document.getElementById(`choiceOrganicSubstance${element.id}`);
         return 'finish';
     }
 
     function validate_organic_substances()
     {
-        return validate_and_get_form_data(input_organic_sentences);
+        return validate_and_get_data(input_organic_sentences);
     }
 </script>

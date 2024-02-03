@@ -51,14 +51,37 @@
     <script>
         function submit()
         {
+            let data = new FormData();
             let location_and_data = validate_location_and_data();
             let physical_properties_and_gas_composition = validate_Physical_properties_and_gas_composition();
             let elements = validate_elements();
             let major_ions = validate_major_ions();
             let organic_substances = validate_organic_substances();
 
-            console.log(location_and_data);
-            console.log(physical_properties_and_gas_composition);
+            for(let key in location_and_data)
+            {
+                data.append(key, location_and_data[key]);
+            }
+            for(let key in physical_properties_and_gas_composition)
+            {
+                data.append(key, physical_properties_and_gas_composition[key]);
+            }
+            data.append('elements', JSON.stringify(elements));
+            data.append('major_ions', JSON.stringify(major_ions));
+            data.append('organic_substances', JSON.stringify(organic_substances));
+            let url = "{{route('operator.data.store')}}";
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': "{{csrf_token()}}"
+                },
+                body: data
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                });
+
         }
     </script>
 @endsection

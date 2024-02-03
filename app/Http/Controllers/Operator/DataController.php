@@ -19,4 +19,9 @@ class DataController extends Controller
         $control_point = ControlPoint::where('id', session('control_point'))->first();
         return view('operator.data.create', compact('control_point'));
     }
+
+    public function store(Request $request)
+    {
+        dd($request->all());
+    }
 }

@@ -91,7 +91,7 @@
             depth: document.getElementById('depth'),
             depth_item: document.getElementById('depth_item')
         }
-        return validate_and_get_form_data(data);
+        return validate_and_get_data(data);
     }
     function validate_Physical_properties_and_gas_composition()
     {
@@ -105,29 +105,26 @@
             oxygen_mg: document.getElementById('oxygen_mg'),
             oxygen_saturation: document.getElementById('oxygen_saturation')
         };
-        return validate_and_get_form_data(data);
+        return validate_and_get_data(data);
     }
 
-    function validate_and_get_form_data(data)
+    function validate_and_get_data(data)
     {
-        let formData = new FormData();
         for (let key in data) {
             if(!validate(data[key]))
             {
                 return false;
             }
-            formData.append(key, data[key].value);
+            data[key] = data[key].value;
         }
-        return formData;
+        return data;
     }
     function validate(input)
     {
         if(input.value)
         {
-            console.log('success');
             return true;
         }
-        console.log(input);
         input.className = "form-control is-invalid";
         return false;
     }
