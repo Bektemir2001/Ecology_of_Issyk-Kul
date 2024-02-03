@@ -31,6 +31,7 @@
                 </div>
             </div>
         </div>
+
         <div class="col-lg-12">
             <div class="iq-edit-list-data">
                 <div class="tab-content">

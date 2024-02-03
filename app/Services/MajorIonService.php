@@ -19,9 +19,9 @@ class MajorIonService extends Service
         }
     }
 
-    public function update()
+    public function update(array $data, MajorIon $majorIon): array
     {
-        return [];
+        return $data;
     }
 
 }

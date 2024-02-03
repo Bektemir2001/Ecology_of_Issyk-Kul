@@ -1,59 +1,86 @@
-<div class="tab-pane fade" id="major-ions" role="tabpanel">
+<div class="tab-pane fade" id="organic-substances" role="tabpanel">
     <div class="card">
         <div class="card-header d-flex justify-content-between">
             <div class="header-title">
-                <h4 class="card-title">Email and SMS</h4>
+                <h4 class="card-title">Organic Substances</h4>
             </div>
         </div>
         <div class="card-body">
-                <div class="form-group row align-items-center">
-                    <label class="col-md-3" for="emailnotification">Email Notification:</label>
-                    <div class="col-md-9 custom-control custom-switch">
-                        <input type="checkbox" class="custom-control-input" id="emailnotification" checked="">
-                        <label class="custom-control-label" for="emailnotification"></label>
-                    </div>
-                </div>
-                <div class="form-group row align-items-center">
-                    <label class="col-md-3" for="smsnotification">SMS Notification:</label>
-                    <div class="col-md-9 custom-control custom-switch">
-                        <input type="checkbox" class="custom-control-input" id="smsnotification" checked="">
-                        <label class="custom-control-label" for="smsnotification"></label>
-                    </div>
-                </div>
-                <div class="form-group row align-items-center">
-                    <label class="col-md-3" for="npass">When To Email</label>
-                    <div class="col-md-9">
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="email01">
-                            <label class="custom-control-label" for="email01">You have new notifications.</label>
-                        </div>
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="email02">
-                            <label class="custom-control-label" for="email02">You're sent a direct message</label>
-                        </div>
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="email03" checked="">
-                            <label class="custom-control-label" for="email03">Someone adds you as a connection</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group row align-items-center">
-                    <label class="col-md-3" for="npass">When To Escalate Emails</label>
-                    <div class="col-md-9">
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="email04">
-                            <label class="custom-control-label" for="email04"> Upon new order.</label>
-                        </div>
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="email05">
-                            <label class="custom-control-label" for="email05"> New membership approval</label>
-                        </div>
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="email06" checked="">
-                            <label class="custom-control-label" for="email06"> Member registration</label>
-                        </div>
-                    </div>
-                </div>
+            <div id="organicSubstancesContentId">
+
+            </div>
+            <div class="form-group">
+                <label for="organicSubstancesSelect">Choose organic substance</label>
+                <select id="organicSubstancesSelect" class="form-control" onclick="chooseOrganicSubstance(this)">
+
+                </select>
+            </div>
         </div>
     </div>
 </div>
+
+<script>
+    let organic_substances = [];
+    let choice_organic_substances = [];
+    let not_choice_organic_substances = [];
+    function getAllOrganicSubstances()
+    {
+        let url = "{{route('organic_substances.get.all')}}";
+        fetch(url, {
+            headers: {
+                'X-CSRF-TOKEN': "{{csrf_token()}}"
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                organic_substances = data.data;
+                not_choice_organic_substances = data.data;
+                console.log(not_choice_organic_substances)
+                displayOrganicSubstanceInSelect();
+            });
+    }
+    getAllOrganicSubstances();
+
+    function displayOrganicSubstanceInSelect()
+    {
+        let select = document.getElementById('organicSubstancesSelect');
+        while (select.firstChild) {
+            select.removeChild(select.firstChild);
+        }
+        select.add(document.createElement('option'));
+        for(let i = 0; i < not_choice_organic_substances.length; i++)
+        {
+            let option = document.createElement('option');
+            option.text = not_choice_organic_substances[i].name;
+            option.value = not_choice_organic_substances[i].id;
+            select.add(option);
+        }
+    }
+
+    function chooseOrganicSubstance(selectElement)
+    {
+        let OrganicSubstancesContent = document.getElementById('organicSubstancesContentId');
+        let selectedIndex = selectElement.selectedIndex;
+        let selectedOption = selectElement.options[selectedIndex];
+        for (let i = 0; i < not_choice_organic_substances.length; i++)
+        {
+            if(not_choice_organic_substances[i].id === parseInt(selectedOption.value))
+            {
+                displayOrganicSubstanceToInput(not_choice_organic_substances[i], OrganicSubstancesContent);
+                choice_organic_substances.push(not_choice_organic_substances[i]);
+                not_choice_organic_substances.splice(i, 1);
+                break;
+            }
+        }
+        displayOrganicSubstanceInSelect();
+    }
+
+    function displayOrganicSubstanceToInput(element, OrganicSubstancesContent)
+    {
+        OrganicSubstancesContent.innerHTML += `<div class="form-group">
+                            <label for="choiceOrganicSubstance${element.id}">${element.name}</label>
+                            <input type="text" id="choiceOrganicSubstance${element.id}" class="form-control" placeholder="milligrams"/>
+                        </div>`;
+        return 'finish';
+    }
+</script>

@@ -2,58 +2,83 @@
     <div class="card">
         <div class="card-header d-flex justify-content-between">
             <div class="header-title">
-                <h4 class="card-title">Email and SMS</h4>
+                <h4 class="card-title">Major Ions</h4>
             </div>
         </div>
         <div class="card-body">
-                <div class="form-group row align-items-center">
-                    <label class="col-md-3" for="emailnotification">Email Notification:</label>
-                    <div class="col-md-9 custom-control custom-switch">
-                        <input type="checkbox" class="custom-control-input" id="emailnotification" checked="">
-                        <label class="custom-control-label" for="emailnotification"></label>
-                    </div>
+            <div id="ionsContentId">
+
+            </div>
+            <div class="form-group">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-white dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="width: 300px;">
+                        Choose ion
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" id="ionsSelect" style="max-height: 200px; overflow-y: auto; width: 300px;">
+                    </ul>
                 </div>
-                <div class="form-group row align-items-center">
-                    <label class="col-md-3" for="smsnotification">SMS Notification:</label>
-                    <div class="col-md-9 custom-control custom-switch">
-                        <input type="checkbox" class="custom-control-input" id="smsnotification" checked="">
-                        <label class="custom-control-label" for="smsnotification"></label>
-                    </div>
-                </div>
-                <div class="form-group row align-items-center">
-                    <label class="col-md-3" for="npass">When To Email</label>
-                    <div class="col-md-9">
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="email01">
-                            <label class="custom-control-label" for="email01">You have new notifications.</label>
-                        </div>
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="email02">
-                            <label class="custom-control-label" for="email02">You're sent a direct message</label>
-                        </div>
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="email03" checked="">
-                            <label class="custom-control-label" for="email03">Someone adds you as a connection</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group row align-items-center">
-                    <label class="col-md-3" for="npass">When To Escalate Emails</label>
-                    <div class="col-md-9">
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="email04">
-                            <label class="custom-control-label" for="email04"> Upon new order.</label>
-                        </div>
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="email05">
-                            <label class="custom-control-label" for="email05"> New membership approval</label>
-                        </div>
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="email06" checked="">
-                            <label class="custom-control-label" for="email06"> Member registration</label>
-                        </div>
-                    </div>
-                </div>
+            </div>
         </div>
     </div>
 </div>
+
+<script>
+    let ions = [];
+    let choice_ions = [];
+    let not_choice_ions = [];
+    function getAllIons()
+    {
+        let url = "{{route('ions.get.all')}}";
+        fetch(url, {
+            headers: {
+                'X-CSRF-TOKEN': "{{csrf_token()}}"
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                ions = data.data;
+                not_choice_ions = data.data;
+                displayIonsInSelect();
+            });
+    }
+    getAllIons()
+    function displayIonsInSelect()
+    {
+        let select = document.getElementById('ionsSelect');
+        while (select.firstChild) {
+            select.removeChild(select.firstChild);
+        }
+        select.appendChild(document.createElement('li'));
+        for(let i = 0; i < not_choice_ions.length; i++)
+        {
+            let li = document.createElement('li');
+            li.innerHTML = `<li><button class="dropdown-item" type="button" onclick="chooseIons(${not_choice_ions[i].id})">${not_choice_ions[i].name}</button></li>`
+            select.appendChild(li);
+        }
+    }
+
+    function chooseIons(selectIon)
+    {
+        let IonsContent = document.getElementById('ionsContentId');
+        for (let i = 0; i < not_choice_ions.length; i++)
+        {
+            if(not_choice_ions[i].id === parseInt(selectIon))
+            {
+                displayIonToInput(not_choice_ions[i], IonsContent);
+                choice_ions.push(not_choice_ions[i]);
+                not_choice_ions.splice(i, 1);
+                break;
+            }
+        }
+        displayIonsInSelect();
+    }
+
+    function displayIonToInput(ion, IonsContent)
+    {
+        IonsContent.innerHTML += `<div class="form-group">
+                            <label for="choiceIon${ion.id}">${ion.name}</label>
+                            <input type="text" id="choiceIon${ion.id}" class="form-control" placeholder="milligrams"/>
+                        </div>`;
+        return 'finish';
+    }
+</script>
