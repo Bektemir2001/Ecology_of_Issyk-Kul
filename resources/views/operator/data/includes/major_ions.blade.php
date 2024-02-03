@@ -26,6 +26,7 @@
     let ions = [];
     let choice_ions = [];
     let not_choice_ions = [];
+    let input_ions = {};
     function getAllIons()
     {
         let url = "{{route('ions.get.all')}}";
@@ -77,13 +78,14 @@
     {
         IonsContent.innerHTML += `<div class="form-group">
                             <label for="choiceIon${ion.id}">${ion.name}</label>
-                            <input type="text" id="choiceIon${ion.id}" class="form-control"/>
+                            <input type="number" id="choiceIon${ion.id}" class="form-control"/>
                         </div>`;
+        input_ions[ion.id] = document.getElementById(`choiceIon${ion.id}`);
         return 'finish';
     }
 
     function validate_major_ions()
     {
-
+        return validate_and_get_form_data(input_ions);
     }
 </script>

@@ -23,6 +23,7 @@
     let organic_substances = [];
     let choice_organic_substances = [];
     let not_choice_organic_substances = [];
+    let input_organic_sentences = {};
     function getAllOrganicSubstances()
     {
         let url = "{{route('organic_substances.get.all')}}";
@@ -79,13 +80,14 @@
     {
         OrganicSubstancesContent.innerHTML += `<div class="form-group">
                             <label for="choiceOrganicSubstance${element.id}">${element.name}</label>
-                            <input type="text" id="choiceOrganicSubstance${element.id}" class="form-control"/>
+                            <input type="number" id="choiceOrganicSubstance${element.id}" class="form-control"/>
                         </div>`;
+        input_organic_sentences[element.id] = document.getElementById(`choiceOrganicSubstance${element.id}`);
         return 'finish';
     }
 
     function validate_organic_substances()
     {
-        return [];
+        return validate_and_get_form_data(input_organic_sentences);
     }
 </script>

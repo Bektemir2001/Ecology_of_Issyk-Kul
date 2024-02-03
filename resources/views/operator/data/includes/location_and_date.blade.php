@@ -17,7 +17,7 @@
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="from_starting_point">Distance from the starting point</label>
-                        <input type="text" class="form-control" id="from_starting_point">
+                        <input type="number" class="form-control" id="from_starting_point">
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="depth">Depth</label>
@@ -29,7 +29,7 @@
                                 </select>
                             </div>
                             <div class="col-6">
-                                <input class="form-control" placeholder="meter" id="depth_item">
+                                <input type="number" class="form-control" placeholder="meter" id="depth_item">
                             </div>
                         </div>
 
@@ -47,23 +47,23 @@
             <div class="row align-items-center">
                 <div class="form-group col-sm-6">
                     <label for="temperature">Water temperature, deg.</label>
-                    <input type="text" class="form-control" id="temperature">
+                    <input type="number" class="form-control" id="temperature">
                 </div>
                 <div class="form-group col-sm-6">
                     <label for="transparency">Transparency on the white disk, m</label>
-                    <input type="text" class="form-control" id="transparency" name="transparency">
+                    <input type="number" class="form-control" id="transparency" name="transparency">
                 </div>
                 <div class="form-group col-sm-6">
                     <label for="hardness">Total hardness, mmol/l</label>
-                    <input type="text" class="form-control" id="hardness">
+                    <input type="number" class="form-control" id="hardness">
                 </div>
                 <div class="form-group col-sm-6">
                     <label for="electrical_conductivity">Electrical conductivity, mS/cm</label>
-                    <input type="text" class="form-control" id="electrical_conductivity" name="electrical_conductivity">
+                    <input type="number" class="form-control" id="electrical_conductivity" name="electrical_conductivity">
                 </div>
                 <div class="form-group col-sm-6">
                     <label for="pH">рН</label>
-                    <input type="text" class="form-control" id="pH">
+                    <input type="number" class="form-control" id="pH">
                 </div>
 
             </div>
@@ -71,11 +71,11 @@
             <div class="row align-items-center">
                 <div class="form-group col-sm-6">
                     <label for="oxygen_mg">mg/l</label>
-                    <input type="text" class="form-control" id="oxygen_mg">
+                    <input type="number" class="form-control" id="oxygen_mg">
                 </div>
                 <div class="form-group col-sm-6">
                     <label for="oxygen_saturation"><b>% </b>saturation</label>
-                    <input type="text" class="form-control" id="oxygen_saturation" name="oxygen_saturation">
+                    <input type="number" class="form-control" id="oxygen_saturation" name="oxygen_saturation">
                 </div>
             </div>
         </div>

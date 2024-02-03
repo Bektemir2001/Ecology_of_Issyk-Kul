@@ -23,6 +23,7 @@
     let elements = [];
     let choice_elements = [];
     let not_choice_elements = [];
+    let input_elements = {};
     function getAllElements()
     {
         let url = "{{route('elements.get.all')}}";
@@ -83,20 +84,22 @@
             {
                 ElementsContent.innerHTML += `<div class="form-group">
                             <label for="choiceElement${childrenElements[i].id}">${element.name}(${childrenElements[i].name})</label>
-                            <input type="text" id="choiceElement${childrenElements[i].id}" class="form-control"/>
+                            <input type="number" id="choiceElement${childrenElements[i].id}" class="form-control"/>
                         </div>`;
+                input_elements[childrenElements[i].id] = document.getElementById(`choiceElement${childrenElements[i].id}`);
             }
             return 'finish';
         }
         ElementsContent.innerHTML += `<div class="form-group">
                             <label for="choiceElement${element.id}">${element.name}</label>
-                            <input type="text" id="choiceElement${element.id}" class="form-control"/>
+                            <input type="number" id="choiceElement${element.id}" class="form-control"/>
                         </div>`;
+        input_elements[element.id] = document.getElementById(`choiceElement${element.id}`);
         return 'finish';
     }
 
     function validate_elements()
     {
-        return [];
+        return validate_and_get_form_data(input_elements);
     }
 </script>
