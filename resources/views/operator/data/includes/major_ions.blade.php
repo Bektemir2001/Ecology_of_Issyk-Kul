@@ -77,8 +77,13 @@
     {
         IonsContent.innerHTML += `<div class="form-group">
                             <label for="choiceIon${ion.id}">${ion.name}</label>
-                            <input type="text" id="choiceIon${ion.id}" class="form-control" placeholder="milligrams"/>
+                            <input type="text" id="choiceIon${ion.id}" class="form-control"/>
                         </div>`;
         return 'finish';
+    }
+
+    function validate_major_ions()
+    {
+
     }
 </script>

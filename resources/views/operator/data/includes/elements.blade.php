@@ -83,15 +83,20 @@
             {
                 ElementsContent.innerHTML += `<div class="form-group">
                             <label for="choiceElement${childrenElements[i].id}">${element.name}(${childrenElements[i].name})</label>
-                            <input type="text" id="choiceElement${childrenElements[i].id}" class="form-control" placeholder="milligrams"/>
+                            <input type="text" id="choiceElement${childrenElements[i].id}" class="form-control"/>
                         </div>`;
             }
             return 'finish';
         }
         ElementsContent.innerHTML += `<div class="form-group">
                             <label for="choiceElement${element.id}">${element.name}</label>
-                            <input type="text" id="choiceElement${element.id}" class="form-control" placeholder="milligrams"/>
+                            <input type="text" id="choiceElement${element.id}" class="form-control"/>
                         </div>`;
         return 'finish';
+    }
+
+    function validate_elements()
+    {
+        return [];
     }
 </script>

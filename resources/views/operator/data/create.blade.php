@@ -45,6 +45,20 @@
     </div>
     <div>
         <button type="reset" class="btn btn-outline-primary mr-2">Cancel</button>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary" onclick="submit()">Submit</button>
     </div>
+
+    <script>
+        function submit()
+        {
+            let location_and_data = validate_location_and_data();
+            let physical_properties_and_gas_composition = validate_Physical_properties_and_gas_composition();
+            let elements = validate_elements();
+            let major_ions = validate_major_ions();
+            let organic_substances = validate_organic_substances();
+
+            console.log(location_and_data);
+            console.log(physical_properties_and_gas_composition);
+        }
+    </script>
 @endsection

@@ -79,8 +79,13 @@
     {
         OrganicSubstancesContent.innerHTML += `<div class="form-group">
                             <label for="choiceOrganicSubstance${element.id}">${element.name}</label>
-                            <input type="text" id="choiceOrganicSubstance${element.id}" class="form-control" placeholder="milligrams"/>
+                            <input type="text" id="choiceOrganicSubstance${element.id}" class="form-control"/>
                         </div>`;
         return 'finish';
+    }
+
+    function validate_organic_substances()
+    {
+        return [];
     }
 </script>
