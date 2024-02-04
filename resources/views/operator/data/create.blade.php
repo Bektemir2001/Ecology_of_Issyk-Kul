@@ -70,6 +70,7 @@
                 data.append('elements', JSON.stringify(elements));
                 data.append('major_ions', JSON.stringify(major_ions));
                 data.append('organic_substances', JSON.stringify(organic_substances));
+                data.append('control_point_id', "{{session('control_point')}}");
             }
             else
             {
@@ -87,6 +88,9 @@
                 .then(response => response.json())
                 .then(data => {
                     console.log(data);
+                })
+                .catch(error => {
+                    console.log(error)
                 });
 
         }

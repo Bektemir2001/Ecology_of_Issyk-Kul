@@ -27,7 +27,7 @@ class StoreRequest extends FormRequest
             'X_coordinate' => 'nullable',
             'Y_coordinate' => 'nullable',
             'address' => 'nullable',
-            'logo' => 'required',
+            'logo' => 'nullable',
             'description' => 'nullable',
             'description_ky' => 'nullable'
         ];
