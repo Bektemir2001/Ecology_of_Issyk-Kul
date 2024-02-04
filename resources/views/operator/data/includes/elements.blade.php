@@ -23,7 +23,6 @@
     let elements = [];
     let choice_elements = [];
     let not_choice_elements = [];
-    let input_elements = {};
     function getAllElements()
     {
         let url = "{{route('elements.get.all')}}";
@@ -87,14 +86,8 @@
                 divElement.innerHTML = `<label for="choiceElement${childrenElements[i].id}">${element.name}(${childrenElements[i].name})</label>
                             <input type="number" id="choiceElement${childrenElements[i].id}" class="form-control"/>`
                 ElementsContent.appendChild(divElement)
-                input_elements[childrenElements[i].id] = document.getElementById(`choiceElement${childrenElements[i].id}`);
-
-                input_elements[childrenElements[i].id].addEventListener('input', function () {
-                if (isValidInput(input_elements[childrenElements[i].id].value)) {
-                    input_elements[childrenElements[i].id].classList.remove('is-invalid');
-                }
-            });
             }
+            checkInputs();
             return 'finish';
         }
         let divElement = document.createElement('div');
@@ -102,16 +95,17 @@
         divElement.innerHTML = `<label for="choiceElement${element.id}">${element.name}</label>
                             <input type="number" id="choiceElement${element.id}" class="form-control"/>`;
         ElementsContent.appendChild(divElement)
-        input_elements[element.id] = document.getElementById(`choiceElement${element.id}`);
-        input_elements[element.id].addEventListener('input', function () {
-            if (isValidInput(input_elements[element.id].value)) {
-                input_elements[element.id].classList.remove('is-invalid');
-            }
-        });
+        checkInputs();
         return 'finish';
     }
     function validate_elements()
     {
+        let input_elements = {};
+        for(let i = 0; i < choice_elements.length; i++)
+        {
+            input_elements[choice_elements[i].id] = document.getElementById(`choiceElement${choice_elements[i].id}`);
+        }
+
         return validate_and_get_data(input_elements);
     }
 </script>

@@ -94,15 +94,6 @@
                 });
 
         }
-
-
-        let inputElements = document.querySelectorAll('.form-control');
-        inputElements.forEach(function (inputElement) {
-            inputElement.addEventListener('input', function () {
-                if (isValidInput(inputElement.value)) {
-                    inputElement.classList.remove('is-invalid');
-                }
-            });
-        });
+        checkInputs();
     </script>
 @endsection

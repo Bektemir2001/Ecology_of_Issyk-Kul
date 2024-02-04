@@ -83,6 +83,17 @@
 </div>
 
 <script>
+    function checkInputs()
+    {
+        let inputElements = document.querySelectorAll('.form-control');
+        inputElements.forEach(function (inputElement) {
+            inputElement.addEventListener('input', function () {
+                if (isValidInput(inputElement.value)) {
+                    inputElement.classList.remove('is-invalid');
+                }
+            });
+        });
+    }
     function validate_location_and_data()
     {
         let data = {

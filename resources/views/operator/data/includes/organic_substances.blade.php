@@ -23,7 +23,6 @@
     let organic_substances = [];
     let choice_organic_substances = [];
     let not_choice_organic_substances = [];
-    let input_organic_sentences = {};
     function getAllOrganicSubstances()
     {
         let url = "{{route('organic_substances.get.all')}}";
@@ -82,17 +81,17 @@
         divElement.innerHTML = `<label for="choiceOrganicSubstance${element.id}">${element.name}</label>
                             <input type="number" id="choiceOrganicSubstance${element.id}" class="form-control"/>`;
         OrganicSubstancesContent.appendChild(divElement);
-        input_organic_sentences[element.id] = document.getElementById(`choiceOrganicSubstance${element.id}`);
-        input_organic_sentences[element.id].addEventListener('input', function () {
-            if (isValidInput(input_organic_sentences[element.id].value)) {
-                input_organic_sentences[element.id].classList.remove('is-invalid');
-            }
-        });
+        checkInputs();
         return 'finish';
     }
 
     function validate_organic_substances()
     {
+        let input_organic_sentences = {}
+        for(let i = 0; i < choice_organic_substances.length; i++)
+        {
+            input_organic_sentences[choice_organic_substances[i].id] = document.getElementById(`choiceOrganicSubstance${choice_organic_substances[i].id}`);
+        }
         return validate_and_get_data(input_organic_sentences);
     }
 </script>
