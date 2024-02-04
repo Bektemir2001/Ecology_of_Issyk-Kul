@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\v1\UserController;
+use App\Http\Controllers\Auth\UserAuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,4 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix' => 'user'], function (){
     Route::get('/', [UserController::class, 'test'])->middleware('auth:sanctum');
 });
+
+
+Route::post('/user/login', [UserAuthController::class, 'login']);
+Route::post('/user/register', [UserAuthController::class, 'register']);
 

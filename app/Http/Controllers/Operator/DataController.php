@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Operator;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Operator\StorePointRequest;
 use App\Models\ControlPoint;
+use App\Models\Point;
 use App\Services\Operator\PointService;
 use Illuminate\Http\Request;
 
@@ -19,7 +20,8 @@ class DataController extends Controller
 
     public function index()
     {
-        return view('operator.data.index');
+        $points = Point::all();
+        return view('operator.data.index', compact('points'));
     }
 
     public function create()

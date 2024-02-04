@@ -22,7 +22,14 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required',
+            'lake_id' => 'required',
+            'number' => 'nullable',
+            'name_ky' => 'nullable',
+            'description' => 'nullable',
+            'description_ky' => 'nullable',
+            'X_coordinate' => 'nullable',
+            'Y_coordinate' => 'nullable',
         ];
     }
 }

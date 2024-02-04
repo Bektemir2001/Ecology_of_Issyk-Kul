@@ -11,4 +11,9 @@ class Point extends Model
 
     protected $table = 'points';
     protected $guarded = false;
+
+    public function controlPoint()
+    {
+        return $this->belongsTo(ControlPoint::class);
+    }
 }

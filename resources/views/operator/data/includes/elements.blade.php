@@ -103,9 +103,18 @@
         let input_elements = {};
         for(let i = 0; i < choice_elements.length; i++)
         {
-            input_elements[choice_elements[i].id] = document.getElementById(`choiceElement${choice_elements[i].id}`);
+            if(choice_elements[i].children.length > 0)
+            {
+                let children = choice_elements[i].children;
+                for(let k = 0; k < children.length; k++)
+                {
+                    input_elements[children[i].id] = document.getElementById(`choiceElement${children[i].id}`);
+                }
+            }
+            else{
+                input_elements[choice_elements[i].id] = document.getElementById(`choiceElement${choice_elements[i].id}`);
+            }
         }
-
         return validate_and_get_data(input_elements);
     }
 </script>

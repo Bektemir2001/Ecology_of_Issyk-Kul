@@ -60,6 +60,7 @@ Route::group(['prefix' => 'admin'], function (){
         Route::post('/', [ControlPointController::class, 'store'])->name('admin.control_points.store');
         Route::get('/create', [ControlPointController::class, 'create'])->name('admin.control_points.create');
         Route::get('/edit/{control_point}', [ControlPointController::class, 'edit'])->name('admin.control_points.edit');
+        Route::post('/update/{control_point}', [ControlPointController::class, 'update'])->name('admin.control_points.update');
         Route::get('/show/{control_point}', [ControlPointController::class, 'show'])->name('admin.control_points.show');
         Route::get('/delete/{control_point}', [ControlPointController::class, 'delete'])->name('admin.control_points.delete');
     });

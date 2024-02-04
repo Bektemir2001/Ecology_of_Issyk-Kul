@@ -7,7 +7,7 @@
         </div>
         <div>
             @foreach($item->controlPoints as $point)
-                <div class="col-sm-6 col-md-6 col-lg-4 mt-4 mt-lg-0">
+                <div class="col-sm-6 col-md-6 mt-4 mb-4 mt-lg-0">
                     <div class="inner-shadow p-4 shadow-showcase d-flex justify-content-between">
                         <div>
                             <h6>{{$point->name}}</h6>
