@@ -87,7 +87,7 @@
     {
         let data = {
             date: document.getElementById('date'),
-            from_starting_point: document.getElementById('from_starting_point'),
+            distance_from_starting_point: document.getElementById('from_starting_point'),
             depth: document.getElementById('depth'),
             depth_item: document.getElementById('depth_item')
         }
