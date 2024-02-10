@@ -57,7 +57,8 @@
             let elements = validate_elements();
             let major_ions = validate_major_ions();
             let organic_substances = validate_organic_substances();
-            if(elements && major_ions && organic_substances && physical_properties_and_gas_composition && location_and_data)
+            let control_point = validateControlPoint();
+            if(elements && major_ions && organic_substances && physical_properties_and_gas_composition && location_and_data && control_point)
             {
                 for(let key in location_and_data)
                 {
@@ -70,7 +71,7 @@
                 data.append('elements', JSON.stringify(elements));
                 data.append('major_ions', JSON.stringify(major_ions));
                 data.append('organic_substances', JSON.stringify(organic_substances));
-                data.append('control_point_id', "{{session('control_point')}}");
+                data.append('control_point_id', control_point);
             }
             else
             {
@@ -88,6 +89,7 @@
                 .then(response => response.json())
                 .then(data => {
                     alert(data.message);
+                    location.href = "{{route('operator.data.index')}}";
                 })
                 .catch(error => {
                     alert(error.message);

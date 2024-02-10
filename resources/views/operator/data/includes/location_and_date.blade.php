@@ -196,4 +196,16 @@
     }
 
     getDistricts()
+
+    function validateControlPoint()
+    {
+        let control_point = document.getElementById('control_point');
+        if(control_point.value)
+        {
+            return control_point.value;
+        }
+        control_point.className = "form-control is-invalid";
+        return false;
+
+    }
 </script>
