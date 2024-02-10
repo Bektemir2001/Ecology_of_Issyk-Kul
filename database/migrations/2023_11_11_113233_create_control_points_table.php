@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('control_points', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('lake_id');
             $table->string('number')->nullable();
             $table->string('name');
             $table->string('name_ky')->nullable();
@@ -23,12 +22,6 @@ return new class extends Migration
             $table->string('Y_coordinate')->nullable();
 
             $table->timestamps();
-
-            $table->index('lake_id', 'point_lake_idx');
-
-            $table->foreign('lake_id', 'point_lake_fk')
-                ->on('lakes')
-                ->references('id');
         });
     }
 

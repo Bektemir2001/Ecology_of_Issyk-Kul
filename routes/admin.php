@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\ControlPointController;
+use App\Http\Controllers\Admin\DistrictController;
 use App\Http\Controllers\Admin\ElementController;
 use App\Http\Controllers\Admin\ElementTypeController;
 use App\Http\Controllers\Admin\IndexController;
@@ -54,6 +55,15 @@ Route::group(['prefix' => 'admin'], function (){
         Route::get('/edit/{element_type}', [ElementTypeController::class, 'edit'])->name('admin.element_types.edit');
         Route::get('/show/{element_type}', [ElementTypeController::class, 'show'])->name('admin.element_types.show');
         Route::get('/delete/{element_type}', [ElementTypeController::class, 'delete'])->name('admin.element_types.delete');
+    });
+    Route::group(['prefix' => 'district'], function (){
+        Route::get('/', [DistrictController::class, 'index'])->name('admin.districts.index');
+        Route::post('/', [DistrictController::class, 'store'])->name('admin.districts.store');
+        Route::get('/create', [DistrictController::class, 'create'])->name('admin.districts.create');
+        Route::get('/edit/{district}', [DistrictController::class, 'edit'])->name('admin.districts.edit');
+        Route::post('/update/{district}', [DistrictController::class, 'update'])->name('admin.districts.update');
+        Route::get('/show/{district}', [DistrictController::class, 'show'])->name('admin.districts.show');
+        Route::get('/delete/{district}', [DistrictController::class, 'delete'])->name('admin.districts.delete');
     });
     Route::group(['prefix' => 'control_point'], function (){
         Route::get('/', [ControlPointController::class, 'index'])->name('admin.control_points.index');

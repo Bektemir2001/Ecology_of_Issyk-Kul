@@ -10,9 +10,14 @@ class DistrictService extends Service
     public function store(array $data): array
     {
         try {
-            if(array_key_exists('image', $data))
+            if(array_key_exists('images', $data))
             {
-                $data['image'] = $this->uploadFileService->upload($data['image'], 'images/elements');
+                $images = [];
+                foreach ($data['images'] as $image)
+                {
+                    $images[] = $this->uploadFileService->upload($image, 'images/districts');
+                }
+                $data['images'] = $images;
             }
 
             District::create($data);

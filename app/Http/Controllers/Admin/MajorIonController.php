@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\MajorIon\StoreRequest;
 use App\Http\Requests\Admin\MajorIon\UpdateRequest;
-use App\Http\Resources\MajorIonsResource;
+use App\Http\Resources\GeneralResource;
 use App\Models\MajorIon;
 use App\Services\MajorIonService;
 use Illuminate\Http\RedirectResponse;
@@ -64,6 +64,6 @@ class MajorIonController extends Controller
 
     public function getAll(): JsonResource
     {
-        return MajorIonsResource::collection(MajorIon::all());
+        return GeneralResource::collection(MajorIon::all());
     }
 }

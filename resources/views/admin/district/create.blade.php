@@ -18,7 +18,7 @@
             <div class="collapse" id="form-element-9">
                 <div class="card"></div>
             </div>
-            <form action="{{route('admin.control_points.store')}}" method="POST" enctype="multipart/form-data">
+            <form action="{{route('admin.districts.store')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-row mb-4">
                     <div class="col">
@@ -48,16 +48,16 @@
                 </div>
                 <div class="form-row mb-4">
                     <div class="col">
-                        <label for="number">Number</label>
-                        <input type="text" class="form-control" name="number" id="number" placeholder="Number">
+                        <label for="logo">Images</label>
+                        <input type="file" class="form-control" id="image" name="images[]" placeholder="Image" multiple>
                     </div>
                 </div>
                 <div class="form-row mb-4">
                     <div class="col">
-                        <label for="lake_id">District</label>
-                        <select id="lake_id" name="district_id" class="form-control">
-                            @foreach($districts as $district)
-                                <option value="{{$district->id}}">{{$district->name}}</option>
+                        <label for="lake_id">Lake</label>
+                        <select id="lake_id" name="lake_id" class="form-control">
+                            @foreach($lakes as $lake)
+                                <option value="{{$lake->id}}">{{$lake->name}}</option>
                             @endforeach
                         </select>
 

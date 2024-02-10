@@ -23,7 +23,7 @@ class StoreRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'lake_id' => 'required',
+            'district_id' => 'required',
             'number' => 'nullable',
             'name_ky' => 'nullable',
             'description' => 'nullable',

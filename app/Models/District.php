@@ -11,4 +11,9 @@ class District extends Model
 
     protected $table = 'districts';
     protected $guarded = false;
+
+    public function control_points()
+    {
+        return $this->hasMany(ControlPoint::class, 'district_id');
+    }
 }

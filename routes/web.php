@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\ControlPointController;
+use App\Http\Controllers\Admin\DistrictController;
 use App\Http\Controllers\Admin\ElementController;
 use App\Http\Controllers\Admin\MajorIonController;
 use App\Http\Controllers\Admin\OrganicSubstanceController;
@@ -32,4 +34,11 @@ Route::group(['prefix' => 'ions'], function (){
 
 Route::group(['prefix' => 'organic_substances'], function (){
     Route::get('/get/all', [OrganicSubstanceController::class, 'getAll'])->name('organic_substances.get.all');
+});
+
+Route::group(['prefix' => 'districts'], function (){
+    Route::get('/get/{lake}', [DistrictController::class, 'getAll'])->name('districts.get.all');
+});
+Route::group(['prefix' => 'control_points'], function (){
+    Route::get('/get/{district}', [ControlPointController::class, 'getAll'])->name('control_points.get.all');
 });

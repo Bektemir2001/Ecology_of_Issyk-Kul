@@ -24,7 +24,6 @@ class LoginRequest extends FormRequest
         return [
             'email' => 'required|max:255|exists:users,email',
             'password' => 'required|max:255',
-            'control_point' => 'required|numeric'
         ];
     }
 }

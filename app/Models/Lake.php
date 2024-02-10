@@ -11,4 +11,9 @@ class Lake extends Model
 
     protected $table = 'lakes';
     protected $guarded = false;
+
+    public function districts()
+    {
+        return $this->hasMany(District::class, 'lake_id');
+    }
 }

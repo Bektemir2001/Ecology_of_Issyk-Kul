@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ControlPoint\StoreRequest;
 use App\Http\Requests\Admin\ControlPoint\UpdateRequest;
+use App\Http\Resources\GeneralResource;
 use App\Models\ControlPoint;
+use App\Models\District;
 use App\Models\Lake;
 use App\Services\ControlPointService;
 use Illuminate\Http\Request;
@@ -34,8 +36,8 @@ class ControlPointController extends Controller
 
     public function create()
     {
-        $lakes = Lake::all();
-        return view('admin.control_point.create', compact('lakes'));
+        $districts = District::all();
+        return view('admin.control_point.create', compact('districts'));
     }
     public function store(StoreRequest $request)
     {
@@ -46,8 +48,8 @@ class ControlPointController extends Controller
 
     public function edit(ControlPoint $controlPoint)
     {
-        $lakes = Lake::all();
-        return view('admin.control_point.edit', ['item' => $controlPoint, 'lakes' => $lakes]);
+        $districts = District::all();
+        return view('admin.control_point.edit', ['item' => $controlPoint, 'districts' => $districts]);
     }
 
     public function update(UpdateRequest $request, ControlPoint $controlPoint)
@@ -59,5 +61,10 @@ class ControlPointController extends Controller
     public function delete()
     {
 
+    }
+
+    public function getAll(District $district)
+    {
+        return GeneralResource::collection($district->control_points);
     }
 }

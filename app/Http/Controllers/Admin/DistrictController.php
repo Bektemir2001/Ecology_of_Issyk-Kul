@@ -4,9 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\District\StoreRequest;
+use App\Http\Resources\GeneralResource;
 use App\Models\District;
+use App\Models\Lake;
 use App\Services\DistrictService;
-use Illuminate\Http\Request;
 
 class DistrictController extends Controller
 {
@@ -33,7 +34,8 @@ class DistrictController extends Controller
 
     public function create()
     {
-        return view('admin.district.create');
+        $lakes = Lake::all();
+        return view('admin.district.create', compact('lakes'));
     }
     public function store(StoreRequest $request)
     {
@@ -54,5 +56,10 @@ class DistrictController extends Controller
     public function delete()
     {
 
+    }
+
+    public function getAll(Lake $lake)
+    {
+        return GeneralResource::collection($lake->districts);
     }
 }

@@ -4,10 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\OrganicSubstance\StoreRequest;
-use App\Http\Resources\OrganicSubstanceResource;
+use App\Http\Resources\GeneralResource;
 use App\Models\OrganicSubstance;
 use App\Services\OrganicSubstanceService;
-use Illuminate\Http\Request;
 
 class OrganicSubstanceController extends Controller
 {
@@ -59,6 +58,6 @@ class OrganicSubstanceController extends Controller
 
     public function getAll()
     {
-        return OrganicSubstanceResource::collection(OrganicSubstance::all());
+        return GeneralResource::collection(OrganicSubstance::all());
     }
 }

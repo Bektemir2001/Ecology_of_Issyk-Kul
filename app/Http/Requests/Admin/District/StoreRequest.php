@@ -11,7 +11,7 @@ class StoreRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,13 @@ class StoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'lake_id' => 'required',
+            'name' => 'required',
+            'name_ky' => 'nullable',
+            'description' => 'nullable',
+            'images' => 'nullable',
+            'X_coordinate' => 'nullable',
+            'Y_coordinate' => 'nullable'
         ];
     }
 }

@@ -31,32 +31,6 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label for="lakes">Lake</label>
-                                            <select class="form-control choicesjs" id="lakes" name="lakes">
-                                                @foreach($lakes as $lake)
-                                                    <option value="{{$lake->id}}">{{$lake->name}}</option>
-                                                @endforeach
-                                            </select>
-                                            @error('lakes')
-                                            <p class="text-danger">{{$message}}</p>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label for="control_points">Control Points</label>
-                                            <select class="form-control choicesjs" id="control_points" name="control_point">
-                                                @foreach($control_points as $control_point)
-                                                    <option value="{{$control_point->id}}">{{$control_point->name}}</option>
-                                                @endforeach
-                                            </select>
-                                            @error('control_point')
-                                            <p class="text-danger">{{$message}}</p>
-                                            @enderror
-                                        </div>
-                                    </div>
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <button type="submit" class="btn btn-primary">Sign In</button>

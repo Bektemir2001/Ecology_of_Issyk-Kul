@@ -8,9 +8,15 @@
         <div class="card-body">
                 <div class=" row align-items-center">
                     <div class="form-group col-sm-6">
-                        <label for="control_point">Control Point</label>
-                        <input type="text" class="form-control" id="control_point" value="{{$control_point->name}}" disabled>
+                        <label for="lake">Lake</label>
+                        <select class="form-control" id="lake" onclick="getDistricts()">
+                            @foreach($lakes as $lake)
+                                <option value="{{$lake->id}}">{{$lake->id}}</option>
+                            @endforeach
+                        </select>
                     </div>
+                    <div class="form-group col-sm-6" id="districtsBlock"></div>
+                    <div class="form-group col-sm-6" id="controlPointBlock"></div>
                     <div class="form-group col-sm-6">
                         <label for="date">Date</label>
                         <input type="date" class="form-control" id="date" name="date">
@@ -142,4 +148,52 @@
     function isValidInput(value) {
         return value.trim() !== '';
     }
+
+    function getDistricts()
+    {
+        let lake_id = document.getElementById('lake').value;
+        let url = `/districts/get/${lake_id}`
+
+        fetch(url, {
+            headers : {
+                'X-CSRF-TOKEN': "{{csrf_token()}}"
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                let districtsBlock = document.getElementById('districtsBlock');
+                let content = `<label for="district">District</label> <select class="form-control" id="district" onclick="getControlPoints()">`
+                data = data.data;
+                data.forEach(function (item){
+                    content += `<option value="${item.id}">${item.name}</option>`;
+                });
+                content += `</select>`;
+                districtsBlock.innerHTML = content;
+                getControlPoints();
+            });
+    }
+
+    function getControlPoints()
+    {
+        let district_id = document.getElementById('district').value;
+        let url = `/control_points/get/${district_id}`;
+        fetch(url, {
+            headers : {
+                'X-CSRF-TOKEN': "{{csrf_token()}}"
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                let controlPointsBlock = document.getElementById('controlPointBlock');
+                let content = `<label for="control_point">Control Point</label> <select class="form-control" id="control_point">`
+                data = data.data;
+                data.forEach(function (item){
+                    content += `<option value="${item.id}">${item.name}</option>`;
+                });
+                content += `</select>`;
+                controlPointsBlock.innerHTML = content;
+            });
+    }
+
+    getDistricts()
 </script>

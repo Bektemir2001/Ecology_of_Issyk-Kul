@@ -21,6 +21,11 @@ return new class extends Migration
             $table->string('X_coordinate')->nullable();
             $table->string('Y_coordinate')->nullable();
             $table->timestamps();
+            $table->index('lake_id');
+
+            $table->foreign('lake_id')
+                ->on('lakes')
+                ->references('id');
         });
     }
 

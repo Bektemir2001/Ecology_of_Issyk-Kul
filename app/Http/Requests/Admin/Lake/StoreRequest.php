@@ -23,7 +23,7 @@ class StoreRequest extends FormRequest
     {
         return [
             'name' => 'required|max:255',
-            'name_ky' => 'required|max:255',
+            'name_ky' => 'nullable|max:255',
             'X_coordinate' => 'nullable',
             'Y_coordinate' => 'nullable',
             'address' => 'nullable',
