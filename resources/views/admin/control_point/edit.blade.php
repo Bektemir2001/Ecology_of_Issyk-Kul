@@ -54,10 +54,10 @@
                 </div>
                 <div class="form-row mb-4">
                     <div class="col">
-                        <label for="lake_id">Lake</label>
-                        <select id="lake_id" name="lake_id" class="form-control">
-                            @foreach($lakes as $lake)
-                                <option value="{{$lake->id}}" {{$lake->id === $item->lake_id ? 'selected' : ''}}>{{$lake->name}}</option>
+                        <label for="district_id">District</label>
+                        <select id="district_id" name="district_id" class="form-control">
+                            @foreach($districts as $district)
+                                <option value="{{$district->id}}" {{$district->id === $district->district_id ? 'selected' : ''}}>{{$district->name}}</option>
                             @endforeach
                         </select>
 

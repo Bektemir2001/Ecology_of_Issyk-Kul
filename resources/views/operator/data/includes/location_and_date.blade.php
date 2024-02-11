@@ -11,7 +11,7 @@
                         <label for="lake">Lake</label>
                         <select class="form-control" id="lake" onclick="getDistricts()">
                             @foreach($lakes as $lake)
-                                <option value="{{$lake->id}}">{{$lake->id}}</option>
+                                <option value="{{$lake->id}}">{{$lake->name}}</option>
                             @endforeach
                         </select>
                     </div>

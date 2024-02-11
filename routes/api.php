@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\v1\ControlPointController;
 use App\Http\Controllers\Api\v1\UserController;
 use App\Http\Controllers\Auth\UserAuthController;
 use Illuminate\Http\Request;
@@ -22,4 +23,6 @@ Route::group(['prefix' => 'user'], function (){
 
 Route::post('/user/login', [UserAuthController::class, 'login']);
 Route::post('/user/register', [UserAuthController::class, 'register']);
+
+Route::get('/get/control_points', [ControlPointController::class, 'getAll']);
 
