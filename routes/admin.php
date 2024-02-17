@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\ControlPointController;
 use App\Http\Controllers\Admin\DistrictController;
+use App\Http\Controllers\Admin\EarthTransformationIndicatorController;
 use App\Http\Controllers\Admin\ElementController;
 use App\Http\Controllers\Admin\ElementTypeController;
 use App\Http\Controllers\Admin\IndexController;
@@ -73,6 +74,16 @@ Route::group(['prefix' => 'admin'], function (){
         Route::post('/update/{control_point}', [ControlPointController::class, 'update'])->name('admin.control_points.update');
         Route::get('/show/{control_point}', [ControlPointController::class, 'show'])->name('admin.control_points.show');
         Route::get('/delete/{control_point}', [ControlPointController::class, 'delete'])->name('admin.control_points.delete');
+    });
+
+    Route::group(['prefix' => 'earth_transformation_indicators'], function (){
+        Route::get('/', [EarthTransformationIndicatorController::class, 'index'])->name('admin.earth.transformation.indicators.index');
+        Route::post('/', [EarthTransformationIndicatorController::class, 'store'])->name('admin.earth.transformation.indicators.store');
+        Route::get('/create', [EarthTransformationIndicatorController::class, 'create'])->name('admin.earth.transformation.indicators.create');
+        Route::get('/edit/{earth_transformation_indicators}', [EarthTransformationIndicatorController::class, 'edit'])->name('admin.earth.transformation.indicators.edit');
+        Route::post('/update/{earth_transformation_indicators}', [EarthTransformationIndicatorController::class, 'update'])->name('admin.earth.transformation.indicators.update');
+        Route::get('/show/{earth_transformation_indicators}', [EarthTransformationIndicatorController::class, 'show'])->name('admin.earth.transformation.indicators.show');
+        Route::get('/delete/{earth_transformation_indicators}', [EarthTransformationIndicatorController::class, 'delete'])->name('admin.earth.transformation.indicators.delete');
     });
     Route::group(['prefix' => 'user'], function (){
         Route::get('/', [UserController::class, 'index'])->name('admin.users.index');

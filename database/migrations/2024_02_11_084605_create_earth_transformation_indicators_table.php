@@ -17,6 +17,11 @@ return new class extends Migration
             $table->float('from_the_coast');
             $table->float('area');
             $table->date('date');
+
+            $table->index('district_id');
+            $table->foreign('district_id')
+                ->on('districts')
+                ->references('id');
             $table->timestamps();
         });
     }
