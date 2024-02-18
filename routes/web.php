@@ -42,3 +42,9 @@ Route::group(['prefix' => 'districts'], function (){
 Route::group(['prefix' => 'control_points'], function (){
     Route::get('/get/{district}', [ControlPointController::class, 'getAll'])->name('control_points.get.all');
 });
+
+
+Route::get('/test/calculate', function (){
+    $calculateService = new \App\Services\CalculationService();
+    echo $calculateService->calculate('2.22 + 2.54 * log(item)', 5);
+});

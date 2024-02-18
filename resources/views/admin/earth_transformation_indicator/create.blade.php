@@ -41,7 +41,7 @@
                     </div>
                     <div class="col">
                         <label for="area">Аянт</label>
-                        <input type="number" class="form-control" id="area" name="area">
+                        <input type="text" class="form-control" id="area" name="area">
                     </div>
                 </div>
                 <div class="form-group mb-0">

@@ -4,7 +4,7 @@
     <div class="card">
         <div class="card-header d-flex justify-content-between">
             <div class="header-title">
-                <h4 class="card-title">Add Earth Transformation Indicator</h4>
+                <h4 class="card-title">Жердин Трансформациялоо Көрсөткүчүн Кошуу</h4>
             </div>
             <div class="header-action">
                 <i data-toggle="collapse" data-target="#form-element-9" aria-expanded="false">
@@ -18,28 +18,34 @@
             <div class="collapse" id="form-element-9">
                 <div class="card"></div>
             </div>
-            <form action="{{route('admin.elements.store')}}" method="POST" enctype="multipart/form-data">
+            <form action="{{route('operator.earth.transformation.indicators.store')}}" method="POST">
                 @csrf
                 <div class="form-row mb-4">
                     <div class="col">
-                        <label for="name">Name</label>
-                        <input type="text" class="form-control" name="name" placeholder="Name" id="name">
+                        <label for="district_id">Район</label>
+                        <select class="form-control" id="district_id" name="district_id">
+                            @foreach($districts as $district)
+                                <option value="{{$district->id}}">{{$district->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label for="date">Дата</label>
+                        <input type="date" class="form-control" id="date" name="date">
                     </div>
                 </div>
                 <div class="form-row mb-4">
                     <div class="col">
-                        <label for="logo">Image</label>
-                        <input type="file" class="form-control" id="image" name="image" placeholder="Image">
+                        <label for="from_the_coast">Жээкке чейинки аралык</label>
+                        <input type="number" class="form-control" id="from_the_coast" name="from_the_coast">
                     </div>
-                </div>
-                <div class="form-row mb-4">
                     <div class="col">
-                        <label for="description">Description</label>
-                        <textarea class="form-control" name="description" id="description" placeholder="Description"></textarea>
+                        <label for="area">Аянт</label>
+                        <input type="number" class="form-control" id="area" name="area">
                     </div>
                 </div>
                 <div class="form-group mb-0">
-                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <button type="submit" class="btn btn-primary mr-2">Сактоо</button>
                 </div>
             </form>
         </div>

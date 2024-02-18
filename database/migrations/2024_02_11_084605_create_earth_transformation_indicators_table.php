@@ -17,6 +17,7 @@ return new class extends Migration
             $table->float('from_the_coast');
             $table->float('area');
             $table->date('date');
+            $table->unsignedBigInteger('created_by')->nullable();
 
             $table->index('district_id');
             $table->foreign('district_id')

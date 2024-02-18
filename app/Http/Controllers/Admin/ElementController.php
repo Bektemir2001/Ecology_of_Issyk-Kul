@@ -46,7 +46,8 @@ class ElementController extends Controller
 
     public function edit(Element $element)
     {
-        return view('admin.element.edit', compact(['item' => $element]));
+        $elements = Element::where('parent', '=', null)->get();
+        return view('admin.element.edit', ['item' => $element, 'elements' => $elements]);
     }
 
     public function update()

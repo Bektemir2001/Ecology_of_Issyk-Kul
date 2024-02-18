@@ -1,9 +1,10 @@
 <?php
 
+use App\Http\Controllers\Admin\DistrictController;
 use App\Http\Controllers\Api\v1\ControlPointController;
+use App\Http\Controllers\Api\v1\TransformationIndicatorController;
 use App\Http\Controllers\Api\v1\UserController;
 use App\Http\Controllers\Auth\UserAuthController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,4 +26,7 @@ Route::post('/user/login', [UserAuthController::class, 'login']);
 Route::post('/user/register', [UserAuthController::class, 'register']);
 
 Route::get('/get/control_points', [ControlPointController::class, 'getAll']);
+Route::get('/get/districts/{lake}', [DistrictController::class, 'getAll']);
+
+Route::get('/transformation/indicator/{district}/{date}', [TransformationIndicatorController::class, 'getData']);
 

@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->longText('description')->nullable();
             $table->unsignedBigInteger('parent')->nullable();
+            $table->text('TLI_formula')->nullable();
+            $table->text('TSI_formula')->nullable();
             $table->timestamps();
 
             $table->index('parent', 'element_parent_idx');

@@ -27,6 +27,7 @@ Route::group(['prefix' => 'admin'], function (){
         Route::get('/', [ElementController::class, 'index'])->name('admin.elements.index');
         Route::post('/', [ElementController::class, 'store'])->name('admin.elements.store');
         Route::get('/create', [ElementController::class, 'create'])->name('admin.elements.create');
+        Route::get('/update/{element}', [ElementController::class, 'update'])->name('admin.elements.update');
         Route::get('/edit/{element}', [ElementController::class, 'edit'])->name('admin.elements.edit');
         Route::get('/show/{element}', [ElementController::class, 'show'])->name('admin.elements.show');
         Route::get('/delete/{element}', [ElementController::class, 'delete'])->name('admin.elements.delete');
@@ -49,14 +50,6 @@ Route::group(['prefix' => 'admin'], function (){
         Route::get('/delete/{organic_substances}', [OrganicSubstanceController::class, 'delete'])->name('admin.organic_substances.delete');
     });
 
-    Route::group(['prefix' => 'element_type'], function (){
-        Route::get('/', [ElementTypeController::class, 'index'])->name('admin.element_types.index');
-        Route::post('/', [ElementTypeController::class, 'store'])->name('admin.element_types.store');
-        Route::get('/create', [ElementTypeController::class, 'create'])->name('admin.element_types.create');
-        Route::get('/edit/{element_type}', [ElementTypeController::class, 'edit'])->name('admin.element_types.edit');
-        Route::get('/show/{element_type}', [ElementTypeController::class, 'show'])->name('admin.element_types.show');
-        Route::get('/delete/{element_type}', [ElementTypeController::class, 'delete'])->name('admin.element_types.delete');
-    });
     Route::group(['prefix' => 'district'], function (){
         Route::get('/', [DistrictController::class, 'index'])->name('admin.districts.index');
         Route::post('/', [DistrictController::class, 'store'])->name('admin.districts.store');
