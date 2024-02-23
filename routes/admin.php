@@ -4,11 +4,11 @@ use App\Http\Controllers\Admin\ControlPointController;
 use App\Http\Controllers\Admin\DistrictController;
 use App\Http\Controllers\Admin\EarthTransformationIndicatorController;
 use App\Http\Controllers\Admin\ElementController;
-use App\Http\Controllers\Admin\ElementTypeController;
 use App\Http\Controllers\Admin\IndexController;
 use App\Http\Controllers\Admin\LakeController;
 use App\Http\Controllers\Admin\MajorIonController;
 use App\Http\Controllers\Admin\OrganicSubstanceController;
+use App\Http\Controllers\Admin\TrophicLevelIndexController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -77,6 +77,15 @@ Route::group(['prefix' => 'admin'], function (){
         Route::post('/update/{earth_transformation_indicators}', [EarthTransformationIndicatorController::class, 'update'])->name('admin.earth.transformation.indicators.update');
         Route::get('/show/{earth_transformation_indicators}', [EarthTransformationIndicatorController::class, 'show'])->name('admin.earth.transformation.indicators.show');
         Route::get('/delete/{earth_transformation_indicators}', [EarthTransformationIndicatorController::class, 'delete'])->name('admin.earth.transformation.indicators.delete');
+    });
+    Route::group(['prefix' => 'trophic_level_index'], function (){
+        Route::get('/', [TrophicLevelIndexController::class, 'index'])->name('admin.trophic.level.index.index');
+        Route::post('/', [TrophicLevelIndexController::class, 'store'])->name('admin.trophic.level.index.store');
+        Route::get('/create', [TrophicLevelIndexController::class, 'create'])->name('admin.trophic.level.index.create');
+        Route::get('/edit/{trophicLevelIndex}', [TrophicLevelIndexController::class, 'edit'])->name('admin.trophic.level.index.edit');
+        Route::post('/update/{trophicLevelIndex}', [TrophicLevelIndexController::class, 'update'])->name('admin.trophic.level.index.update');
+        Route::get('/show/{trophicLevelIndex}', [TrophicLevelIndexController::class, 'show'])->name('admin.trophic.level.index.show');
+        Route::get('/delete/{trophicLevelIndex}', [TrophicLevelIndexController::class, 'delete'])->name('admin.trophic.level.index.delete');
     });
     Route::group(['prefix' => 'user'], function (){
         Route::get('/', [UserController::class, 'index'])->name('admin.users.index');
