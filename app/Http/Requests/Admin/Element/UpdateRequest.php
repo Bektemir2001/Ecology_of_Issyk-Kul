@@ -25,7 +25,13 @@ class UpdateRequest extends FormRequest
             'name' => 'required|max:255',
             'image' => 'nullable',
             'description' => 'nullable',
-            'parent' => 'nullable'
+            'parent' => 'nullable',
+            'TLI_formula' => 'nullable',
+            'TLI_function' => 'nullable',
+            'TLI_argument' => 'nullable',
+            'TSI_formula' => 'nullable',
+            'TSI_function' => 'nullable',
+            'TSI_argument' => 'nullable'
         ];
     }
 }

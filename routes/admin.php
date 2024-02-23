@@ -27,7 +27,7 @@ Route::group(['prefix' => 'admin'], function (){
         Route::get('/', [ElementController::class, 'index'])->name('admin.elements.index');
         Route::post('/', [ElementController::class, 'store'])->name('admin.elements.store');
         Route::get('/create', [ElementController::class, 'create'])->name('admin.elements.create');
-        Route::get('/update/{element}', [ElementController::class, 'update'])->name('admin.elements.update');
+        Route::post('/update/{element}', [ElementController::class, 'update'])->name('admin.elements.update');
         Route::get('/edit/{element}', [ElementController::class, 'edit'])->name('admin.elements.edit');
         Route::get('/show/{element}', [ElementController::class, 'show'])->name('admin.elements.show');
         Route::get('/delete/{element}', [ElementController::class, 'delete'])->name('admin.elements.delete');

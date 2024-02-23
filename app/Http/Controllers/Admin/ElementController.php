@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Element\StoreRequest;
+use App\Http\Requests\Admin\Element\UpdateRequest;
 use App\Http\Resources\ElementResource;
 use App\Models\Element;
 use App\Services\ElementService;
@@ -50,9 +51,11 @@ class ElementController extends Controller
         return view('admin.element.edit', ['item' => $element, 'elements' => $elements]);
     }
 
-    public function update()
+    public function update(UpdateRequest $request, Element $element)
     {
-
+        $data = $request->validated();
+        $result = $this->elementService->update($element, $data);
+        dd($data);
     }
     public function delete()
     {
