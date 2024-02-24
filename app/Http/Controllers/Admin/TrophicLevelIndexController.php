@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\TrophicLevelIndex\ElementRequest;
 use App\Http\Requests\Admin\TrophicLevelIndex\StoreRequest;
 use App\Http\Requests\Admin\TrophicLevelIndex\UpdateRequest;
 use App\Http\Resources\GeneralResource;
@@ -56,11 +57,18 @@ class TrophicLevelIndexController extends Controller
 
     public function show(TrophicLevelIndex $trophicLevelIndex): View
     {
-        return view('admin.trophic_level_index.show', compact(['item' => $trophicLevelIndex]));
+        return view('admin.trophic_level_index.show', ['item' => $trophicLevelIndex]);
     }
     public function delete()
     {
 
+    }
+
+    public function addElement(ElementRequest $request)
+    {
+        $data = $request->validated();
+        $result = $this->trophicLevelIndexService->addElementIndex($data);
+        return response(['message' => $result['message']])->setStatusCode($result['code']);
     }
 
     public function getAll(): JsonResource

@@ -11,4 +11,9 @@ class TrophicLevelIndex extends Model
 
     protected $table = 'trophic_level_indices';
     protected $guarded = false;
+
+    public function elementIndeces()
+    {
+        return $this->hasMany(IntervalTrophicLevelIndexForElement::class, 't_index_id', 'id');
+    }
 }

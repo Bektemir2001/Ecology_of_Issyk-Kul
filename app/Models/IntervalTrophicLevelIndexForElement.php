@@ -11,4 +11,9 @@ class IntervalTrophicLevelIndexForElement extends Model
 
     protected $table = 'interval_trophic_level_index_for_elements';
     protected  $guarded = false;
+
+    public function element()
+    {
+        return $this->belongsTo(Element::class);
+    }
 }

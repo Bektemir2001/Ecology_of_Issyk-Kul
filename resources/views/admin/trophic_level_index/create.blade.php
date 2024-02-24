@@ -36,10 +36,4 @@
             </form>
         </div>
     </div>
-    <script src="//cdn.ckeditor.com/4.18.0/full/ckeditor.js"></script>
-    <script>
-        var editor = CKEDITOR.replace( 'ckeditor',{
-            filebrowserUploadMethod: 'form'
-        } );
-    </script>
 @endsection

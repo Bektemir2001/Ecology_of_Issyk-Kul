@@ -86,6 +86,7 @@ Route::group(['prefix' => 'admin'], function (){
         Route::post('/update/{trophicLevelIndex}', [TrophicLevelIndexController::class, 'update'])->name('admin.trophic.level.index.update');
         Route::get('/show/{trophicLevelIndex}', [TrophicLevelIndexController::class, 'show'])->name('admin.trophic.level.index.show');
         Route::get('/delete/{trophicLevelIndex}', [TrophicLevelIndexController::class, 'delete'])->name('admin.trophic.level.index.delete');
+        Route::post('/add/element/interval', [TrophicLevelIndexController::class, 'addElement'])->name('admin.trophic.level.index.addElement');
     });
     Route::group(['prefix' => 'user'], function (){
         Route::get('/', [UserController::class, 'index'])->name('admin.users.index');

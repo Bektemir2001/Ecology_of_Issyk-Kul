@@ -16,4 +16,14 @@ class Element extends Model
     {
         return $this->hasMany(Element::class, 'parent');
     }
+
+    public function intervalTrophicLevelIndex()
+    {
+        return $this->hasMany(IntervalTrophicLevelIndexForElement::class, 'element_id', 'id');
+    }
+
+    public function trophicLevelIndex()
+    {
+        return $this->belongsToMany(TrophicLevelIndex::class, 'interval_trophic_level_index_for_elements', 'element_id', 't_index_id');
+    }
 }
