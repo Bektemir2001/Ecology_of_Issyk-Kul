@@ -50,7 +50,7 @@
             let choice_element_id = 0;
             function getAllElements()
             {
-                let url = "{{route('elements.get.all', ['t_index_id' => $item->id])}}";
+                let url = "{{route('elements.get.all', [$t_index_id => $item->id])}}";
                 fetch(url, {
                     headers: {
                         'X-CSRF-TOKEN': "{{csrf_token()}}"
@@ -154,7 +154,7 @@
                     let data = new FormData();
                     data.append('from', from.value);
                     data.append('to', to.value);
-                    data.append("{{$t_index_id}}", "{{$item->id}}");
+                    data.append('t_index_id', "{{$item->id}}");
                     data.append('element_id', choice_element_id);
 
                     fetch(url, {

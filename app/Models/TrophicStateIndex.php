@@ -13,6 +13,6 @@ class TrophicStateIndex extends Model
 
     public function elementIndeces()
     {
-        return $this->hasMany(IntervalTrophicLevelIndexForElement::class, 't_index_id', 'id');
+        return $this->hasMany(TrophicStateIndexForElement::class, 't_index_id', 'id');
     }
 }
