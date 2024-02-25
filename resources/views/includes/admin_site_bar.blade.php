@@ -113,6 +113,15 @@
                     </a>
                 </li>
                 <li class=" sidebar-layout">
+                    <a href="{{route('admin.trophic.level.index.index')}}" class="svg-icon">
+                        <i class="">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                            </svg>
+                        </i><span class="ml-2">Trophic State Index</span>
+                    </a>
+                </li>
+                <li class=" sidebar-layout">
                     <a href="{{route('admin.users.index')}}" class="svg-icon">
                         <i class="">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">

@@ -34,7 +34,9 @@ class TrophicStateIndexController extends Controller
 
     public function create(): View
     {
-        return view('admin.trophic_state_index.create');
+        $title = 'Add Trophic State Index';
+        $create_url = 'admin.trophic.state.index.store';
+        return view('admin.trophic_state_index.create', compact('create_url', 'title'));
     }
 
     public function store(StoreRequest $request): RedirectResponse
@@ -57,7 +59,13 @@ class TrophicStateIndexController extends Controller
 
     public function show(TrophicStateIndex $trophicStateIndex): View
     {
-        return view('admin.trophic_state_index.show', ['item' => $trophicStateIndex]);
+        $add_element_url = 'admin.trophic.state.index.addElement';
+        $t_index_id = 'tsi_index_id';
+        return view('admin.trophic_state_index.show', [
+            'item' => $trophicStateIndex,
+            't_index_id' => $t_index_id,
+            'add_element_url' => $add_element_url
+        ]);
     }
     public function delete()
     {

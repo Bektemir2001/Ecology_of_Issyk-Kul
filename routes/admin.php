@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\LakeController;
 use App\Http\Controllers\Admin\MajorIonController;
 use App\Http\Controllers\Admin\OrganicSubstanceController;
 use App\Http\Controllers\Admin\TrophicLevelIndexController;
+use App\Http\Controllers\Admin\TrophicStateIndexController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -87,6 +88,16 @@ Route::group(['prefix' => 'admin'], function (){
         Route::get('/show/{trophicLevelIndex}', [TrophicLevelIndexController::class, 'show'])->name('admin.trophic.level.index.show');
         Route::get('/delete/{trophicLevelIndex}', [TrophicLevelIndexController::class, 'delete'])->name('admin.trophic.level.index.delete');
         Route::post('/add/element/interval', [TrophicLevelIndexController::class, 'addElement'])->name('admin.trophic.level.index.addElement');
+    });
+    Route::group(['prefix' => 'trophic_state_index'], function (){
+        Route::get('/', [TrophicStateIndexController::class, 'index'])->name('admin.trophic.state.index.index');
+        Route::post('/', [TrophicStateIndexController::class, 'store'])->name('admin.trophic.state.index.store');
+        Route::get('/create', [TrophicStateIndexController::class, 'create'])->name('admin.trophic.state.index.create');
+        Route::get('/edit/{trophicStateIndex}', [TrophicStateIndexController::class, 'edit'])->name('admin.trophic.state.index.edit');
+        Route::post('/update/{trophicStateIndex}', [TrophicStateIndexController::class, 'update'])->name('admin.trophic.state.index.update');
+        Route::get('/show/{trophicStateIndex}', [TrophicStateIndexController::class, 'show'])->name('admin.trophic.state.index.show');
+        Route::get('/delete/{trophicStateIndex}', [TrophicStateIndexController::class, 'delete'])->name('admin.trophic.state.index.delete');
+        Route::post('/add/element/interval', [TrophicStateIndexController::class, 'addElement'])->name('admin.trophic.state.index.addElement');
     });
     Route::group(['prefix' => 'user'], function (){
         Route::get('/', [UserController::class, 'index'])->name('admin.users.index');

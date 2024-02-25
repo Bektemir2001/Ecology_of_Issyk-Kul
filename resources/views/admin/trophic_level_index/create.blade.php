@@ -4,7 +4,7 @@
     <div class="card">
         <div class="card-header d-flex justify-content-between">
             <div class="header-title">
-                <h4 class="card-title">Add Trophic Level Index</h4>
+                <h4 class="card-title">{{$title}}</h4>
             </div>
             <div class="header-action">
                 <i data-toggle="collapse" data-target="#form-element-9" aria-expanded="false">
@@ -18,7 +18,7 @@
             <div class="collapse" id="form-element-9">
                 <div class="card"></div>
             </div>
-            <form action="{{route('admin.trophic.level.index.store')}}" method="POST">
+            <form action="{{route($create_url)}}" method="POST">
                 @csrf
                 <div class="form-row mb-4">
                     <div class="col">
