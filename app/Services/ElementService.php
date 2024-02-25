@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Http\Resources\ElementResource;
 use App\Models\Element;
 use Exception;
 use Illuminate\Support\Facades\DB;
@@ -56,5 +57,28 @@ class ElementService extends Service
             return ['message' => $e->getMessage(), 'code' => $e->getCode()];
         }
 
+    }
+
+    public function getAll($data)
+    {
+        if(isset($data['tli_index_id']))
+        {
+            $elements = Element::whereDoesntHave('trophicLevelIndex', function ($query) use ($data) {
+                $query->where('t_index_id', $data['tli_index_id']);
+            })
+                ->where('parent', '=', null)
+                ->get();
+            return ElementResource::collection($elements);
+        }
+        if(isset($data['tsi_index_id']))
+        {
+            $elements = Element::whereDoesntHave('trophicStateIndex', function ($query) use ($data) {
+                $query->where('t_index_id', $data['tsi_index_id']);
+            })
+                ->where('parent', '=', null)
+                ->get();
+            return ElementResource::collection($elements);
+        }
+        return ElementResource::collection(Element::where('parent', '=', null)->get());
     }
 }

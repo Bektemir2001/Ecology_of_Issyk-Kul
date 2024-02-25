@@ -26,4 +26,8 @@ class Element extends Model
     {
         return $this->belongsToMany(TrophicLevelIndex::class, 'interval_trophic_level_index_for_elements', 'element_id', 't_index_id');
     }
+    public function trophicStateIndex()
+    {
+        return $this->belongsToMany(TrophicStateIndex::class, 'trophic_state_index_for_elements', 'element_id', 't_index_id');
+    }
 }

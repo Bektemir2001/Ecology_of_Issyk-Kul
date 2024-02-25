@@ -154,7 +154,7 @@
                     let data = new FormData();
                     data.append('from', from.value);
                     data.append('to', to.value);
-                    data.append('t_index_id', "{{$item->id}}");
+                    data.append('tli_index_id', "{{$item->id}}");
                     data.append('element_id', choice_element_id);
 
                     fetch(url, {
