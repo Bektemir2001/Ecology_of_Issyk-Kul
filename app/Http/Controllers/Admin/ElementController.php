@@ -36,6 +36,7 @@ class ElementController extends Controller
 
     public function create()
     {
+
         $elements = Element::where('parent', '=', null)->get();
         return view('admin.element.create', compact('elements'));
     }

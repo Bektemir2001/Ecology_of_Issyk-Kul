@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Formula extends Model
 {
     use HasFactory;
+    protected $table = 'formulas';
+    protected $guarded = false;
 }

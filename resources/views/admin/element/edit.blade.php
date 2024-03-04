@@ -53,49 +53,13 @@
                     </div>
                 @endif
                 <div class="form-row mb-4">
-                    <div class="col">
-
-                        <div class="d-flex justify-content">
-                            <div class="col-3">
-                                <label for="TLI_formula">TLI формула</label>
-                                <input type="text" class="form-control" id="TLI_formula" name="TLI_formula">
-                            </div>
-                            <div class="col-2">
-                                <label for="TLI_function">Функция</label>
-                                <select id="TLI_function" class="form-control" name="TLI_function">
-                                    <option value="log">Log</option>
-                                    <option value="ln">Ln</option>
-                                </select>
-                            </div>
-                            <div class="col-3">
-                                <label for="TLI_argument">Аргумент</label>
-                                <input type="text" class="form-control" id="TLI_argument" name="TLI_argument" value="(item)">
-                            </div>
-                        </div>
-
+                    <div class="col-6">
+                        <label for="TLI_formula">TLI формула</label>
+                        <input type="text" class="form-control" id="TLI_formula" name="TLI_formula">
                     </div>
-                </div>
-                <div class="form-row mb-4">
-                    <div class="col">
-
-                        <div class="d-flex justify-content">
-                            <div class="col-3">
-                                <label for="TSI_formula">TSI формула</label>
-                                <input type="text" class="form-control" id="TSI_formula" name="TSI_formula">
-                            </div>
-                            <div class="col-2">
-                                <label for="TSI_function">Функция</label>
-                                <select id="TSI_function" class="form-control" name="TSI_function">
-                                    <option value="log">Log</option>
-                                    <option value="ln">Ln</option>
-                                </select>
-                            </div>
-                            <div class="col-3">
-                                <label for="TSI_argument">Аргумент</label>
-                                <input type="text" class="form-control" id="TSI_argument" name="TSI_argument" value="(item)">
-                            </div>
-                        </div>
-
+                    <div class="col-6">
+                        <label for="TSI_formula">TSI формула</label>
+                        <input type="text" class="form-control" id="TSI_formula" name="TSI_formula">
                     </div>
                 </div>
                 <div class="form-group mb-0">

@@ -52,36 +52,32 @@
                         </div>
                     </div>
                 @endif
+                <div class="form-row mb-4">
+                    <div class="col-6">
+                        <label for="TLI_formula">TLI формула</label>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-white dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="width: 300px;">
+                                Choose ion
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end" id="ionsSelect" style="max-height: 200px; overflow-y: auto; width: 300px;">
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <label for="TSI_formula">TSI формула</label>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-white dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="width: 300px;">
+                                Choose ion
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end" id="ionsSelect" style="max-height: 200px; overflow-y: auto; width: 300px;">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
                 <div class="form-group mb-0">
                     <button type="submit" class="btn btn-primary mr-2">Submit</button>
                 </div>
             </form>
         </div>
     </div>
-
-{{--    <script>--}}
-{{--        let url = "https://api.anthropic.com/v1/complete";--}}
-{{--        let token = "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"--}}
-{{--        let headers = {--}}
-{{--            "anthropic-version": "2023-06-01",--}}
-{{--            "x-api-key": token,--}}
-{{--            "Content-Type": "application/json",--}}
-{{--            "Access-Control-Allow-Origin": "http://127.0.0.1:8000"--}}
-{{--        };--}}
-{{--        let data = {--}}
-{{--            "model": "claude-2",--}}
-{{--            "prompt": "\n\nHuman: Жашоонун маңызы эмне!\n\nAssistant:",--}}
-{{--            "max_tokens_to_sample": 512,--}}
-{{--            "stream": true--}}
-{{--        }--}}
-{{--        fetch(url, {--}}
-{{--            method: "POST",--}}
-{{--            headers: headers,--}}
-{{--            body: data--}}
-{{--        })--}}
-{{--            .then(response => response.json())--}}
-{{--            .then(data => {--}}
-{{--                console.log(data)--}}
-{{--            });--}}
-{{--    </script>--}}
 @endsection
