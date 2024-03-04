@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\District;
 use App\Models\IntervalTrophicLevelIndexForElement;
 use App\Models\TrophicLevelIndex;
 use Exception;
@@ -42,5 +43,11 @@ class TrophicLevelIndexService
         {
             return ['message' => $e->getMessage(), 'code' => $e->getCode()];
         }
+    }
+
+
+    public function getDistrictTLI(string $year, District $district)
+    {
+        
     }
 }
