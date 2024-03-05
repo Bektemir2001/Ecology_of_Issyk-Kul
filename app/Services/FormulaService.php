@@ -10,7 +10,7 @@ class FormulaService
     }
     public function formula2($sd)
     {
-        return 5.10 + 2.60 * log10(1 / $sd - 1 / 40);
+        return 5.10 + 2.60 * log10((1 / $sd) - (1 / 40));
     }
     public function formula3($tp)
     {

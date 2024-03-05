@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Element\StoreRequest;
 use App\Http\Requests\Admin\Element\UpdateRequest;
 use App\Models\Element;
+use App\Models\Formula;
 use App\Services\ElementService;
 use Illuminate\Http\Request;
 
@@ -36,9 +37,9 @@ class ElementController extends Controller
 
     public function create()
     {
-
+        $formulas = Formula::all();
         $elements = Element::where('parent', '=', null)->get();
-        return view('admin.element.create', compact('elements'));
+        return view('admin.element.create', compact('elements', 'formulas'));
     }
     public function store(StoreRequest $request)
     {
@@ -49,8 +50,9 @@ class ElementController extends Controller
 
     public function edit(Element $element)
     {
+        $formulas = Formula::all();
         $elements = Element::where('parent', '=', null)->get();
-        return view('admin.element.edit', ['item' => $element, 'elements' => $elements]);
+        return view('admin.element.edit', ['item' => $element, 'elements' => $elements, 'formulas' => $formulas]);
     }
 
     public function update(UpdateRequest $request, Element $element)

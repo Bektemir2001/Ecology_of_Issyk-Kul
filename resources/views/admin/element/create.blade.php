@@ -55,23 +55,19 @@
                 <div class="form-row mb-4">
                     <div class="col-6">
                         <label for="TLI_formula">TLI формула</label>
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-white dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="width: 300px;">
-                                Choose ion
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-end" id="ionsSelect" style="max-height: 200px; overflow-y: auto; width: 300px;">
-                            </ul>
-                        </div>
+                        <select class="form-control" id="TLI_formula" name="TLI_formula">
+                            @foreach($formulas as $formula)
+                                <option value="{{$formula->name}}">{{$formula->formula}}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="col-6">
                         <label for="TSI_formula">TSI формула</label>
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-white dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="width: 300px;">
-                                Choose ion
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-end" id="ionsSelect" style="max-height: 200px; overflow-y: auto; width: 300px;">
-                            </ul>
-                        </div>
+                        <select class="form-control" id="TSI_formula" name="TSI_formula">
+                            @foreach($formulas as $formula)
+                                <option value="{{$formula->name}}">{{$formula->formula}}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <div class="form-group mb-0">
