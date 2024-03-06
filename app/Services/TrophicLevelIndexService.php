@@ -5,10 +5,18 @@ namespace App\Services;
 use App\Models\District;
 use App\Models\IntervalTrophicLevelIndexForElement;
 use App\Models\TrophicLevelIndex;
+use App\Repositories\TLIRepository;
 use Exception;
 
 class TrophicLevelIndexService
 {
+    protected TLIRepository $TLIRepository;
+
+    public function __construct(TLIRepository $TLIRepository)
+    {
+        $this->TLIRepository = $TLIRepository;
+    }
+
     public function store(array $data): array
     {
         try{
@@ -48,6 +56,6 @@ class TrophicLevelIndexService
 
     public function getDistrictTLI(string $year, District $district)
     {
-        
+        $data = $this->TLIRepository->getTLI($year, $district);
     }
 }

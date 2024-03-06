@@ -19,6 +19,8 @@ class TSIController extends Controller
 
     public function index(string $year, District $district)
     {
+        $result = $this->trophicStateIndexService->getTSI($year, $district);
+        dd($result);
 
     }
 }
