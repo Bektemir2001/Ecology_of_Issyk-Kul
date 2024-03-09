@@ -28,7 +28,8 @@ class TLIRepository
                 'p.oxygen_mg',
                 'p.oxygen_saturation',
                 'p.id as point_id',
-                'p.date'
+                'p.date',
+                'cp.id as control_point_id'
             )
             ->get();
         $pointElements = PointElement::whereIn('point_id', $data->pluck('point_id'))
