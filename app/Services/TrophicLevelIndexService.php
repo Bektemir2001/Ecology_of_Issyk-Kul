@@ -56,6 +56,9 @@ class TrophicLevelIndexService
 
     public function getDistrictTLI(string $year, District $district)
     {
-        $data = $this->TLIRepository->getTLI($year, $district);
+        $data = $this->TLIRepository->getTLIData($year, $district);
+        $control_points = [];
+
+        dd($data);
     }
 }

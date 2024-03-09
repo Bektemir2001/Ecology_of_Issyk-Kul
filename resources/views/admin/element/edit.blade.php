@@ -55,11 +55,19 @@
                 <div class="form-row mb-4">
                     <div class="col-6">
                         <label for="TLI_formula">TLI формула</label>
-                        <input type="text" class="form-control" id="TLI_formula" name="TLI_formula">
+                        <select class="form-control" id="TLI_formula" name="TLI_formula">
+                            @foreach($formulas as $formula)
+                                <option value="{{$formula->name}}" {{$formula->name === $item->TLI_formula ? 'selected' : ''}}>{{$formula->formula}}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="col-6">
                         <label for="TSI_formula">TSI формула</label>
-                        <input type="text" class="form-control" id="TSI_formula" name="TSI_formula">
+                        <select class="form-control" id="TSI_formula" name="TSI_formula">
+                            @foreach($formulas as $formula)
+                                <option value="{{$formula->name}}" {{$formula->name === $item->TSI_formula ? 'selected' : ''}}>{{$formula->formula}}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <div class="form-group mb-0">

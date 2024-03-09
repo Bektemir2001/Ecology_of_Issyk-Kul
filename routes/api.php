@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DistrictController;
 use App\Http\Controllers\Api\v1\ControlPointController;
+use App\Http\Controllers\Api\v1\TLIController;
 use App\Http\Controllers\Api\v1\TransformationIndicatorController;
 use App\Http\Controllers\Api\v1\TSIController;
 use App\Http\Controllers\Api\v1\UserController;
@@ -31,5 +32,5 @@ Route::get('/get/districts/{lake}', [DistrictController::class, 'getAll']);
 
 Route::get('/transformation/indicator/{district}/{year}', [TransformationIndicatorController::class, 'getData']);
 
-Route::get('/tsi/{district}/{year}', [TSIController::class, 'index']);
-Route::get('/tli/{district}/{year}', [TSIController::class, 'index']);
+Route::get('/tsi/{year}/{district}', [TSIController::class, 'index']);
+Route::get('/tli/{year}/{district}', [TLIController::class, 'index']);

@@ -59,7 +59,7 @@ class ElementController extends Controller
     {
         $data = $request->validated();
         $result = $this->elementService->update($element, $data);
-        dd($data);
+        return redirect()->route('admin.elements.index')->with(['notification' => $result['message']]);
     }
     public function delete()
     {

@@ -11,4 +11,10 @@ class PointElement extends Model
 
     protected $table = 'point_elements';
     protected $guarded = false;
+    protected $with = ['element'];
+
+    public function element()
+    {
+        return $this->belongsTo(Element::class, 'element_id')->select('id', 'name', 'TLI_formula', 'TSI_formula');
+    }
 }
