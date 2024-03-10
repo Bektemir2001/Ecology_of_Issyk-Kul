@@ -67,7 +67,6 @@ class TrophicStateIndexService
                 $item->tsi = call_user_func([$this->formulaService, $item->element->TSI_formula], $item->item);
             });
         });
-
         $grouped_data = $data->groupBy('control_point_id');
         $processedCollection = $grouped_data->map(function ($group) {
             $averageSD_TSI = $group->avg('SD_TSI');

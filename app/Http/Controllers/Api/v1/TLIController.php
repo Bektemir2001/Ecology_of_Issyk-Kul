@@ -20,6 +20,6 @@ class TLIController extends Controller
     {
         $result = $this->trophicLevelIndexService->getDistrictTLI($year, $district);
 
-        return response(['control_points' => $result[0], 'elements' => $result[1]]);
+        return response(['elements' => $result[0], 'control_points' => $result[1]]);
     }
 }

@@ -30,7 +30,7 @@ Route::post('/user/register', [UserAuthController::class, 'register']);
 Route::get('/get/control_points', [ControlPointController::class, 'getAll']);
 Route::get('/get/districts/{lake}', [DistrictController::class, 'getAll']);
 
-Route::get('/transformation/indicator/{district}/{year}', [TransformationIndicatorController::class, 'getData']);
+Route::get('/transformation/indicator/{year}/{district}', [TransformationIndicatorController::class, 'getData']);
 
 Route::get('/tsi/{year}/{district}', [TSIController::class, 'index']);
 Route::get('/tli/{year}/{district}', [TLIController::class, 'index']);

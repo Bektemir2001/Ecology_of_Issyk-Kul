@@ -15,7 +15,7 @@ class TransformationIndicatorController extends Controller
         $this->earthTransformationIndicatorService = $earthTransformationIndicatorService;
     }
 
-    public function getData(District $district, string $year)
+    public function getData(string $year, District $district)
     {
         return response(['data' => $this->earthTransformationIndicatorService->getData($district, $year)]);
     }

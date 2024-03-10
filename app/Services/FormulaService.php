@@ -22,7 +22,7 @@ class FormulaService
     }
     public function formula5($item)
     {
-        return 10 * (6 - ((2 - 0.68 * log($item)/log(2))));
+        return 10 * (6 - ((2.04 - 0.68 * log($item)/log(2))));
     }
     public function formula6($item)
     {
