@@ -17,7 +17,7 @@ class Element extends Model
         return $this->hasMany(Element::class, 'parent');
     }
 
-    public function parent()
+    public function parentElement()
     {
         return $this->belongsTo(Element::class, 'parent');
     }

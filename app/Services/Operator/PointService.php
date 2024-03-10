@@ -46,9 +46,9 @@ class PointService
                 'item' => $item
             ]);
             $element = Element::where('id', $key)->first();
-            if($element->parent)
+            if($element->parentElement)
             {
-                $parent_point_element = PointElement::where('element_id', '=', $element->parent->id)
+                $parent_point_element = PointElement::where('element_id', '=', $element->parentElement->id)
                     ->where('point_id', $point->id)
                     ->first();
                 if($parent_point_element)
@@ -58,7 +58,7 @@ class PointService
                 else{
                     PointElement::create([
                         'point_id' => $point->id,
-                        'element_id' => $element->parent->id,
+                        'element_id' => $element->parentElement->id,
                         'item' => $item
                     ]);
                 }
