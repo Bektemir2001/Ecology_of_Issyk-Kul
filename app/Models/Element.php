@@ -17,6 +17,11 @@ class Element extends Model
         return $this->hasMany(Element::class, 'parent');
     }
 
+    public function parent()
+    {
+        return $this->belongsTo(Element::class, 'parent');
+    }
+
     public function intervalTrophicLevelIndex()
     {
         return $this->hasMany(IntervalTrophicLevelIndexForElement::class, 'element_id', 'id');

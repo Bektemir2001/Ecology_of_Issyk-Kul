@@ -2,6 +2,7 @@
 
 namespace App\Services\Operator;
 
+use App\Models\Element;
 use App\Models\Point;
 use App\Models\PointElement;
 use App\Models\PointMajorIon;
@@ -44,6 +45,25 @@ class PointService
                 'element_id' => $key,
                 'item' => $item
             ]);
+            $element = Element::where('id', $key)->first();
+            if($element->parent)
+            {
+                $parent_point_element = PointElement::where('element_id', '=', $element->parent->id)
+                    ->where('point_id', $point->id)
+                    ->first();
+                if($parent_point_element)
+                {
+                    $parent_point_element->update(['item' => $parent_point_element->item + $item]);
+                }
+                else{
+                    PointElement::create([
+                        'point_id' => $point->id,
+                        'element_id' => $element->parent->id,
+                        'item' => $item
+                    ]);
+                }
+            }
+
         }
     }
 
