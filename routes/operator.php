@@ -16,8 +16,8 @@ Route::group(['prefix' => 'earth_transformation_indicators'], function (){
     Route::get('/', [EarthTransformationIndicatorController::class, 'index'])->name('operator.earth.transformation.indicators.index');
     Route::post('/', [EarthTransformationIndicatorController::class, 'store'])->name('operator.earth.transformation.indicators.store');
     Route::get('/create', [EarthTransformationIndicatorController::class, 'create'])->name('operator.earth.transformation.indicators.create');
-    Route::get('/edit/{earth_transformation_indicators}', [EarthTransformationIndicatorController::class, 'edit'])->name('operator.earth.transformation.indicators.edit');
-    Route::post('/update/{earth_transformation_indicators}', [EarthTransformationIndicatorController::class, 'update'])->name('operator.earth.transformation.indicators.update');
-    Route::get('/show/{earth_transformation_indicators}', [EarthTransformationIndicatorController::class, 'show'])->name('operator.earth.transformation.indicators.show');
-    Route::get('/delete/{earth_transformation_indicators}', [EarthTransformationIndicatorController::class, 'delete'])->name('operator.earth.transformation.indicators.delete');
+    Route::get('/edit/{earth_transformation_indicator}', [EarthTransformationIndicatorController::class, 'edit'])->name('operator.earth.transformation.indicators.edit');
+    Route::post('/update/{earth_transformation_indicator}', [EarthTransformationIndicatorController::class, 'update'])->name('operator.earth.transformation.indicators.update');
+    Route::get('/show/{earth_transformation_indicator}', [EarthTransformationIndicatorController::class, 'show'])->name('operator.earth.transformation.indicators.show');
+    Route::get('/delete/{earth_transformation_indicator}', [EarthTransformationIndicatorController::class, 'delete'])->name('operator.earth.transformation.indicators.delete');
 });

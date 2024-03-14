@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.operator')
 @section('content')
 
     <div class="card">
@@ -28,22 +28,37 @@
                                 <option value="{{$district->id}}">{{$district->name}}</option>
                             @endforeach
                         </select>
+                        @error('district_id')
+                        <p class="text-danger">{{$message}}</p>
+                        @enderror
                     </div>
                     <div class="col">
                         <label for="date">Дата</label>
                         <input type="date" class="form-control" id="date" name="date">
+                        @error('date')
+                        <p class="text-danger">{{$message}}</p>
+                        @enderror
                     </div>
                 </div>
                 <div class="form-row mb-4">
                     <div class="col">
                         <label for="from_the_coast">Жээкке чейинки аралык</label>
                         <input type="number" class="form-control" id="from_the_coast" name="from_the_coast">
+                        @error('from_the_coast')
+                        <p class="text-danger">{{$message}}</p>
+                        @enderror
                     </div>
                     <div class="col">
                         <label for="area">Аянт</label>
                         <input type="number" class="form-control" id="area" name="area">
+                        @error('area')
+                        <p class="text-danger">{{$message}}</p>
+                        @enderror
                     </div>
                 </div>
+                @error('unique')
+                <p class="text-danger">{{$message}}</p>
+                @enderror
                 <div class="form-group mb-0">
                     <button type="submit" class="btn btn-primary mr-2">Сактоо</button>
                 </div>

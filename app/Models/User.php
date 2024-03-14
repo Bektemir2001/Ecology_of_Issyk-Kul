@@ -49,9 +49,9 @@ class User extends Authenticatable
 
     public static function getRoles(){
         return [
-            self::ROLE_ADMIN => 'Admin',
-            self::ROLE_OPERATOR => 'Operator',
-            self::ROLE_USER => 'User'
+            self::ROLE_ADMIN => 'admin',
+            self::ROLE_OPERATOR => 'operator',
+            self::ROLE_USER => 'user'
         ];
     }
     public function controlPoints()

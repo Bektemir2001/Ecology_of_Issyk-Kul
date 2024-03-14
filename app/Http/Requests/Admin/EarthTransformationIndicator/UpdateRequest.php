@@ -22,10 +22,7 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'district_id' => 'required|exists:districts',
-            'from_the_coast' => 'required',
             'area' => 'required',
-            'date' => 'required'
         ];
     }
 }

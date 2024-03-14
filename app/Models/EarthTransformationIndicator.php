@@ -10,4 +10,9 @@ class EarthTransformationIndicator extends Model
     use HasFactory;
     protected $table = 'earth_transformation_indicators';
     protected $guarded = false;
+
+    public function district()
+    {
+        return $this->belongsTo(District::class);
+    }
 }

@@ -38,4 +38,9 @@ class DataController extends Controller
         $result = $this->pointService->store($data, auth()->user()->id);
         return response(['message' => $result['message']])->setStatusCode($result['status']);
     }
+
+    public function edit(Point $point)
+    {
+        return view('operator.data.edit', compact('point'));
+    }
 }
