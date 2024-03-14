@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DistrictController;
+use App\Http\Controllers\Api\v1\CoastalBufferZoneController;
 use App\Http\Controllers\Api\v1\ControlPointController;
 use App\Http\Controllers\Api\v1\TLIController;
 use App\Http\Controllers\Api\v1\TransformationIndicatorController;
@@ -34,3 +35,5 @@ Route::get('/transformation/indicator/{year}/{district}', [TransformationIndicat
 
 Route::get('/tsi/{year}/{district}', [TSIController::class, 'index']);
 Route::get('/tli/{year}/{district}', [TLIController::class, 'index']);
+
+Route::post('/calculate/horizontal/buffer/zone', [CoastalBufferZoneController::class, 'horizontalCalculation']);
