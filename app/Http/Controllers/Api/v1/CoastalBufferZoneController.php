@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\HorizontalBufferZoneRequest;
+use App\Http\Resources\HorizontalBufferZoneResource;
 use App\Models\District;
 use App\Services\BufferZoneServices;
 use App\Services\TrophicLevelIndexService;
@@ -24,6 +25,9 @@ class CoastalBufferZoneController extends Controller
         $data = $request->validated();
         $tli = $this->tliService->getDistrictTLI($data['year'], $data['district']);
         $result = $this->bufferZoneServices->horizontalCalculate($tli, $data['year'], $data['district'], $data['cost']);
-        dd($result);
+        if($result['code'] == 200)
+        {
+            return HorizontalBufferZoneResource::collection($result['result']);
+        }
     }
 }
