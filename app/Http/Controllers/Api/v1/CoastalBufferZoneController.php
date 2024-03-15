@@ -30,9 +30,11 @@ class CoastalBufferZoneController extends Controller
         {
             return HorizontalBufferZoneResource::collection($result['result']);
         }
-        elseif ($result['code'] == 200)
+        elseif ($result['code'] == 404)
         {
-            return response(['data'=>[]]);
+            return response(['data' => []]);
         }
+
+        return response(['message' => $result['message']])->setStatusCode($result['code']);
     }
 }
