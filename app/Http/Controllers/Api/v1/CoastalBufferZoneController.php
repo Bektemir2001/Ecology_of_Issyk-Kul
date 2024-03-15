@@ -8,6 +8,7 @@ use App\Http\Resources\HorizontalBufferZoneResource;
 use App\Models\District;
 use App\Services\BufferZoneServices;
 use App\Services\TrophicLevelIndexService;
+use http\Env\Response;
 use Illuminate\Http\Request;
 
 class CoastalBufferZoneController extends Controller
@@ -28,6 +29,10 @@ class CoastalBufferZoneController extends Controller
         if($result['code'] == 200)
         {
             return HorizontalBufferZoneResource::collection($result['result']);
+        }
+        elseif ($result['code'] == 200)
+        {
+            return response(['data'=>[]]);
         }
     }
 }

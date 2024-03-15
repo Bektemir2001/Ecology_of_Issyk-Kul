@@ -22,6 +22,10 @@ class BufferZoneServices
             {
                 $average_tli += array_sum($element)/count($element);
             }
+            if(count($tli[0]) == 0)
+            {
+                return ['result' => [], 'code' => 404];
+            }
             $average_tli /= count($tli[0]);
             $data = $this->bufferZoneRepository->horizontalBufferZone($year, $district);
 
