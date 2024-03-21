@@ -12,7 +12,7 @@ class ReportRepository
         $fields->each(function ($value){
             if($value->model)
             {
-                $model = app()->getNamespace() . $value->model;
+                $model = app()->getNamespace() . 'Models\\' . $value->model;
                 $value->children = $model::all();
             }
         });
