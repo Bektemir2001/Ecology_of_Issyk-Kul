@@ -22,6 +22,7 @@ class AdminAuthController extends Controller
         if(Auth::attempt(['email' => $data['email'], 'password' => $data['password']]))
         {
             $user = auth()->user();
+            dd($user);
             if ($user->role === User::ROLE_ADMIN)
             {
                 $request->session()->regenerate();
