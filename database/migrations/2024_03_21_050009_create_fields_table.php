@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('major_ions', function (Blueprint $table) {
+        Schema::create('fields', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->longText('description')->nullable();
+            $table->string('field');
             $table->float('pdk_up')->nullable();
             $table->float('pdk_dawn')->nullable();
+            $table->string('model')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('major_ions');
+        Schema::dropIfExists('filelds');
     }
 };

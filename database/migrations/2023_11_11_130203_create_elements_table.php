@@ -19,6 +19,8 @@ return new class extends Migration
             $table->unsignedBigInteger('parent')->nullable();
             $table->text('TLI_formula')->nullable();
             $table->text('TSI_formula')->nullable();
+            $table->float('pdk_up')->nullable();
+            $table->float('pdk_dawn')->nullable();
             $table->timestamps();
 
             $table->index('parent', 'element_parent_idx');

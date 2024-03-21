@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('name_ky')->nullable();
             $table->longText('description')->nullable();
             $table->string('image')->nullable();
+            $table->float('pdk_up')->nullable();
+            $table->float('pdk_dawn')->nullable();
             $table->timestamps();
         });
     }
