@@ -16,6 +16,6 @@ class ReportRepository
                 $value->children = $model::select('id', 'name')->get();
             }
         });
-        return $fields;
+        return $fields->toArray();
     }
 }
