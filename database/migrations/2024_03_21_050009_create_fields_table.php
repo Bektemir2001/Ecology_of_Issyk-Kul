@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('fields', function (Blueprint $table) {
             $table->id();
             $table->string('field');
+            $table->string('table_field');
             $table->float('pdk_up')->nullable();
             $table->float('pdk_dawn')->nullable();
             $table->string('model')->nullable();
