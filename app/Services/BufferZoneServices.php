@@ -28,14 +28,10 @@ class BufferZoneServices
             }
             $average_tli /= count($tli[0]);
             $data = $this->bufferZoneRepository->horizontalBufferZone($year, $district);
-            $distances = [];
-            $items = [];
-            $data->each(function ($value) use ($average_tli, $cost, $distances, $items){
+            $data->each(function ($value) use ($average_tli, $cost){
                 $value->item = sprintf("%.3E", (3 * $average_tli)/($value->area * $cost));
-                array_push($items, $value->item);
-                array_push($distances, $value->from_the_coast);
             });
-            return ['result' => ['distances' => $distances, 'items' => $items], 'code' => 200];
+            return ['result' => ['distances' => $data->pluck('from_the_coast'), 'items' => $data->pluck('item')], 'code' => 200];
         }
         catch (Exception $exception)
         {
