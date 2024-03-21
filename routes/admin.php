@@ -13,7 +13,7 @@ use App\Http\Controllers\Admin\TrophicStateIndexController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::group(['prefix' => 'admin'], function (){
+Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function (){
     Route::get('/', [IndexController::class, 'index'])->name('admin.index');
 
     Route::group(['prefix' => 'lake'], function (){

@@ -8,6 +8,9 @@ Route::get('/operator/login', [OperatorAuthController::class, 'loginIndex'])->na
 Route::post('/operator/login', [OperatorAuthController::class, 'login'])->name('auth.operator.login');
 
 
+Route::get('/admin/login', [OperatorAuthController::class, 'loginIndex'])->name('auth.operator.login.index');
+Route::post('/admin/login', [OperatorAuthController::class, 'login'])->name('auth.operator.login');
+
 
 Route::get('/unauthorized', function (){
     return response(['message' => 'unauthorized'])->setStatusCode(401);
