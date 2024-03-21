@@ -27,7 +27,9 @@ class StoreRequest extends FormRequest
             'description' => 'nullable',
             'parent' => 'nullable',
             'TLI_formula' => 'nullable',
-            'TSI_formula' => 'nullable'
+            'TSI_formula' => 'nullable',
+            'pdk_up' => 'nullable',
+            'pdk_dawn' => 'nullable',
         ];
     }
 }

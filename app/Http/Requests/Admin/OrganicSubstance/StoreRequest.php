@@ -25,7 +25,9 @@ class StoreRequest extends FormRequest
             'name' => 'required|max:255|string|unique:organic_substances',
             'name_ky' => 'nullable|max:255|string',
             'description' => 'nullable',
-            'image' => 'nullable'
+            'image' => 'nullable',
+            'pdk_up' => 'nullable',
+            'pdk_dawn' => 'nullable',
         ];
     }
 }

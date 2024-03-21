@@ -23,7 +23,9 @@ class StoreRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'description' => 'nullable'
+            'description' => 'nullable',
+            'pdk_up' => 'nullable',
+            'pdk_dawn' => 'nullable',
         ];
     }
 }

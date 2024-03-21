@@ -70,6 +70,16 @@
                         </select>
                     </div>
                 </div>
+                <div class="form-row mb-4">
+                    <div class="col-6">
+                        <label for="pdk_up">ПДК максимум</label>
+                        <input type="text" class="form-control" id="pdk_up" name="pdk_up">
+                    </div>
+                    <div class="col-6">
+                        <label for="pdk_dawn">ПДК минимум</label>
+                        <input type="text" class="form-control" id="pdk_dawn" name="pdk_dawn">
+                    </div>
+                </div>
                 <div class="form-group mb-0">
                     <button type="submit" class="btn btn-primary mr-2">Submit</button>
                 </div>

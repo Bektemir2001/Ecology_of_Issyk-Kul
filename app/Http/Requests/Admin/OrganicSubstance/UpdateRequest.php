@@ -11,7 +11,7 @@ class UpdateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,12 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|max:255|string|unique:organic_substances',
+            'name_ky' => 'nullable|max:255|string',
+            'description' => 'nullable',
+            'image' => 'nullable',
+            'pdk_up' => 'nullable',
+            'pdk_dawn' => 'nullable',
         ];
     }
 }
