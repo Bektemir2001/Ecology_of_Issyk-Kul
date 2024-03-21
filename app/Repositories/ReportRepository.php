@@ -13,7 +13,7 @@ class ReportRepository
             if($value->model)
             {
                 $model = app()->getNamespace() . 'Models\\' . $value->model;
-                $value->children = $model::all();
+                $value->children = $model::all()->pluck(['id', 'name']);
             }
         });
         return $fields;
