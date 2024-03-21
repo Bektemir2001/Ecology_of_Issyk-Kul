@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\AdminAuthController;
 use App\Http\Controllers\Auth\OperatorAuthController;
 use App\Http\Controllers\Auth\UserAuthController;
 use Illuminate\Support\Facades\Route;
@@ -8,8 +9,8 @@ Route::get('/operator/login', [OperatorAuthController::class, 'loginIndex'])->na
 Route::post('/operator/login', [OperatorAuthController::class, 'login'])->name('auth.operator.login');
 
 
-Route::get('/admin/login', [OperatorAuthController::class, 'loginIndex'])->name('auth.admin.login.index');
-Route::post('/admin/login', [OperatorAuthController::class, 'login'])->name('auth.admin.login');
+Route::get('/admin/login', [AdminAuthController::class, 'loginIndex'])->name('auth.admin.login.index');
+Route::post('/admin/login', [AdminAuthController::class, 'login'])->name('auth.admin.login');
 
 
 Route::get('/unauthorized', function (){
