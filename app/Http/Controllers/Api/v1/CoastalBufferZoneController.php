@@ -28,11 +28,11 @@ class CoastalBufferZoneController extends Controller
         $result = $this->bufferZoneServices->horizontalCalculate($tli, $data['year'], $data['district'], $data['cost']);
         if($result['code'] == 200)
         {
-            return HorizontalBufferZoneResource::collection($result['result']);
+            return response(['data' => $result['result']]);
         }
         elseif ($result['code'] == 404)
         {
-            return response(['data' => []]);
+            return response(['data' => [$result['result']]]);
         }
 
         return response(['message' => $result['message']])->setStatusCode($result['code']);
