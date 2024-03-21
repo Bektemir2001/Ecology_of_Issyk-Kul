@@ -17,6 +17,11 @@ class ReportController extends Controller
     public function getFields()
     {
         $result = $this->reportService->fields();
+        if($result['code'] == 200)
+        {
+            return response($result);
+        }
+        return response($result)->setStatusCode($result['code']);
     }
 
     public function getData(Request $request)

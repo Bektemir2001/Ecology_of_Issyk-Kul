@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Repositories\ReportRepository;
+use Exception;
 
 class ReportService
 {
@@ -13,9 +14,16 @@ class ReportService
         $this->reportRepository = $reportRepository;
     }
 
-    public function fields()
+    public function fields() : array
     {
-        $data = $this->reportRepository->fields();
-        dd($data);
+        try {
+            $data = $this->reportRepository->fields();
+            return ['data' => $data, 'code' => 200];
+        }
+        catch (Exception $exception)
+        {
+            return ['message' => $exception->getMessage(), 'code' => 500];
+        }
+
     }
 }

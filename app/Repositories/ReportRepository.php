@@ -13,7 +13,7 @@ class ReportRepository
             if($value->model)
             {
                 $model = app()->getNamespace() . 'Models\\' . $value->model;
-                $value->children = $model::select('id', 'name')->get();
+                $value->children = $model::select('id', 'name')->get()->toArray();
             }
         });
         return $fields->toArray();
