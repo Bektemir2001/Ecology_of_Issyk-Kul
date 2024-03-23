@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\ReportRequest;
 use App\Services\ReportService;
 use Illuminate\Http\Request;
 
@@ -24,8 +25,14 @@ class ReportController extends Controller
         return response($result)->setStatusCode($result['code']);
     }
 
-    public function getData(Request $request)
+    public function getData(ReportRequest $request)
     {
-
+        $data = $request->validated();
+        $result = $this->reportService->getData($data);
+        if($result['code'] == 200)
+        {
+            return response($result);
+        }
+        return response($result)->setStatusCode($result['code']);
     }
 }

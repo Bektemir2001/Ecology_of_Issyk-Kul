@@ -26,4 +26,17 @@ class ReportService
         }
 
     }
+
+    public function getData(array $data): array
+    {
+        try {
+            $data = $this->reportRepository->data($data);
+            return ['data' => $data, 'code' => 200];
+        }
+        catch (Exception $exception)
+        {
+            return ['message' => $exception->getMessage(), 'code' => 500];
+        }
+
+    }
 }
