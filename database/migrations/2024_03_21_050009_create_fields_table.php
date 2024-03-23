@@ -18,6 +18,7 @@ return new class extends Migration
             $table->float('pdk_up')->nullable();
             $table->float('pdk_dawn')->nullable();
             $table->string('model')->nullable();
+            $table->string('related_field')->nullable();
             $table->timestamps();
         });
     }

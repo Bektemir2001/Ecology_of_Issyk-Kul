@@ -10,7 +10,7 @@ class ReportRepository
 {
     public function fields()
     {
-        $fields = Field::select('field', 'model', 'table_field')->get();
+        $fields = Field::select('field', 'model', 'table_field', 'related_field')->get();
         $fields->each(function ($value){
             if($value->model)
             {
