@@ -31,6 +31,8 @@ class ReportRepository
                 ->whereYear('points.date', '=', $data['year'])
                 ->where($data['table_field'].'.'.$data['related_field'], $data['children'])
                 ->get();
+            $result = $result->groupBy('name');
+            $result = $this->getAverage($result, 'name');
             return ['items' => $result->pluck('item'), 'control_points' => $result->pluck('name')];
         }
         $result = DB::table('points')
@@ -38,6 +40,20 @@ class ReportRepository
             ->select($data['table_field'], 'cp.name')
             ->whereYear('points.date', '=', $data['year'])
             ->get();
+        $result = $this->getAverage($result, 'name');
         return ['items' => $result->pluck($data['table_field']), 'control_points' => $result->pluck('name')];
+    }
+
+    private function getAverage($collection, string $field)
+    {
+        $collection = $collection->groupBy($field);
+        return $collection->map(function ($group)
+        {
+            $average = $group->avg('item');
+            $firstItem = $group->first();
+            $firstItem->item = $average;
+            return (array)$firstItem;
+        });
+
     }
 }
