@@ -26,8 +26,8 @@ class ReportRepository
         {
             $result = DB::table('points')
                 ->join('control_points as cp', 'cp.id', '=', 'points.control_point_id')
-                ->join('point_'.$data['table_field'].' as ' . $data['table_field'], 'points.id', '=', $data['table_field'].'point_id')
-                ->select($data['table_field'].'.item', 'cp.name')
+                ->join('point_'.$data['table_field'].' as r', 'points.id', '=', 'r.point_id')
+                ->select('r.item', 'cp.name')
                 ->whereYear('points.date', '=', $data['year'])
                 ->where($data['table_field'].'.'.$data['related_field'], $data['children'])
                 ->get();
