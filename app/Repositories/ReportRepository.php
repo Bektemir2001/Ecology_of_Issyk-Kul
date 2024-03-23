@@ -48,7 +48,7 @@ class ReportRepository
         $collection = $collection->groupBy($field);
         return $collection->map(function ($group)
         {
-            $average = $group->avg('item');
+            $average = round($group->avg('item'), 2);
             $firstItem = $group->first();
             $firstItem->item = $average;
             return (array)$firstItem;
