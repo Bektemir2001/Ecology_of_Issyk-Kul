@@ -9,12 +9,12 @@ class ReportRepository
 {
     public function fields()
     {
-        $fields = Field::select('field', 'model', 'table_field', 'related_field')->get();
+        $fields = Field::select('field', 'model', 'table_field', 'related_field', 'pdk_up', 'pdk_dawn')->get();
         $fields->each(function ($value){
             if($value->model)
             {
                 $model = app()->getNamespace() . 'Models\\' . $value->model;
-                $value->children = $model::select('id', 'name')->get()->toArray();
+                $value->children = $model::select('id', 'name', 'pdk_up', 'pdk_dawn')->get()->toArray();
             }
         });
         return $fields->toArray();
