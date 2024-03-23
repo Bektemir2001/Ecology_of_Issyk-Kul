@@ -28,6 +28,7 @@ class ReportController extends Controller
     public function getData(ReportRequest $request)
     {
         $data = $request->validated();
+        dd($data);
         $result = $this->reportService->getData($data);
         if($result['code'] == 200)
         {
