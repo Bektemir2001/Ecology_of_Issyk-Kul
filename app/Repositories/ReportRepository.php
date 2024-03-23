@@ -3,7 +3,6 @@
 namespace App\Repositories;
 
 use App\Models\Field;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
 class ReportRepository
