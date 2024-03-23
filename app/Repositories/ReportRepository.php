@@ -31,7 +31,6 @@ class ReportRepository
                 ->whereYear('points.date', '=', $data['year'])
                 ->where('r.'.$data['related_field'], $data['children'])
                 ->get();
-            $result = $result->groupBy('name');
             $result = $this->getAverage($result, 'name');
             return ['items' => $result->pluck('item'), 'control_points' => $result->pluck('name')];
         }
