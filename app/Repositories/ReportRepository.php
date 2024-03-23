@@ -29,7 +29,7 @@ class ReportRepository
                 ->join('point_'.$data['table_field'].' as r', 'points.id', '=', 'r.point_id')
                 ->select('r.item', 'cp.name')
                 ->whereYear('points.date', '=', $data['year'])
-                ->where($data['table_field'].'.'.$data['related_field'], $data['children'])
+                ->where('r.'.$data['related_field'], $data['children'])
                 ->get();
             $result = $result->groupBy('name');
             $result = $this->getAverage($result, 'name');
