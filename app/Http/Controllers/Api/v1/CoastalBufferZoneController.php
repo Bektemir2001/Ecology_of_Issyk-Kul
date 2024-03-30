@@ -28,13 +28,19 @@ class CoastalBufferZoneController extends Controller
         $result = $this->bufferZoneServices->horizontalCalculate($tli, $data['year'], $data['district'], $data['cost']);
         if($result['code'] == 200)
         {
-            return response(['data' => $result['result']]);
+            return response(['data' => $result['result']])
+                ->header("Access-Control-Allow-Origin", config('cors.allowed_origins'))
+                ->header("Access-Control-Allow-Methods", config('cors.allowed_methods'));
         }
         elseif ($result['code'] == 404)
         {
-            return response(['data' => [$result['result']]]);
+            return response(['data' => [$result['result']]])
+                ->header("Access-Control-Allow-Origin", config('cors.allowed_origins'))
+                ->header("Access-Control-Allow-Methods", config('cors.allowed_methods'));
         }
 
-        return response(['message' => $result['message']])->setStatusCode($result['code']);
+        return response(['message' => $result['message']])->setStatusCode($result['code'])
+            ->header("Access-Control-Allow-Origin", config('cors.allowed_origins'))
+            ->header("Access-Control-Allow-Methods", config('cors.allowed_methods'));
     }
 }
