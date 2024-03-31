@@ -37,7 +37,7 @@ Route::get('/transformation/indicator/{year}/{district}', [TransformationIndicat
 Route::get('/tsi/{year}/{district}', [TSIController::class, 'index']);
 Route::get('/tli/{year}/{district}', [TLIController::class, 'index']);
 
-Route::post('/calculate/horizontal/buffer/zone', [CoastalBufferZoneController::class, 'horizontalCalculation']);
+Route::get('/calculate/horizontal/buffer/zone', [CoastalBufferZoneController::class, 'horizontalCalculation']);
 
 Route::group(['prefix' => 'report'], function (){
     Route::get('/get/fields', [ReportController::class, 'getFields']);
