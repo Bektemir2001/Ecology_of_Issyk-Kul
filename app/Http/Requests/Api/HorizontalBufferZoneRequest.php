@@ -21,6 +21,7 @@ class HorizontalBufferZoneRequest extends FormRequest
      */
     public function rules(): array
     {
+        dd($this);
         return [
             'year' => 'required',
             'district' => 'required',
