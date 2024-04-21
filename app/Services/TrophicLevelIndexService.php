@@ -57,75 +57,82 @@ class TrophicLevelIndexService
 
     public function getDistrictTLI(string $year, int $district_id)
     {
-        $data = $this->TLIRepository->getTLIData($year, $district_id);
-        $pointElements = $data[1];
-        $data = $data[0];
-        $data->each(function ($value) use ($pointElements){
-            $value->SD_TLI = $this->formulaService->formula2($value->transparency);
-            $value->elements = $pointElements->where('point_id', '=', $value->point_id)->each(function ($item){
-                $item->tli = call_user_func([$this->formulaService, $item->element->TLI_formula], $item->item);
+        try{
+            $data = $this->TLIRepository->getTLIData($year, $district_id);
+            $pointElements = $data[1];
+            $data = $data[0];
+            $data->each(function ($value) use ($pointElements){
+                $value->SD_TLI = $this->formulaService->formula2($value->transparency);
+                $value->elements = $pointElements->where('point_id', '=', $value->point_id)->each(function ($item){
+                    $item->tli = call_user_func([$this->formulaService, $item->element->TLI_formula], $item->item);
+                });
             });
-        });
 
-        $grouped_data = $data->groupBy('control_point_id');
-        $processedCollection = $grouped_data->map(function ($group) {
-            $averageSD_TLI = $group->avg('SD_TLI');
-            $firstItem = $group->first();
+            $grouped_data = $data->groupBy('control_point_id');
+            $processedCollection = $grouped_data->map(function ($group) {
+                $averageSD_TLI = $group->avg('SD_TLI');
+                $firstItem = $group->first();
 
-            $averageElements = [];
-            foreach ($group as $item){
-                if(isset($item->elements))
-                {
-                    foreach ($item->elements as $element)
+                $averageElements = [];
+                foreach ($group as $item){
+                    if(isset($item->elements))
                     {
-                        if(array_key_exists($element->element_id, $averageElements))
+                        foreach ($item->elements as $element)
                         {
-                            $averageElements[$element->element_id]['tli'] += $element->tli;
-                        }
-                        else{
-                            $averageElements[$element->element_id] = [
-                                'element_id' => $element->element_id,
-                                'name' => $element->element->name,
-                                'tli' => $element->tli
-                            ];
+                            if(array_key_exists($element->element_id, $averageElements))
+                            {
+                                $averageElements[$element->element_id]['tli'] += $element->tli;
+                            }
+                            else{
+                                $averageElements[$element->element_id] = [
+                                    'element_id' => $element->element_id,
+                                    'name' => $element->element->name,
+                                    'tli' => $element->tli
+                                ];
+                            }
                         }
                     }
                 }
-            }
-            $count_group = $group->count();
-            $averageElementsRes = [];
-            foreach ($averageElements as $element)
-            {
-                $element['tli'] /= $count_group;
-                $averageElementsRes[] = $element;
-            }
-            $firstItem->SD_TLI = $averageSD_TLI;
-            $firstItem->averageElements = $averageElementsRes;
-            return (array)$firstItem;
-        });
-        $elements = [];
-        $control_points = $processedCollection->pluck('c_point_name');
-        foreach ($processedCollection as $collection)
-        {
-            if(array_key_exists('sd_tli', $elements))
-            {
-                array_push($elements['sd_tli'], $collection['SD_TLI']);
-            }
-            else{
-                $elements['sd_tli'] = [$collection['SD_TLI']];
-            }
-            foreach ($collection['elements'] as $e)
-            {
-                if(array_key_exists($e->element->name, $elements))
+                $count_group = $group->count();
+                $averageElementsRes = [];
+                foreach ($averageElements as $element)
                 {
-                    array_push($elements[$e->element->name], $e->tli);
+                    $element['tli'] /= $count_group;
+                    $averageElementsRes[] = $element;
+                }
+                $firstItem->SD_TLI = $averageSD_TLI;
+                $firstItem->averageElements = $averageElementsRes;
+                return (array)$firstItem;
+            });
+            $elements = [];
+            $control_points = $processedCollection->pluck('c_point_name');
+            foreach ($processedCollection as $collection)
+            {
+                if(array_key_exists('sd_tli', $elements))
+                {
+                    array_push($elements['sd_tli'], $collection['SD_TLI']);
                 }
                 else{
-                    $elements[$e->element->name] = [$e->tli];
+                    $elements['sd_tli'] = [$collection['SD_TLI']];
                 }
-            }
+                foreach ($collection['elements'] as $e)
+                {
+                    if(array_key_exists($e->element->name, $elements))
+                    {
+                        array_push($elements[$e->element->name], $e->tli);
+                    }
+                    else{
+                        $elements[$e->element->name] = [$e->tli];
+                    }
+                }
 
+            }
+            return [$elements, $control_points];
         }
-        return [$elements, $control_points];
+        catch (Exception $e)
+        {
+            return [[], []];
+        }
+
     }
 }
