@@ -19,8 +19,15 @@ class TSIController extends Controller
 
     public function index(string $year, District $district)
     {
-        $result = $this->trophicStateIndexService->getTSI($year, $district);
-        return response(['elements' => $result[0], 'control_points' => $result[1]]);
+        try {
+            $result = $this->trophicStateIndexService->getTSI($year, $district);
+            return response(['elements' => $result[0], 'control_points' => $result[1]]);
+        }
+        catch (\Exception $e)
+        {
+            return response(['elements' => [], 'control_points' => []]);
+        }
+
 
     }
 }
