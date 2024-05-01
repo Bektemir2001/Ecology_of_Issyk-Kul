@@ -2,13 +2,13 @@
     <div class="card">
         <div class="card-header d-flex justify-content-between">
             <div class="header-title">
-                <h4 class="card-title">Location and Date</h4>
+                <h4 class="card-title">Место и дата</h4>
             </div>
         </div>
         <div class="card-body">
                 <div class=" row align-items-center">
                     <div class="form-group col-sm-6">
-                        <label for="lake">Lake</label>
+                        <label for="lake">Озеро</label>
                         <select class="form-control" id="lake" onclick="getDistricts()">
                             @foreach($lakes as $lake)
                                 <option value="{{$lake->id}}">{{$lake->name}}</option>
@@ -18,20 +18,20 @@
                     <div class="form-group col-sm-6" id="districtsBlock"></div>
                     <div class="form-group col-sm-6" id="controlPointBlock"></div>
                     <div class="form-group col-sm-6">
-                        <label for="date">Date</label>
+                        <label for="date">Дата</label>
                         <input type="date" class="form-control" id="date" name="date">
                     </div>
                     <div class="form-group col-sm-6">
-                        <label for="from_starting_point">Distance from the starting point</label>
+                        <label for="from_starting_point">Расстояние от начальной точки</label>
                         <input type="number" class="form-control" id="from_starting_point">
                     </div>
                     <div class="form-group col-sm-6">
-                        <label for="depth">Depth</label>
+                        <label for="depth">Глубина</label>
                         <div class="d-flex justify-content-between">
                             <div class="col-6">
                                 <select class="form-control" id="depth">
-                                    <option value="from_below">from below</option>
-                                    <option value="from_the_surface">from the surface</option>
+                                    <option value="from_below">придонный</option>
+                                    <option value="from_the_surface">от поверхности</option>
                                 </select>
                             </div>
                             <div class="col-6">
@@ -46,25 +46,25 @@
     <div class="card">
         <div class="card-header d-flex justify-content-between">
             <div class="header-title">
-                <h4 class="card-title">Physical properties and gas composition</h4>
+                <h4 class="card-title">Физические свойства и состав газа</h4>
             </div>
         </div>
         <div class="card-body">
             <div class="row align-items-center">
                 <div class="form-group col-sm-6">
-                    <label for="temperature">Water temperature, deg.</label>
+                    <label for="temperature">Температура воды, град.</label>
                     <input type="number" class="form-control" id="temperature">
                 </div>
                 <div class="form-group col-sm-6">
-                    <label for="transparency">Transparency on the white disk, m</label>
+                    <label for="transparency">Прозрачность белого диска, м</label>
                     <input type="number" class="form-control" id="transparency" name="transparency">
                 </div>
                 <div class="form-group col-sm-6">
-                    <label for="hardness">Total hardness, mmol/l</label>
+                    <label for="hardness">Общая жесткость, ммоль/л</label>
                     <input type="number" class="form-control" id="hardness">
                 </div>
                 <div class="form-group col-sm-6">
-                    <label for="electrical_conductivity">Electrical conductivity, mS/cm</label>
+                    <label for="electrical_conductivity">Электропроводность, мС/см</label>
                     <input type="number" class="form-control" id="electrical_conductivity" name="electrical_conductivity">
                 </div>
                 <div class="form-group col-sm-6">
@@ -73,14 +73,14 @@
                 </div>
 
             </div>
-            <h4 class="card-title">Oxygen</h4>
+            <h4 class="card-title">Кислород</h4>
             <div class="row align-items-center">
                 <div class="form-group col-sm-6">
                     <label for="oxygen_mg">mg/l</label>
                     <input type="number" class="form-control" id="oxygen_mg">
                 </div>
                 <div class="form-group col-sm-6">
-                    <label for="oxygen_saturation"><b>% </b>saturation</label>
+                    <label for="oxygen_saturation"><b>% </b>насыщение</label>
                     <input type="number" class="form-control" id="oxygen_saturation" name="oxygen_saturation">
                 </div>
             </div>
@@ -162,7 +162,7 @@
             .then(response => response.json())
             .then(data => {
                 let districtsBlock = document.getElementById('districtsBlock');
-                let content = `<label for="district">District</label> <select class="form-control" id="district" onclick="getControlPoints()">`
+                let content = `<label for="district">Район</label> <select class="form-control" id="district" onclick="getControlPoints()">`
                 data = data.data;
                 data.forEach(function (item){
                     content += `<option value="${item.id}">${item.name}</option>`;
@@ -185,7 +185,7 @@
             .then(response => response.json())
             .then(data => {
                 let controlPointsBlock = document.getElementById('controlPointBlock');
-                let content = `<label for="control_point">Control Point</label> <select class="form-control" id="control_point">`
+                let content = `<label for="control_point">Контрольная точка</label> <select class="form-control" id="control_point">`
                 data = data.data;
                 data.forEach(function (item){
                     content += `<option value="${item.id}">${item.name}</option>`;

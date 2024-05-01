@@ -8,22 +8,22 @@
                         <ul class="iq-edit-profile d-flex nav nav-pills">
                             <li class="col-md-3 p-0">
                                 <a class="nav-link active" data-toggle="pill" href="#location-and-date">
-                                    Location and date
+                                    Место и дата
                                 </a>
                             </li>
                             <li class="col-md-3 p-0">
                                 <a class="nav-link" data-toggle="pill" href="#elements">
-                                    Elements
+                                    Элементы
                                 </a>
                             </li>
                             <li class="col-md-3 p-0">
                                 <a class="nav-link" data-toggle="pill" href="#major-ions">
-                                    Major ions
+                                    Главные ионы
                                 </a>
                             </li>
                             <li class="col-md-3 p-0">
                                 <a class="nav-link" data-toggle="pill" href="#organic-substances">
-                                    Organic substances
+                                    Органические вещества
                                 </a>
                             </li>
                         </ul>

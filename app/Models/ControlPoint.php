@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class ControlPoint extends Model
 {
@@ -12,7 +14,12 @@ class ControlPoint extends Model
     protected $table = 'control_points';
     protected $guarded = false;
 
-    public function users()
+
+    public function district(): BelongsTo
+    {
+        return $this->belongsTo(District::class);
+    }
+    public function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'user_control_points');
     }

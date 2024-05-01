@@ -2,7 +2,7 @@
     <div class="card">
         <div class="card-header d-flex justify-content-between">
             <div class="header-title">
-                <h4 class="card-title">Organic Substances</h4>
+                <h4 class="card-title">Органические вещества</h4>
             </div>
         </div>
         <div class="card-body">
@@ -10,7 +10,7 @@
 
             </div>
             <div class="form-group">
-                <label for="organicSubstancesSelect">Choose organic substance</label>
+                <label for="organicSubstancesSelect">Выберите органическое вещество</label>
                 <select id="organicSubstancesSelect" class="form-control" onclick="chooseOrganicSubstance(this)">
 
                 </select>

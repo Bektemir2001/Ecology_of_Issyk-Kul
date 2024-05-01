@@ -2,7 +2,7 @@
     <div class="card">
         <div class="card-header d-flex justify-content-between">
             <div class="header-title">
-                <h4 class="card-title">Elements</h4>
+                <h4 class="card-title">Элементы</h4>
             </div>
         </div>
         <div class="card-body">
@@ -10,7 +10,7 @@
 
             </div>
             <div class="form-group">
-                <label for="elementsSelect">Choose element</label>
+                <label for="elementsSelect">Выберите элемент</label>
                 <select id="elementsSelect" class="form-control" onclick="chooseElement(this)">
 
                 </select>

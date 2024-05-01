@@ -9,7 +9,9 @@ Route::get('/', [IndexController::class, 'index'])->name('operator.index');
 Route::group(['prefix' => 'data'], function (){
     Route::get('/', [DataController::class, 'index'])->name('operator.data.index');
     Route::get('/create', [DataController::class, 'create'])->name('operator.data.create');
+    Route::get('/edit/{point}', [DataController::class, 'edit'])->name('operator.data.edit');
     Route::post('/store', [DataController::class, 'store'])->name('operator.data.store');
+    Route::post('/update/{point}', [DataController::class, 'update'])->name('operator.data.update');
 });
 
 Route::group(['prefix' => 'earth_transformation_indicators'], function (){

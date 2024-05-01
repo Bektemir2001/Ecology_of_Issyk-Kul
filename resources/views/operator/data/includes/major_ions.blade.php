@@ -2,7 +2,7 @@
     <div class="card">
         <div class="card-header d-flex justify-content-between">
             <div class="header-title">
-                <h4 class="card-title">Major Ions</h4>
+                <h4 class="card-title">Главные ионы</h4>
             </div>
         </div>
         <div class="card-body">
@@ -12,7 +12,7 @@
             <div class="form-group">
                 <div class="btn-group">
                     <button type="button" class="btn btn-white dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="width: 300px;">
-                        Choose ion
+                        Выберите ион
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end" id="ionsSelect" style="max-height: 200px; overflow-y: auto; width: 300px;">
                     </ul>
