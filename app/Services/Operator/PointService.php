@@ -92,4 +92,42 @@ class PointService
         }
 
     }
+
+    public function clearPoint(Point $point): void
+    {
+        foreach ($point->pointElements as $pointElement) {
+            $pointElement->delete();
+        }
+        foreach ($point->pointOrganics as $pointOrganic) {
+            $pointOrganic->delete();
+        }
+        foreach ($point->pointIons as $pointIon) {
+            $pointIon->delete();
+        }
+    }
+
+    public function addElements(array $elements, array $ions, array $organics, Point $point): void
+    {
+        foreach ($elements as $key => $item) {
+            PointElement::query()->create([
+                'element_id' => $key,
+                'point_id' => $point->id,
+                'item' => $item
+            ]);
+        }
+        foreach ($ions as $key => $item) {
+            PointMajorIon::query()->create([
+                'ion_id' => $key,
+                'point_id' => $point->id,
+                'item' => $item
+            ]);
+        }
+        foreach ($organics as $key => $item) {
+            PointOrganicSubstance::query()->create([
+                'organic_substance_id' => $key,
+                'point_id' => $point->id,
+                'item' => $item
+            ]);
+        }
+    }
 }

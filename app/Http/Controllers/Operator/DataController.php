@@ -62,6 +62,42 @@ class DataController extends Controller
 
     public function update(Request $request, Point $point)
     {
-        dd($request->all());
+        $data = $request->all();
+        $elements = [];
+        $ions = [];
+        $organics = [];
+        foreach ($data as $key => $item)
+        {
+            if($item !== null)
+            {
+                if(str_contains($key, 'element_') !== false)
+                {
+                    $element_id = explode('_', $key)[1];
+                    $elements[$element_id] = $item;
+                    unset($data[$key]);
+                }
+                else if(str_contains($key, 'ion_') !== false)
+                {
+                    $ion_id = explode('_', $key)[1];
+                    $ions[$ion_id] = $item;
+                    unset($data[$key]);
+                }
+                else if(str_contains($key, 'organic_') !== false)
+                {
+                    $organic_id = explode('_', $key)[1];
+                    $organics[$organic_id] = $item;
+                    unset($data[$key]);
+                }
+            }
+            else{
+                unset($data[$key]);
+            }
+
+        }
+        unset($data['_token']);
+        $point->update($data);
+        $this->pointService->clearPoint($point);
+        $this->pointService->addElements($elements, $ions, $organics, $point);
+        return back()->with(['notification' => 'все данные сохронены удачно']);
     }
 }

@@ -13,7 +13,7 @@
                     <div class=" row align-items-center">
                         <div class="form-group col-sm-6">
                             <label for="lake">Озеро</label>
-                            <select class="form-control" id="lake" name="lake" onclick="getDistricts()">
+                            <select class="form-control" id="lake" onclick="getDistricts()">
                                 @foreach($lakes as $lake)
                                     <option value="{{$lake->id}}" {{$point->controlPoint->district->lake->id == $lake->id ? 'selected': ''}}>{{$lake->name}}</option>
                                 @endforeach
@@ -102,7 +102,7 @@
                         @foreach($elements as $element)
                             <div class="form-group col-sm-6">
                                 <label for="{{'element_'.$element->id}}">{{$element->name}}</label>
-                                <input type="number" class="form-control" name="{{'element_'.$element->id}}" id="{{'element_'.$element->id}}" value="{{array_key_exists($element->id, $pointElements) ? $pointElements[$element->id] : 0}}">
+                                <input type="number" class="form-control" name="{{'element_'.$element->id}}" id="{{'element_'.$element->id}}" value="{{array_key_exists($element->id, $pointElements) ? $pointElements[$element->id] : null}}">
                             </div>
                         @endforeach
                     </div>
@@ -120,7 +120,7 @@
                         @foreach($ions as $ion)
                             <div class="form-group col-sm-6">
                                 <label for="{{'ion_'.$ion->id}}">{!! $ion->name !!}</label>
-                                <input type="number" class="form-control" name="{{'ion_'.$ion->id}}" id="{{'ion_'.$ion->id}}" value="{{array_key_exists($ion->id, $pointIons) ? $pointIons[$ion->id] : 0}}">
+                                <input type="number" class="form-control" name="{{'ion_'.$ion->id}}" id="{{'ion_'.$ion->id}}" value="{{array_key_exists($ion->id, $pointIons) ? $pointIons[$ion->id] : null}}">
                             </div>
                         @endforeach
                     </div>
@@ -139,7 +139,7 @@
                         @foreach($organic_substances as $organic)
                             <div class="form-group col-sm-6">
                                 <label for="{{'organic_'.$organic->id}}">{{$organic->name}}</label>
-                                <input type="number" class="form-control" name="{{'organic_'.$organic->id}}" id="{{'organic_'.$organic->id}}" value="{{array_key_exists($organic->id, $pointOrganics) ? $pointOrganics[$organic->id] : 0}}">
+                                <input type="number" class="form-control" name="{{'organic_'.$organic->id}}" id="{{'organic_'.$organic->id}}" value="{{array_key_exists($organic->id, $pointOrganics) ? $pointOrganics[$organic->id] : null}}">
                             </div>
                         @endforeach
                     </div>
@@ -252,7 +252,7 @@
                 .then(response => response.json())
                 .then(data => {
                     let controlPointsBlock = document.getElementById('controlPointBlock');
-                    let content = `<label for="control_point">Контрольная точка</label> <select class="form-control" id="control_point">`
+                    let content = `<label for="control_point">Контрольная точка</label> <select class="form-control" id="control_point" name="control_point_id">`
                     data = data.data;
                     data.forEach(function (item){
                         content += `<option value="${item.id}" ${item.id === parseInt(checked_control_point) ? 'selected': ''}>${item.name}</option>`;
