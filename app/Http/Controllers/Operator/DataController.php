@@ -100,4 +100,11 @@ class DataController extends Controller
         $this->pointService->addElements($elements, $ions, $organics, $point);
         return back()->with(['notification' => 'все данные сохронены удачно']);
     }
+
+    public function destroy(Point $point)
+    {
+        $this->pointService->clearPoint($point);
+        $point->delete();
+        return back()->with(['notification' => 'все данные удалено удачно']);
+    }
 }

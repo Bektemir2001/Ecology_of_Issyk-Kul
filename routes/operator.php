@@ -12,6 +12,7 @@ Route::group(['prefix' => 'data'], function (){
     Route::get('/edit/{point}', [DataController::class, 'edit'])->name('operator.data.edit');
     Route::post('/store', [DataController::class, 'store'])->name('operator.data.store');
     Route::post('/update/{point}', [DataController::class, 'update'])->name('operator.data.update');
+    Route::get('/delete/{point}', [DataController::class, 'destroy'])->name('operator.data.delete');
 });
 
 Route::group(['prefix' => 'earth_transformation_indicators'], function (){
