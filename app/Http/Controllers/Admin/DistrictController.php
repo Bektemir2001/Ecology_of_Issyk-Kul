@@ -46,7 +46,7 @@ class DistrictController extends Controller
 
     public function edit(District $district)
     {
-        return view('admin.district.edit', compact(['item' => $district]));
+        return view('admin.district.edit', ['item' => $district]);
     }
 
     public function update()
