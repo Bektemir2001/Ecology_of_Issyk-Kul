@@ -28,4 +28,26 @@ class DistrictService extends Service
             return ['message' => $e->getMessage(), 'code' => $e->getCode()];
         }
     }
+
+    public function update(array $data, District $district): array
+    {
+        try {
+            if(array_key_exists('images', $data))
+            {
+                $images = [];
+                foreach ($data['images'] as $image)
+                {
+                    $images[] = $this->uploadFileService->upload($image, 'images/districts');
+                }
+                $data['images'] = $images;
+            }
+
+            $district->update($data);
+            return ['message' => 'success', 'code' => 200];
+        }
+        catch (Exception $e)
+        {
+            return ['message' => $e->getMessage(), 'code' => $e->getCode()];
+        }
+    }
 }
