@@ -21,6 +21,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function (){
         Route::post('/', [LakeController::class, 'store'])->name('admin.lakes.store');
         Route::get('/create', [LakeController::class, 'create'])->name('admin.lakes.create');
         Route::get('/edit/{lake}', [LakeController::class, 'edit'])->name('admin.lakes.edit');
+        Route::post('/update/{lake}', [LakeController::class, 'update'])->name('admin.lakes.update');
         Route::get('/show/{lake}', [LakeController::class, 'show'])->name('admin.lakes.show');
         Route::get('/delete/{lake}', [LakeController::class, 'delete'])->name('admin.lakes.delete');
     });
