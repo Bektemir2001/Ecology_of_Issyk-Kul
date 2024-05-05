@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('number')->nullable();
             $table->string('name');
             $table->string('name_ky')->nullable();
+            $table->unsignedBigInteger('district_id');
             $table->longText('description')->nullable();
             $table->longText('description_ky')->nullable();
             $table->string('X_coordinate')->nullable();
