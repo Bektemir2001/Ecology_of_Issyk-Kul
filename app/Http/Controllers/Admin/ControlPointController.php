@@ -49,6 +49,7 @@ class ControlPointController extends Controller
     public function edit(ControlPoint $controlPoint)
     {
         $districts = District::all();
+        dd($districts, $controlPoint);
         return view('admin.control_point.edit', ['item' => $controlPoint, 'districts' => $districts]);
     }
 
