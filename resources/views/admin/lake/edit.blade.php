@@ -22,22 +22,27 @@
                 @csrf
                 <div class="form-row mb-4">
                     <div class="col">
+                        <label>Name</label>
                         <input type="text" class="form-control" name="name" {{$lake->name}}>
                     </div>
                     <div class="col">
+                        <label for="name">Name KY</label>
                         <input type="text" class="form-control" name="name_ky" value="{{$lake->name_ky}}">
                     </div>
                 </div>
                 <div class="form-row mb-4">
                     <div class="col">
+                        <label for="X_coordinate">X coordinate</label>
                         <input type="text" class="form-control" name="X_coordinate" value="{{$lake->X_coordinate}}">
                     </div>
                     <div class="col">
+                        <label for="Y_coordinate">Y_coordinate</label>
                         <input type="text" class="form-control" name="Y_coordinate" value="{{$lake->Y_coordinate}}">
                     </div>
                 </div>
                 <div class="form-row mb-4">
                     <div class="col">
+                        <label for="Y_coordinate">Address</label>
                         <input type="text" class="form-control" id="address" name="address" value="{{$lake->address}}">
                     </div>
                 </div>
@@ -49,12 +54,13 @@
                 </div>
                 <div class="form-row mb-4">
                     <div class="col">
+                        <label for="Y_coordinate">Description</label>
                         <textarea class="form-control" name="description" placeholder="Description">{{$lake->description}}</textarea>
                     </div>
                 </div>
                 <div class="form-group mb-0">
                     <button type="submit" class="btn btn-primary mr-2">Сохранить</button>
-                    <a href="{{route('admin.lakes.index')}}" class="btn btn-secondary mr-2">Назат</a>
+                    <a href="{{route('admin.lakes.index')}}" class="btn btn-secondary mr-2">Назад</a>
                 </div>
             </form>
         </div>

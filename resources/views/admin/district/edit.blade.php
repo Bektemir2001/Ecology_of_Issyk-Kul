@@ -65,7 +65,7 @@
                 </div>
                 <div class="form-group mb-0">
                     <button type="submit" class="btn btn-primary mr-2">Сохранить</button>
-                    <a href="{{route('admin.districts.index')}}" class="btn btn-secondary mr-2">Назат</a>
+                    <a href="{{route('admin.districts.index')}}" class="btn btn-secondary mr-2">Назад</a>
                 </div>
             </form>
         </div>
