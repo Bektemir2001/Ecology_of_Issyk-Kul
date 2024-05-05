@@ -31,7 +31,7 @@ class ControlPointController extends Controller
     }
     public function show(ControlPoint $controlPoint)
     {
-        return view('admin.control_point.show', compact(['item' => $controlPoint]));
+        return view('admin.control_point.show', ['item' => $controlPoint]);
     }
 
     public function create()
