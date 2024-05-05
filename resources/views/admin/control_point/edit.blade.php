@@ -57,7 +57,7 @@
                         <label for="district_id">District</label>
                         <select id="district_id" name="district_id" class="form-control">
                             @foreach($districts as $district)
-                                <option value="{{$district->id}}" {{$district->id == $district->district_id ? 'selected' : ''}}>{{$district->name}}</option>
+                                <option value="{{$district->id}}" {{$district->id == $item->district_id ? 'selected' : ''}}>{{$district->name}}</option>
                             @endforeach
                         </select>
 
