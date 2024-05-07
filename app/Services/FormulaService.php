@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use DivisionByZeroError;
 use Exception;
 
 class FormulaService
@@ -41,7 +42,7 @@ class FormulaService
             $result = 10 * (6 - (log(1.47/$item)/log(2)));
             return $result;
         }
-        catch (Exception $e) {
+        catch (DivisionByZeroError $e) {
             throw new Exception($e);
         }
 
