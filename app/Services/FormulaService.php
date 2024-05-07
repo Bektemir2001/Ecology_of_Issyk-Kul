@@ -2,6 +2,8 @@
 
 namespace App\Services;
 
+use Exception;
+
 class FormulaService
 {
     public function formula1($chlA)
@@ -35,6 +37,12 @@ class FormulaService
     }
     public function formula8($item)
     {
-        return 10 * (6 - (log(1.47/$item)/log(2)));
+        try {
+            return 10 * (6 - (log(1.47/$item)/log(2)));
+        }
+        catch (Exception $e) {
+            throw new Exception($e);
+        }
+
     }
 }
