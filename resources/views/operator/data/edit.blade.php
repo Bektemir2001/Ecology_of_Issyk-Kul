@@ -27,7 +27,7 @@
                         </div>
                         <div class="form-group col-sm-6">
                             <label for="from_starting_point">Расстояние от начальной точки</label>
-                            <input type="number" class="form-control" id="from_starting_point" value="{{$point->distance_from_starting_point}}">
+                            <input type="text" class="form-control" id="from_starting_point" value="{{$point->distance_from_starting_point}}">
                         </div>
                         <div class="form-group col-sm-6">
                             <label for="depth">Глубина</label>
@@ -39,7 +39,7 @@
                                     </select>
                                 </div>
                                 <div class="col-6">
-                                    <input type="number" class="form-control" placeholder="meter" id="depth_item" value="{{$point->depth_item}}">
+                                    <input type="text" class="form-control" placeholder="meter" id="depth_item" value="{{$point->depth_item}}">
                                 </div>
                             </div>
 
@@ -57,23 +57,23 @@
                     <div class="row align-items-center">
                         <div class="form-group col-sm-6">
                             <label for="temperature">Температура воды, град.</label>
-                            <input type="number" class="form-control" id="temperature" value="{{$point->temperature}}">
+                            <input type="text" class="form-control" id="temperature" value="{{$point->temperature}}">
                         </div>
                         <div class="form-group col-sm-6">
                             <label for="transparency">Прозрачность белого диска, м</label>
-                            <input type="number" class="form-control" id="transparency" name="transparency" value="{{$point->transparency}}">
+                            <input type="text" class="form-control" id="transparency" name="transparency" value="{{$point->transparency}}">
                         </div>
                         <div class="form-group col-sm-6">
                             <label for="hardness">Общая жесткость, ммоль/л</label>
-                            <input type="number" class="form-control" id="hardness" value="{{$point->hardness}}">
+                            <input type="text" class="form-control" id="hardness" value="{{$point->hardness}}">
                         </div>
                         <div class="form-group col-sm-6">
                             <label for="electrical_conductivity">Электропроводность, мС/см</label>
-                            <input type="number" class="form-control" id="electrical_conductivity" name="electrical_conductivity" value="{{$point->electrical_conductivity}}">
+                            <input type="text" class="form-control" id="electrical_conductivity" name="electrical_conductivity" value="{{$point->electrical_conductivity}}">
                         </div>
                         <div class="form-group col-sm-6">
                             <label for="pH">рН</label>
-                            <input type="number" class="form-control" id="pH" value="{{$point->pH}}">
+                            <input type="text" class="form-control" id="pH" value="{{$point->pH}}">
                         </div>
 
                     </div>
@@ -81,11 +81,11 @@
                     <div class="row align-items-center">
                         <div class="form-group col-sm-6">
                             <label for="oxygen_mg">mg/l</label>
-                            <input type="number" class="form-control" id="oxygen_mg" value="{{$point->oxygen_mg}}">
+                            <input type="text" class="form-control" id="oxygen_mg" value="{{$point->oxygen_mg}}">
                         </div>
                         <div class="form-group col-sm-6">
                             <label for="oxygen_saturation"><b>% </b>насыщение</label>
-                            <input type="number" class="form-control" id="oxygen_saturation" name="oxygen_saturation" value="{{$point->oxygen_saturation}}">
+                            <input type="text" class="form-control" id="oxygen_saturation" name="oxygen_saturation" value="{{$point->oxygen_saturation}}">
                         </div>
                     </div>
                 </div>
@@ -102,7 +102,7 @@
                         @foreach($elements as $element)
                             <div class="form-group col-sm-6">
                                 <label for="{{'element_'.$element->id}}">{{$element->name}}</label>
-                                <input type="number" class="form-control" name="{{'element_'.$element->id}}" id="{{'element_'.$element->id}}" value="{{array_key_exists($element->id, $pointElements) ? $pointElements[$element->id] : null}}">
+                                <input type="text" class="form-control" name="{{'element_'.$element->id}}" id="{{'element_'.$element->id}}" value="{{array_key_exists($element->id, $pointElements) ? $pointElements[$element->id] : null}}">
                             </div>
                         @endforeach
                     </div>
@@ -120,7 +120,7 @@
                         @foreach($ions as $ion)
                             <div class="form-group col-sm-6">
                                 <label for="{{'ion_'.$ion->id}}">{!! $ion->name !!}</label>
-                                <input type="number" class="form-control" name="{{'ion_'.$ion->id}}" id="{{'ion_'.$ion->id}}" value="{{array_key_exists($ion->id, $pointIons) ? $pointIons[$ion->id] : null}}">
+                                <input type="text" class="form-control" name="{{'ion_'.$ion->id}}" id="{{'ion_'.$ion->id}}" value="{{array_key_exists($ion->id, $pointIons) ? $pointIons[$ion->id] : null}}">
                             </div>
                         @endforeach
                     </div>
@@ -139,7 +139,7 @@
                         @foreach($organic_substances as $organic)
                             <div class="form-group col-sm-6">
                                 <label for="{{'organic_'.$organic->id}}">{{$organic->name}}</label>
-                                <input type="number" class="form-control" name="{{'organic_'.$organic->id}}" id="{{'organic_'.$organic->id}}" value="{{array_key_exists($organic->id, $pointOrganics) ? $pointOrganics[$organic->id] : null}}">
+                                <input type="text" class="form-control" name="{{'organic_'.$organic->id}}" id="{{'organic_'.$organic->id}}" value="{{array_key_exists($organic->id, $pointOrganics) ? $pointOrganics[$organic->id] : null}}">
                             </div>
                         @endforeach
                     </div>
