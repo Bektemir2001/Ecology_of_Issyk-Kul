@@ -23,7 +23,7 @@
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="from_starting_point">Расстояние от начальной точки</label>
-                        <input type="number" class="form-control" id="from_starting_point">
+                        <input type="text" class="form-control" id="from_starting_point">
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="depth">Глубина</label>
@@ -35,7 +35,7 @@
                                 </select>
                             </div>
                             <div class="col-6">
-                                <input type="number" class="form-control" placeholder="meter" id="depth_item">
+                                <input type="text" class="form-control" placeholder="meter" id="depth_item">
                             </div>
                         </div>
 
@@ -53,23 +53,23 @@
             <div class="row align-items-center">
                 <div class="form-group col-sm-6">
                     <label for="temperature">Температура воды, град.</label>
-                    <input type="number" class="form-control" id="temperature">
+                    <input type="text" class="form-control" id="temperature">
                 </div>
                 <div class="form-group col-sm-6">
                     <label for="transparency">Прозрачность белого диска, м</label>
-                    <input type="number" class="form-control" id="transparency" name="transparency">
+                    <input type="text" class="form-control" id="transparency" name="transparency">
                 </div>
                 <div class="form-group col-sm-6">
                     <label for="hardness">Общая жесткость, ммоль/л</label>
-                    <input type="number" class="form-control" id="hardness">
+                    <input type="text" class="form-control" id="hardness">
                 </div>
                 <div class="form-group col-sm-6">
                     <label for="electrical_conductivity">Электропроводность, мС/см</label>
-                    <input type="number" class="form-control" id="electrical_conductivity" name="electrical_conductivity">
+                    <input type="text" class="form-control" id="electrical_conductivity" name="electrical_conductivity">
                 </div>
                 <div class="form-group col-sm-6">
                     <label for="pH">рН</label>
-                    <input type="number" class="form-control" id="pH">
+                    <input type="text" class="form-control" id="pH">
                 </div>
 
             </div>
@@ -77,11 +77,11 @@
             <div class="row align-items-center">
                 <div class="form-group col-sm-6">
                     <label for="oxygen_mg">mg/l</label>
-                    <input type="number" class="form-control" id="oxygen_mg">
+                    <input type="text" class="form-control" id="oxygen_mg">
                 </div>
                 <div class="form-group col-sm-6">
                     <label for="oxygen_saturation"><b>% </b>насыщение</label>
-                    <input type="number" class="form-control" id="oxygen_saturation" name="oxygen_saturation">
+                    <input type="text" class="form-control" id="oxygen_saturation" name="oxygen_saturation">
                 </div>
             </div>
         </div>

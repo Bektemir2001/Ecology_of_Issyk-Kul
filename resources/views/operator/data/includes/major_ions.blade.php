@@ -78,7 +78,7 @@
         let divElement = document.createElement('div');
         divElement.className = "form-group";
         divElement.innerHTML = `<label for="choiceIon${ion.id}">${ion.name}</label>
-                            <input type="number" id="choiceIon${ion.id}" class="form-control"/>`;
+                            <input type="text" id="choiceIon${ion.id}" class="form-control"/>`;
         IonsContent.appendChild(divElement);
         checkInputs();
         return 'finish';

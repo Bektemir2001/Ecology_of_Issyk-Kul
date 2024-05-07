@@ -79,7 +79,7 @@
         let divElement = document.createElement('div');
         divElement.className = "form-group";
         divElement.innerHTML = `<label for="choiceOrganicSubstance${element.id}">${element.name}</label>
-                            <input type="number" id="choiceOrganicSubstance${element.id}" class="form-control"/>`;
+                            <input type="text" id="choiceOrganicSubstance${element.id}" class="form-control"/>`;
         OrganicSubstancesContent.appendChild(divElement);
         checkInputs();
         return 'finish';

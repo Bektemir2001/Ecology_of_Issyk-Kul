@@ -84,7 +84,7 @@
                 let divElement = document.createElement('div');
                 divElement.className = "form-group";
                 divElement.innerHTML = `<label for="choiceElement${childrenElements[i].id}">${element.name}(${childrenElements[i].name})</label>
-                            <input type="number" id="choiceElement${childrenElements[i].id}" class="form-control"/>`
+                            <input type="text" id="choiceElement${childrenElements[i].id}" class="form-control"/>`
                 ElementsContent.appendChild(divElement)
             }
             checkInputs();
@@ -93,7 +93,7 @@
         let divElement = document.createElement('div');
         divElement.className = "form-group";
         divElement.innerHTML = `<label for="choiceElement${element.id}">${element.name}</label>
-                            <input type="number" id="choiceElement${element.id}" class="form-control"/>`;
+                            <input type="text" id="choiceElement${element.id}" class="form-control"/>`;
         ElementsContent.appendChild(divElement)
         checkInputs();
         return 'finish';
