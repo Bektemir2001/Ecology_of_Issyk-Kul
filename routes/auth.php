@@ -16,7 +16,7 @@ Route::post('/admin/login', [AdminAuthController::class, 'login'])->name('auth.a
 Route::post('/logout', function (){
     Auth::logout();
     return redirect()->route('auth.operator.login');
-});
+})->name('logout');
 
 Route::get('/unauthorized', function (){
     return response(['message' => 'unauthorized'])->setStatusCode(401);
