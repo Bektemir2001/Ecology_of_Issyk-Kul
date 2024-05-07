@@ -38,7 +38,8 @@ class FormulaService
     public function formula8($item)
     {
         try {
-            return 10 * (6 - (log(1.47/$item)/log(2)));
+            $result = 10 * (6 - (log(1.47/$item)/log(2)));
+            return $result;
         }
         catch (Exception $e) {
             throw new Exception($e);
