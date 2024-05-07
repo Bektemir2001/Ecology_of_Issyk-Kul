@@ -65,7 +65,10 @@ class TrophicStateIndexService
             $data->each(function ($value) use ($pointElements){
                 $value->SD_TSI = $this->formulaService->formula7($value->transparency);
                 $value->elements = $pointElements->where('point_id', '=', $value->point_id)->each(function ($item){
-
+                    if($item->item == 0)
+                    {
+                        dd($item);
+                    }
                     $item->tsi = call_user_func([$this->formulaService, $item->element->TSI_formula], $item->item);
 
                 });
