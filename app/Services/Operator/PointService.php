@@ -114,6 +114,24 @@ class PointService
                 'point_id' => $point->id,
                 'item' => $item
             ]);
+            $element = Element::where('id', $key)->first();
+            if($element->parentElement)
+            {
+                $parent_point_element = PointElement::where('element_id', '=', $element->parentElement->id)
+                    ->where('point_id', $point->id)
+                    ->first();
+                if($parent_point_element)
+                {
+                    $parent_point_element->update(['item' => $parent_point_element->item + $item]);
+                }
+                else{
+                    PointElement::create([
+                        'point_id' => $point->id,
+                        'element_id' => $element->parentElement->id,
+                        'item' => $item
+                    ]);
+                }
+            }
         }
         foreach ($ions as $key => $item) {
             PointMajorIon::query()->create([
