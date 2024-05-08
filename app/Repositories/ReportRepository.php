@@ -44,6 +44,31 @@ class ReportRepository
         return ['items' => $result->pluck($data['table_field']), 'control_points' => $result->pluck('name')];
     }
 
+
+    public function dataForPoint(array $data): array
+    {
+        if(array_key_exists('children', $data))
+        {
+            $result = DB::table('points')
+                ->join('control_points as cp', 'cp.id', '=', 'points.control_point_id')
+                ->join('point_'.$data['table_field'].' as r', 'points.id', '=', 'r.point_id')
+                ->select('r.item', DB::raw('YEAR(points.date) as year'))
+                ->where('cp.id', '=', $data['control_point_id'])
+                ->where('r.'.$data['related_field'], $data['children'])
+                ->where('points.distance_from_starting_point', '=', 0.5)
+                ->get();
+            $result = $this->getAverage($result, 'year');
+            return ['items' => $result->pluck('item'), 'years' => $result->pluck('year')];
+        }
+        $result = DB::table('points')
+            ->join('control_points as cp', 'cp.id', '=', 'points.control_point_id')
+            ->select($data['table_field'], DB::raw('YEAR(points.date) as year'))
+            ->where('cp.id', '=', $data['control_point_id'])
+            ->get();
+        $result = $this->getAverage($result, 'year');
+        return ['items' => $result->pluck($data['table_field']), 'years' => $result->pluck('year')];
+    }
+
     private function getAverage($collection, string $field)
     {
         $collection = $collection->groupBy($field);

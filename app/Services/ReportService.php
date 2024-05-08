@@ -39,4 +39,17 @@ class ReportService
         }
 
     }
+
+    public function getDataForPoint(array $data): array
+    {
+        try {
+            $data = $this->reportRepository->dataForPoint($data);
+            return ['data' => $data, 'code' => 200];
+        }
+        catch (Exception $exception)
+        {
+            return ['message' => $exception->getMessage(), 'code' => 500];
+        }
+
+    }
 }

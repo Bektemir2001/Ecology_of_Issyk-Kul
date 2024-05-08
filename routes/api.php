@@ -42,4 +42,5 @@ Route::post('/calculate/horizontal/buffer/zone', [CoastalBufferZoneController::c
 Route::group(['prefix' => 'report'], function (){
     Route::get('/get/fields', [ReportController::class, 'getFields']);
     Route::post('/get/report', [ReportController::class, 'getData']);
+    Route::post('/get/point/report', [ReportController::class, 'getDataForPoint']);
 });
