@@ -24,7 +24,7 @@ class CoastalBufferZoneController extends Controller
     public function horizontalCalculation(HorizontalBufferZoneRequest $request)
     {
         $data = $request->validated();
-        $tli = $this->tliService->getDistrictTLI($data['year'], $data['district']);
+        $tli = $this->tliService->getDistrictTLI($data['year']);
         $result = $this->bufferZoneServices->horizontalCalculate($tli, $data['year'], $data['district'], $data['cost']);
         if($result['code'] == 200)
         {

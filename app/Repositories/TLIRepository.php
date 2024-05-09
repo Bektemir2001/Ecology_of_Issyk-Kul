@@ -8,13 +8,15 @@ use Illuminate\Support\Facades\DB;
 
 class TLIRepository
 {
-    public function getTLIData(string $year, int $district_id): array
+    public function getTLIData(string $year, int $district_id=null): array
     {
         $data = DB::table('districts')
             ->join('control_points as cp', 'cp.district_id', '=', 'districts.id')
-            ->join('points as p', 'p.control_point_id', '=', 'cp.id')
-            ->where('districts.id', '=', $district_id)
-            ->whereYear('p.date', '=', $year)
+            ->join('points as p', 'p.control_point_id', '=', 'cp.id');
+        if($district_id !== null){
+            $data = $data->where('districts.id', '=', $district_id);
+        }
+        $data = $data->whereYear('p.date', '=', $year)
             ->select(
                 'cp.name as c_point_name',
                 'p.distance_from_starting_point',
