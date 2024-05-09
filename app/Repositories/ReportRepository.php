@@ -65,7 +65,7 @@ class ReportRepository
             ->select($data['table_field'], DB::raw('YEAR(points.date) as year'))
             ->where('cp.id', '=', $data['control_point_id'])
             ->get();
-        $result = $this->getAverage($result, 'year');
+        $result = $this->getAverage($result, 'year')->sortBy('year');
         return ['items' => $result->pluck($data['table_field']), 'years' => $result->pluck('year')];
     }
 
