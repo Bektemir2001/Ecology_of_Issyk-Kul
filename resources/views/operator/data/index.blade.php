@@ -6,8 +6,8 @@
 
                 <div class="card-header d-flex justify-content-between">
                     <div class="header-title">
-                        <h4 class="card-title">Data</h4>
-                        <a href="{{route('operator.data.create')}}" class="btn btn-outline-primary rounded-pill mt-2">Add</a>
+                        <h4 class="card-title">Данные</h4>
+                        <a href="{{route('operator.data.create')}}" class="btn btn-outline-primary rounded-pill mt-2">Добавить</a>
                     </div>
                     <div class="header-action">
                         <i data-toggle="collapse" data-target="#datatable-1" aria-expanded="false">
@@ -26,8 +26,10 @@
                             <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Control Point</th>
-                                <th>date</th>
+                                <th>Точка контроля</th>
+                                <th>Дата отбора</th>
+                                <th>Расстояние от начальной точки</th>
+                                <th>Глубина</th>
                                 <th class="text-right">Actions</th>
                             </tr>
                             </thead>
@@ -37,6 +39,8 @@
                                     <td>{{$point->id}}</td>
                                     <td>{{$point->controlPoint->name}}</td>
                                     <td>{{$point->date}}</td>
+                                    <td>{{$point->distance_from_starting_point}}</td>
+                                    <td>{{$point->depth." - ".$point->depth_item}}</td>
                                     <td class="text-right">
                                         <div class="icon-container">
                                             <a href="{{route('operator.data.edit', $point->id)}}" class="svg-icon small-icon">
@@ -61,8 +65,10 @@
                             <tfoot>
                             <tr>
                                 <th>ID</th>
-                                <th>Control Point</th>
-                                <th>date</th>
+                                <th>Точка контроля</th>
+                                <th>Дата отбора</th>
+                                <th>Расстояние от начальной точки</th>
+                                <th>Глубина</th>
                                 <th class="text-right">Actions</th>
                             </tr>
                             </tfoot>
