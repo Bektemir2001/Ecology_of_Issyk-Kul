@@ -33,13 +33,13 @@
                             <label for="depth">Глубина</label>
                             <div class="d-flex justify-content-between">
                                 <div class="col-6">
-                                    <select class="form-control" id="depth">
+                                    <select class="form-control" id="depth" name="depth">
                                         <option value="from_below" {{$point->depth === 'from_below' ? 'selected': ''}}>придонный</option>
                                         <option value="from_the_surface" {{$point->depth === 'from_the_surface' ? 'selected' : ''}}>от поверхности</option>
                                     </select>
                                 </div>
                                 <div class="col-6">
-                                    <input type="text" class="form-control" placeholder="meter" id="depth_item" value="{{$point->depth_item}}">
+                                    <input type="text" class="form-control" placeholder="meter" id="depth_item" name="depth_item" value="{{$point->depth_item}}">
                                 </div>
                             </div>
 
