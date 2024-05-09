@@ -12,9 +12,7 @@
     <div class="data-scrollbar" data-scroll="1">
         <nav class="iq-sidebar-menu">
             <ul id="iq-sidebar-toggle" class="side-menu">
-                <li class="px-3 pt-3 pb-2">
-                    <span class="text-uppercase small font-weight-bold">Pages</span>
-                </li>
+
 
                 <li class=" sidebar-layout">
                     <a href="{{route('operator.data.index')}}" class="svg-icon">
