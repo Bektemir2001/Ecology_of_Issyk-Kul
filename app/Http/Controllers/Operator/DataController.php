@@ -55,7 +55,6 @@ class DataController extends Controller
         $pointElements = $point->pointElements->pluck('item', 'element_id')->toArray();
         $pointIons = $point->pointIons->pluck('item', 'ion_id')->toArray();
         $pointOrganics = $point->pointOrganics->pluck('item', 'organic_substance_id')->toArray();
-        dd($pointOrganics, $organic_substances);
         return view('operator.data.edit', compact('point', 'lakes',
             'elements', 'ions', 'organic_substances',
             'pointElements', 'pointIons', 'pointOrganics'));

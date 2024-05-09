@@ -139,7 +139,7 @@
                         @foreach($organic_substances as $organic)
                             <div class="form-group col-sm-6">
                                 <label for="{{'organic_'.$organic->id}}">{{$organic->name}}</label>
-                                <input type="text" class="form-control" name="{{'organic_'.$organic->id}}" id="{{'organic_'.$organic->id}}" value="{{array_key_exists($organic->id, $pointOrganics) ? $pointOrganics[$organic->id] : null}}">
+                                <input type="text" class="form-control" name="{{'organic_'.$organic->id}}" id="{{'organic_'.$organic->id}}" value="{{array_key_exists(strval($organic->id), $pointOrganics) ? $pointOrganics[$organic->id] : null}}">
                             </div>
                         @endforeach
                     </div>
