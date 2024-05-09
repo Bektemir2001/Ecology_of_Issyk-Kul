@@ -40,7 +40,7 @@
                                     <td>{{$point->controlPoint->name}}</td>
                                     <td>{{$point->date}}</td>
                                     <td>{{$point->distance_from_starting_point." м"}}</td>
-                                    <td>{{$point->depth === 'from_below' ? "Придонный" : "от поверхности"." - ".$point->depth_item.' м'}}</td>
+                                    <td>{{$point->depth === 'from_below' ? "Придонный"." - ".$point->depth_item.' м' : "от поверхности"." - ".$point->depth_item.' м'}}</td>
                                     <td class="text-right">
                                         <div class="icon-container">
                                             <a href="{{route('operator.data.edit', $point->id)}}" class="svg-icon small-icon">
