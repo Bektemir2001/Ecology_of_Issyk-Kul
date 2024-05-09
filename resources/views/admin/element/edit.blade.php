@@ -56,6 +56,7 @@
                     <div class="col-6">
                         <label for="TLI_formula">TLI формула</label>
                         <select class="form-control" id="TLI_formula" name="TLI_formula">
+                            <option></option>
                             @foreach($formulas as $formula)
                                 <option value="{{$formula->name}}" {{$formula->name === $item->TLI_formula ? 'selected' : ''}}>{{$formula->formula}}</option>
                             @endforeach
@@ -64,6 +65,7 @@
                     <div class="col-6">
                         <label for="TSI_formula">TSI формула</label>
                         <select class="form-control" id="TSI_formula" name="TSI_formula">
+                            <option></option>
                             @foreach($formulas as $formula)
                                 <option value="{{$formula->name}}" {{$formula->name === $item->TSI_formula ? 'selected' : ''}}>{{$formula->formula}}</option>
                             @endforeach
