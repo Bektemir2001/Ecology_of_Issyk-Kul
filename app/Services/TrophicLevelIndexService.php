@@ -63,8 +63,10 @@ class TrophicLevelIndexService
             $data = $data[0];
             $data->each(function ($value) use ($pointElements){
                 $value->SD_TLI = $this->formulaService->formula2($value->transparency);
-                $value->elements = $pointElements->where('point_id', '=', $value->point_id)->each(function ($item){
+                $crack = [];
+                $value->elements = $pointElements->where('point_id', '=', $value->point_id)->each(function ($item) use ($crack){
                     $item->tli = call_user_func([$this->formulaService, $item->element->TLI_formula], $item->item);
+                    dd($item);
                 });
             });
 
@@ -75,15 +77,10 @@ class TrophicLevelIndexService
 
                 $averageElements = [];
                 foreach ($group as $item){
-                    $crack = [];
                     if(isset($item->elements))
                     {
                         foreach ($item->elements as $element)
                         {
-                            if($element->element->name == 'Фосфор минеральный')
-                            {
-                                $crack[] = $element;
-                            }
                             if(array_key_exists($element->element_id, $averageElements))
                             {
                                 $averageElements[$element->element_id]['tli'] += $element->tli;
@@ -97,7 +94,6 @@ class TrophicLevelIndexService
                             }
                         }
                     }
-                    dd($crack);
                 }
                 $count_group = $group->count();
                 $averageElementsRes = [];
