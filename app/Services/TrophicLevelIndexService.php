@@ -66,7 +66,11 @@ class TrophicLevelIndexService
                 $crack = [];
                 $value->elements = $pointElements->where('point_id', '=', $value->point_id)->each(function ($item) use ($crack){
                     $item->tli = call_user_func([$this->formulaService, $item->element->TLI_formula], $item->item);
-                    dd($item);
+                    if($item->id == 9)
+                    {
+                        dd($item);
+
+                    }
                 });
             });
 
