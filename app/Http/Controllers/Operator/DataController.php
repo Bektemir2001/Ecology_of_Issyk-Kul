@@ -25,7 +25,7 @@ class DataController extends Controller
 
     public function index(): View
     {
-        $points = Point::paginate(50);
+        $points = Point::paginate(20);
         return view('operator.data.index', compact('points'));
     }
 
