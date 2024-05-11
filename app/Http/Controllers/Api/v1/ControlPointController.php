@@ -19,43 +19,18 @@ class ControlPointController extends Controller
 
     public function getWithPDK(ReportRequest $request)
     {
-        $result = $this->data($request->validated());
+        $data = $request->validated();
+        if(array_key_exists('children', $data)) {
+            dd("bektemir");
+        }
+
+        $result = ControlPoint::all();
+        $result->each(function ($item) use ($data) {
+            dd($item->points->whereYear('date', $data['year']));
+        });
         dd($result);
     }
 
-    public function data(array $data): array
-    {
-        if(array_key_exists('children', $data))
-        {
-            $result = DB::table('control_points as cp')
-                ->leftJoin('points', 'cp.id', '=', 'points.control_point_id')
-                ->leftJoin('point_'.$data['table_field'].' as r', 'points.id', '=', 'r.point_id')
-                ->select('r.item', 'cp.*')
-                ->whereExists(function ($query) use ($data) {
-                    $query->select(DB::raw(1))
-                        ->from('points as p')
-                        ->whereRaw('p.control_point_id = cp.id')
-                        ->whereYear('p.date', '=', $data['year']);
-                })
-                ->where('r.'.$data['related_field'], $data['children'])
-                ->get();
-            dd($result);
-            $result = $this->getAverage($result, 'name');
-            return ['items' => $result->pluck('item'), 'control_points' => $result];
-        }
-        $result = DB::table('control_points as cp')
-            ->leftJoin('points', 'cp.id', '=', 'points.control_point_id')
-            ->select($data['table_field'], 'cp.*')
-            ->whereExists(function ($query) use ($data) {
-                $query->select(DB::raw(1))
-                    ->from('points as p')
-                    ->whereRaw('p.control_point_id = cp.id')
-                    ->whereYear('p.date', '=', $data['year']);
-            })
-            ->get();
-        $result = $this->getAverage($result, 'name');
-        return ['items' => $result->pluck($data['table_field']), 'control_points' => $result->pluck('name')];
-    }
 
     private function getAverage($collection, string $field)
     {

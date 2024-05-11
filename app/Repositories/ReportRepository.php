@@ -54,7 +54,6 @@ class ReportRepository
                 ->select('r.item', DB::raw('YEAR(points.date) as year'))
                 ->where('cp.id', '=', $data['control_point_id'])
                 ->where('r.'.$data['related_field'], $data['children'])
-//                ->where('points.distance_from_starting_point', '=', 0.5)
                 ->get();
             $result = $this->getAverage($result, 'year');
             return ['items' => $result->pluck('item'), 'years' => $result->pluck('year')];
