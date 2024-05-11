@@ -66,7 +66,6 @@ class TrophicLevelIndexService
 
                 $value->elements = $pointElements->where('point_id', '=', $value->point_id)->each(function ($item){
                     $item->tli = $item->item;
-//                    $item->tli = call_user_func([$this->formulaService, $item->element->TLI_formula], $item->item);
                 });
             });
 
@@ -107,19 +106,14 @@ class TrophicLevelIndexService
                 foreach ($averageElements as $element)
                 {
                     $element['tli'] /= $count_group;
-//                    dd($element, $this->formulaService, $element['formula'], $element['tli']);
                     $element['tli'] = call_user_func([$this->formulaService, $element['formula']], $element['tli']);
                     $averageElementsRes[] = $element;
                 }
-//                if($iteration == 2)
-//                {
-//                    dd($averageElements, $averageElementsRes);
-//                }
                 $firstItem->SD_TLI = $averageSD_TLI;
                 $firstItem->averageElements = $averageElementsRes;
                 return (array)$firstItem;
             });
-//            dd($processedCollection['8']);
+
             $elements = [];
             $control_points = $processedCollection->pluck('c_point_name');
             $iteration = 0;

@@ -116,7 +116,7 @@ class TrophicStateIndexService
                 else{
                     $elements['sd_tsi'] = [$collection['SD_TSI']];
                 }
-                foreach ($collection['elements'] as $e)
+                foreach ($collection['averageElements'] as $e)
                 {
                     if(array_key_exists($e->element->name, $elements))
                     {
