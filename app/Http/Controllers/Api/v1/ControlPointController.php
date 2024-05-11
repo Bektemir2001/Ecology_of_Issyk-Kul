@@ -15,7 +15,7 @@ class ControlPointController extends Controller
     public function getAll()
     {
         return ControlPointResource::collection(ControlPoint::all()->each(function ($controlPoint) {
-            $controlPoint->setAttribute('color', '"#000"');
+            $controlPoint->setAttribute('color', '#000');
         }));
     }
 
