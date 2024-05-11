@@ -74,7 +74,12 @@
                             </tfoot>
                         </table>
                     </div>
-                    {{$points->links()}}
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination mb-0">
+                            {{$points->links()}}
+                        </ul>
+                    </nav>
+
                 </div>
             </div>
         </div>
