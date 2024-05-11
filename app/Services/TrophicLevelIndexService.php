@@ -92,6 +92,7 @@ class TrophicLevelIndexService
                             }
                         }
                     }
+                    dd($averageElements);
                 }
                 $count_group = $group->count();
                 $averageElementsRes = [];
@@ -106,7 +107,6 @@ class TrophicLevelIndexService
             });
             $elements = [];
             $control_points = $processedCollection->pluck('c_point_name');
-            dd($processedCollection);
             foreach ($processedCollection as $collection)
             {
                 if(array_key_exists('sd_tli', $elements))
