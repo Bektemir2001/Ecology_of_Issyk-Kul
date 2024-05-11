@@ -67,7 +67,6 @@ class TrophicLevelIndexService
                 $value->elements = $pointElements->where('point_id', '=', $value->point_id)->each(function ($item){
                     $item->tli = call_user_func([$this->formulaService, $item->element->TLI_formula], $item->item);
                 });
-                dd($value->elements);
             });
 
             $grouped_data = $data->groupBy('control_point_id');
