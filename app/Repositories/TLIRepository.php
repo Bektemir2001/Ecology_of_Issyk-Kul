@@ -38,6 +38,7 @@ class TLIRepository
             ->whereHas('element', function ($query){
                 $query->where('TLI_formula', '!=', null);
             })
+            ->where('item', '!=', 0)
             ->get();
         return [$data, $pointElements];
     }
