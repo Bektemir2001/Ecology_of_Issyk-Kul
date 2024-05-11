@@ -41,7 +41,7 @@ class ControlPointController extends Controller
                     return $year == strval($date->year);
                 });
                 foreach ($points as $point) {
-                    dd($point->getRelationValue($relationFunction)->where('element_id', $data['children'])->get());
+                    dd($point->getRelationValue($relationFunction)->where('element_id', $data['children']));
                 }
                 $value = $points->avg($relationFunction);
                 $item->setAttribute('color', $this->getColor($value, $pdk->pdk_up));
