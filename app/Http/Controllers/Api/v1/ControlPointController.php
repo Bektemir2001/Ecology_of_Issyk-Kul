@@ -14,7 +14,9 @@ class ControlPointController extends Controller
 {
     public function getAll()
     {
-        return ControlPointResource::collection(ControlPoint::all());
+        return ControlPointResource::collection(ControlPoint::all()->each(function ($controlPoint) {
+            $controlPoint->setAttribute('color', '"#000"');
+        }));
     }
 
     public function getWithPDK(ReportRequest $request)
