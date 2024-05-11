@@ -75,10 +75,15 @@ class TrophicLevelIndexService
 
                 $averageElements = [];
                 foreach ($group as $item){
+                    $crack = [];
                     if(isset($item->elements))
                     {
                         foreach ($item->elements as $element)
                         {
+                            if($element->element->name == 'Фосфор минеральный')
+                            {
+                                $crack[] = $element;
+                            }
                             if(array_key_exists($element->element_id, $averageElements))
                             {
                                 $averageElements[$element->element_id]['tli'] += $element->tli;
@@ -92,7 +97,7 @@ class TrophicLevelIndexService
                             }
                         }
                     }
-                    dd($averageElements);
+                    dd($crack);
                 }
                 $count_group = $group->count();
                 $averageElementsRes = [];
