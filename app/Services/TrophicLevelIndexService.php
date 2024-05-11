@@ -80,7 +80,7 @@ class TrophicLevelIndexService
                     {
                         foreach ($item->elements as $element)
                         {
-                            dd($element->element->id);
+                            dd($element->element);
                             if(array_key_exists($element->element_id, $averageElements))
                             {
                                 $averageElements[$element->element_id]['tli'] += $element->tli;
