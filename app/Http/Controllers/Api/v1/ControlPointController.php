@@ -30,20 +30,20 @@ class ControlPointController extends Controller
             $model = app()->getNamespace() . 'Models\\' . $pdk->model;
             $pdk = $model::where('id', $data['children'])->first();
             $pdk = $pdk->pdk_up;
-
-            $result->each(function ($item) use ($year, $table_field, $pdk) {
+            $relationFunction = 'point'.ucfirst($table_field);
+            $result->each(function ($item) use ($year, $relationFunction, $pdk) {
                 $points = $item->points;
-                $points = $points->filter(function ($point) use ($year, $table_field) {
+                $points = $points->filter(function ($point) use ($year, $relationFunction) {
                     $date = Carbon::createFromFormat('Y-m-d', $point->date);
-                    if (!$point->relationLoaded($table_field)) {
-                        $point->load($table_field);
+                    if (!$point->relationLoaded($relationFunction)) {
+                        $point->load($relationFunction);
                     }
                     return $year == strval($date->year);
                 });
                 foreach ($points as $point) {
-                    dd($point->getRelationValue($table_field));
+                    dd($point->getRelationValue($relationFunction));
                 }
-                $value = $points->avg($table_field);
+                $value = $points->avg($relationFunction);
                 $item->setAttribute('color', $this->getColor($value, $pdk->pdk_up));
             });
             return ControlPointResource::collection($result);

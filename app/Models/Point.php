@@ -33,6 +33,10 @@ class Point extends Model
     {
         return $this->hasMany(PointMajorIon::class);
     }
+    public function pointMajor_ions(): HasMany
+    {
+        return $this->hasMany(PointMajorIon::class);
+    }
 
     public function pointOrganics(): HasMany
     {
@@ -40,10 +44,6 @@ class Point extends Model
     }
 
     public function ions(): BelongsToMany
-    {
-        return $this->belongsToMany(MajorIon::class, 'point_major_ions', 'point_id', 'ion_id');
-    }
-    public function major_ions(): BelongsToMany
     {
         return $this->belongsToMany(MajorIon::class, 'point_major_ions', 'point_id', 'ion_id');
     }
