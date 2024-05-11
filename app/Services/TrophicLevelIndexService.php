@@ -101,7 +101,7 @@ class TrophicLevelIndexService
                 foreach ($averageElements as $element)
                 {
                     $element['tli'] /= $count_group;
-                    dd($this->formulaService, $element['formula'], $element['tli']);
+                    dd($element, $this->formulaService, $element['formula'], $element['tli']);
                     $element['tli'] = call_user_func([$this->formulaService, $element['formula']], $element['tli']);
                     $averageElementsRes[] = $element;
                 }
