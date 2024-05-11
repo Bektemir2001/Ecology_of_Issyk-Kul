@@ -71,7 +71,8 @@ class TrophicLevelIndexService
             });
 
             $grouped_data = $data->groupBy('control_point_id');
-            $processedCollection = $grouped_data->map(function ($group) {
+            $iteration = 0;
+            $processedCollection = $grouped_data->map(function ($group) use($iteration) {
                 $averageSD_TLI = $this->formulaService->formula2($group->avg('SD_TLI'));
                 $firstItem = $group->first();
 
@@ -100,7 +101,12 @@ class TrophicLevelIndexService
                 }
                 $count_group = $group->count();
                 $averageElementsRes = [];
-                dd($averageElements);
+                $iteration += 1;
+                if($iteration == 2)
+                {
+                    dd($averageElements);
+                }
+
                 foreach ($averageElements as $element)
                 {
                     $element['tli'] /= $count_group;
