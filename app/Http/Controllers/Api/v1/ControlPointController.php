@@ -31,7 +31,7 @@ class ControlPointController extends Controller
                 ->join('control_points as cp', 'cp.id', '=', 'points.control_point_id')
                 ->join('point_'.$data['table_field'].' as r', 'points.id', '=', 'r.point_id')
                 ->select('r.item', 'cp.*')
-                ->whereYear('points.date', '=', $data['year'])
+//                ->whereYear('points.date', '=', $data['year'])
                 ->where('r.'.$data['related_field'], $data['children'])
                 ->get();
             $result = $this->getAverage($result, 'name');
