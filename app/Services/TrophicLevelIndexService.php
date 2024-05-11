@@ -98,6 +98,7 @@ class TrophicLevelIndexService
                 }
                 $count_group = $group->count();
                 $averageElementsRes = [];
+                dd($averageElementsRes);
                 foreach ($averageElements as $element)
                 {
                     $element['tli'] /= $count_group;
