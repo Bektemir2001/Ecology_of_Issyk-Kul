@@ -5,10 +5,9 @@ namespace App\Http\Controllers\Api\v1;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\ReportRequest;
 use App\Http\Resources\ControlPointResource;
-use App\Http\Resources\GeneralResource;
 use App\Models\ControlPoint;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
+
 
 class ControlPointController extends Controller
 {
@@ -25,9 +24,15 @@ class ControlPointController extends Controller
         }
 
         $result = ControlPoint::all();
-        $result->each(function ($item) use ($data) {
+        $year = $data['year'];
+        $result->each(function ($item) use ($year) {
 //            dd($item->points->whereYear('date', $data['year']));
-            dd($item->points);
+            $points = $item->points;
+            $points = $points->filter(function ($point) use ($year) {
+                $date = Carbon::createFromFormat('Y-m-d', $point->date);
+                return $year === $date->year;
+            });
+            dd($points);
         });
         dd($result);
     }
