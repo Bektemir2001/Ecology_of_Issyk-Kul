@@ -30,7 +30,6 @@ class ReportRepository
                 ->select('r.item', 'cp.name')
                 ->whereYear('points.date', '=', $data['year'])
                 ->where('r.'.$data['related_field'], $data['children'])
-//                ->where('points.distance_from_starting_point', '=', 0.5)
                 ->get();
             $result = $this->getAverage($result, 'name');
             return ['items' => $result->pluck('item'), 'control_points' => $result->pluck('name')];

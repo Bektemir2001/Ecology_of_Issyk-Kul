@@ -30,6 +30,7 @@ Route::post('/user/login', [UserAuthController::class, 'login']);
 Route::post('/user/register', [UserAuthController::class, 'register']);
 
 Route::get('/get/control_points', [ControlPointController::class, 'getAll']);
+Route::post('/get/control_points/withPdk', [ControlPointController::class, 'getWithPDK']);
 Route::get('/get/districts/{lake}', [DistrictController::class, 'getAll']);
 
 Route::get('/transformation/indicator/{year}/{district}', [TransformationIndicatorController::class, 'getData']);
