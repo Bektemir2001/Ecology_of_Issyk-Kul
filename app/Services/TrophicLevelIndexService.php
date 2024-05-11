@@ -61,9 +61,10 @@ class TrophicLevelIndexService
             $data = $this->TLIRepository->getTLIData($year, $district_id);
             $pointElements = $data[1];
             $data = $data[0];
-            dd($data);
             $data->each(function ($value) use ($pointElements){
                 $value->SD_TLI = $this->formulaService->formula2($value->transparency);
+                dd($value->elements);
+
                 $value->elements = $pointElements->where('point_id', '=', $value->point_id)->each(function ($item){
                     $item->tli = call_user_func([$this->formulaService, $item->element->TLI_formula], $item->item);
                 });
