@@ -111,10 +111,10 @@ class TrophicLevelIndexService
                     $element['tli'] = call_user_func([$this->formulaService, $element['formula']], $element['tli']);
                     $averageElementsRes[] = $element;
                 }
-                if($iteration == 2)
-                {
-                    dd($averageElements, $averageElementsRes);
-                }
+//                if($iteration == 2)
+//                {
+//                    dd($averageElements, $averageElementsRes);
+//                }
                 $firstItem->SD_TLI = $averageSD_TLI;
                 $firstItem->averageElements = $averageElementsRes;
                 return (array)$firstItem;
