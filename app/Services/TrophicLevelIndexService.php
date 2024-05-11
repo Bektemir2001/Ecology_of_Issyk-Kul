@@ -122,8 +122,12 @@ class TrophicLevelIndexService
 //            dd($processedCollection['8']);
             $elements = [];
             $control_points = $processedCollection->pluck('c_point_name');
+            $iteration = 0;
             foreach ($processedCollection as $collection)
             {
+                $iteration += 1;
+
+
                 if(array_key_exists('sd_tli', $elements))
                 {
                     array_push($elements['sd_tli'], $collection['SD_TLI']);
@@ -140,6 +144,10 @@ class TrophicLevelIndexService
                     else{
                         $elements[$e->element->name] = [$e->tli];
                     }
+                }
+                if($iteration == 2)
+                {
+                    dd($collection, $elements);
                 }
 
 
