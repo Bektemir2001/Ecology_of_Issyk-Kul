@@ -81,8 +81,8 @@ class ControlPointController extends Controller
                 $point->element_item = $point->pointElements->where('element_id', $element_id)->avg('item');
                 return $year == strval($date->year);
             });
-            dd($points);
-            $value = $points->avg($table_field);
+            dd($points, $pdk);
+            $value = $points->avg($table_field, );
             $item->setAttribute('color', $this->getColor($value, $pdk->pdk_up));
         });
     }
