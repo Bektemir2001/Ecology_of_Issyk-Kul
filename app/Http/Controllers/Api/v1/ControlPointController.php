@@ -31,7 +31,7 @@ class ControlPointController extends Controller
             $pdk = $model::where('id', $data['children'])->first();
             $pdk = $pdk->pdk_up;
             $relationFunction = 'point'.ucfirst($table_field);
-            $result->each(function ($item) use ($year, $relationFunction, $pdk) {
+            $result->each(function ($item) use ($year, $relationFunction, $pdk, $data) {
                 $points = $item->points;
                 $points = $points->filter(function ($point) use ($year, $relationFunction) {
                     $date = Carbon::createFromFormat('Y-m-d', $point->date);
@@ -41,7 +41,7 @@ class ControlPointController extends Controller
                     return $year == strval($date->year);
                 });
                 foreach ($points as $point) {
-                    dd($point->getRelationValue($relationFunction));
+                    dd($point->getRelationValue($relationFunction)->where('element_id', $data['children'])->get());
                 }
                 $value = $points->avg($relationFunction);
                 $item->setAttribute('color', $this->getColor($value, $pdk->pdk_up));
