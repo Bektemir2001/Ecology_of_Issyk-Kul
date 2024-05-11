@@ -67,7 +67,7 @@ class TrophicLevelIndexService
                     $item->tli = call_user_func([$this->formulaService, $item->element->TLI_formula], $item->item);
                 });
             });
-
+            dd($data);
             $grouped_data = $data->groupBy('control_point_id');
             $processedCollection = $grouped_data->map(function ($group) {
                 $averageSD_TLI = $group->avg('SD_TLI');
