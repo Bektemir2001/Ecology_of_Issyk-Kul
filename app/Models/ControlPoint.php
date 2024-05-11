@@ -16,7 +16,7 @@ class ControlPoint extends Model
     protected $guarded = false;
 
 
-    public string $color = "#000";
+    public $color = "#000";
     public function district(): BelongsTo
     {
         return $this->belongsTo(District::class);
