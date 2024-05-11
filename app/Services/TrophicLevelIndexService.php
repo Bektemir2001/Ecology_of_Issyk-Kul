@@ -135,11 +135,12 @@ class TrophicLevelIndexService
                 else{
                     $elements['sd_tli'] = [$collection['SD_TLI']];
                 }
+                dd($collection['elements']);
                 foreach ($collection['elements'] as $e)
                 {
                     if(array_key_exists($e->element->name, $elements))
                     {
-                        array_push($elements[$e->element->name], $e->tli);
+                        $elements[$e->element->name][] =  $e->tli;
                     }
                     else{
                         $elements[$e->element->name] = [$e->tli];
