@@ -74,6 +74,7 @@
                             </tfoot>
                         </table>
                     </div>
+                    {{$points->links()}}
                 </div>
             </div>
         </div>
