@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\ReportRequest;
 use App\Http\Resources\ControlPointResource;
 use App\Models\ControlPoint;
+use App\Models\Element;
 use App\Models\Field;
 use Carbon\Carbon;
 
@@ -22,36 +23,21 @@ class ControlPointController extends Controller
     public function getWithPDK(ReportRequest $request)
     {
         $data = $request->validated();
-        $result = ControlPoint::all();
+        $control_points = ControlPoint::all();
         $year = $data['year'];
         $table_field = $data["table_field"];
         $pdk = Field::query()->where('table_field', $table_field)->first();
         if(array_key_exists('children', $data)) {
-            $model = app()->getNamespace() . 'Models\\' . $pdk->model;
-            $pdk = $model::where('id', $data['children'])->first();
-            $pdk = $pdk->pdk_up;
-            $relationFunction = 'point'.ucfirst($table_field);
-            $result->each(function ($item) use ($year, $relationFunction, $pdk, $data) {
-                $points = $item->points;
-                $points = $points->filter(function ($point) use ($year, $relationFunction) {
-                    $date = Carbon::createFromFormat('Y-m-d', $point->date);
-                    if (!$point->relationLoaded($relationFunction)) {
-                        $point->load($relationFunction);
-                    }
-                    return $year == strval($date->year);
-                });
-                foreach ($points as $point) {
-                    dd($point->getRelationValue($relationFunction)->where('element_id', $data['children']));
-                }
-                $value = $points->avg($relationFunction);
-                $item->setAttribute('color', $this->getColor($value, $pdk->pdk_up));
-            });
-            return ControlPointResource::collection($result);
+            if($data['table_field'] == 'elements')
+            {
+                $control_points = $this->elements($control_points, $data['children'], $year);
+            }
+            return ControlPointResource::collection($control_points);
         }
 
 
 
-        $result->each(function ($item) use ($year, $table_field, $pdk) {
+        $control_points->each(function ($item) use ($year, $table_field, $pdk) {
             $points = $item->points;
             $points = $points->filter(function ($point) use ($year) {
                 $date = Carbon::createFromFormat('Y-m-d', $point->date);
@@ -60,7 +46,7 @@ class ControlPointController extends Controller
             $value = $points->avg($table_field);
             $item->setAttribute('color', $this->getColor($value, $pdk->pdk_up));
         });
-        return ControlPointResource::collection($result);
+        return ControlPointResource::collection($control_points);
     }
 
     public function getColor($item, $pdk)
@@ -85,17 +71,28 @@ class ControlPointController extends Controller
         }
     }
 
-
-    private function getAverage($collection, string $field)
+    public function elements($control_points, $element_id, $year)
     {
-        $collection = $collection->groupBy($field);
-        return $collection->map(function ($group)
-        {
-            $average = round($group->avg('item'), 2);
-            $firstItem = $group->first();
-            $firstItem->item = $average;
-            return (array)$firstItem;
+        $pdk = Element::query()->where('id', $element_id)->first()->pdk_up;
+        $control_points->each(function ($item) use ($year, $pdk, $element_id) {
+            $points = $item->points;
+            $points = $points->filter(function ($point) use ($year, $element_id) {
+                $date = Carbon::createFromFormat('Y-m-d', $point->date);
+                $point->element_item = $point->pointElements->where('element_id', $element_id)->avg('item');
+                return $year == strval($date->year);
+            });
+            dd($points);
+            $value = $points->avg($table_field);
+            $item->setAttribute('color', $this->getColor($value, $pdk->pdk_up));
         });
+    }
+    public function ions()
+    {
+
+    }
+
+    public function organics()
+    {
 
     }
 }
