@@ -138,12 +138,12 @@ class TrophicLevelIndexService
 //                dd($collection['elements'], $collection);
                 foreach ($collection['averageElements'] as $e)
                 {
-                    if(array_key_exists($e->element->name, $elements))
+                    if(array_key_exists($e['name'], $elements))
                     {
-                        $elements[$e->element->name][] =  $e->tli;
+                        $elements[$e['name']][] =  $e['tli'];
                     }
                     else{
-                        $elements[$e->element->name] = [$e->tli];
+                        $elements[$e['name']] = [$e['tli']];
                     }
                 }
                 if($iteration == 2)
