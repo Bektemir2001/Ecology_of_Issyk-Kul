@@ -102,13 +102,10 @@ class ControlPointController extends Controller
             $points = $item->points;
             $points = $points->filter(function ($point) use ($year, $ion_id) {
                 $date = Carbon::createFromFormat('Y-m-d', $point->date);
-                dd($point->pointIons->where('ion_id', $ion_id));
                 $point->ion_item = $point->pointIons->where('ion_id', $ion_id)->avg('item');
                 return $year == strval($date->year);
             });
-            dd($points);
             $value = $points->avg('ion_item');
-            dd($value, $pdk);
             $item->setAttribute('color', $this->getColor($value, $pdk));
         });
         return $control_points;
