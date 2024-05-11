@@ -52,7 +52,6 @@ class ControlPointController extends Controller
                     ->whereRaw('p.control_point_id = cp.id')
                     ->whereYear('p.date', '=', $data['year']);
             })
-            ->where('r.'.$data['related_field'], $data['children'])
             ->get();
         $result = $this->getAverage($result, 'name');
         return ['items' => $result->pluck($data['table_field']), 'control_points' => $result->pluck('name')];
