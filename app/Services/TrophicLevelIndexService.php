@@ -84,6 +84,7 @@ class TrophicLevelIndexService
                             if(array_key_exists($element->element_id, $averageElements))
                             {
                                 $averageElements[$element->element_id]['tli'] += $element->tli;
+                                $averageElements[$element->element_id]['array'][] = $element->tli;
                             }
                             else{
                                 $averageElements[$element->element_id] = [
@@ -91,6 +92,7 @@ class TrophicLevelIndexService
                                     'name' => $element->element->name,
                                     'tli' => $element->tli,
                                     'formula' => $element->element->TLI_formula,
+                                    'array' => [$element->tli]
                                 ];
                             }
                         }
