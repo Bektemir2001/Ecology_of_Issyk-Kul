@@ -21,7 +21,14 @@ class MajorIonService extends Service
 
     public function update(array $data, MajorIon $majorIon): array
     {
-        return $data;
+        try{
+            $majorIon->update($data);
+            return ['message' => __('success'), 'code' => 200];
+        }
+        catch (Exception $e)
+        {
+            return ['message' => $e->getMessage(), 'code' => $e->getCode()];
+        }
     }
 
 }
