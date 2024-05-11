@@ -38,6 +38,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function (){
     Route::group(['prefix' => 'major_ion'], function (){
         Route::get('/', [MajorIonController::class, 'index'])->name('admin.major_ions.index');
         Route::post('/', [MajorIonController::class, 'store'])->name('admin.major_ions.store');
+        Route::post('/update/{major_ion}', [MajorIonController::class, 'update'])->name('admin.major_ions.update');
         Route::get('/create', [MajorIonController::class, 'create'])->name('admin.major_ions.create');
         Route::get('/edit/{major_ion}', [MajorIonController::class, 'edit'])->name('admin.major_ions.edit');
         Route::get('/show/{major_ion}', [MajorIonController::class, 'show'])->name('admin.major_ions.show');
