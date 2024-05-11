@@ -59,7 +59,6 @@ class TrophicLevelIndexService
     {
         try{
             $data = $this->TLIRepository->getTLIData($year, $district_id);
-            dd($data);
             $pointElements = $data[1];
             $data = $data[0];
             $data->each(function ($value) use ($pointElements){
@@ -128,6 +127,7 @@ class TrophicLevelIndexService
                 }
 
             }
+            dd($elements);
 //            if(count($elements) != 4)
 //            {
 //                return [[], []];
