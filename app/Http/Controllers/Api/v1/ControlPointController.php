@@ -14,4 +14,9 @@ class ControlPointController extends Controller
     {
         return ControlPointResource::collection(ControlPoint::all());
     }
+
+    public function getWithPDK()
+    {
+
+    }
 }

@@ -19,7 +19,8 @@ class ControlPointResource extends JsonResource
             'name' => $this->name,
             'number' => $this->number,
             'X_coordinate' => $this->X_coordinate,
-            'Y_coordinate' => $this->Y_coordinate
+            'Y_coordinate' => $this->Y_coordinate,
+            'color' => $this->color
         ];
     }
 }
