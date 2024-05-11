@@ -105,6 +105,7 @@ class ControlPointController extends Controller
                 $point->ion_item = $point->pointIons->where('ion_id', $ion_id)->avg('item');
                 return $year == strval($date->year);
             });
+            dd($points);
             $value = $points->avg('ion_item');
             dd($value, $pdk);
             $item->setAttribute('color', $this->getColor($value, $pdk));
