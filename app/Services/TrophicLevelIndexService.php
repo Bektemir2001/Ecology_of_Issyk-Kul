@@ -63,7 +63,7 @@ class TrophicLevelIndexService
             $data = $data[0];
             $data->each(function ($value) use ($pointElements){
                 $value->SD_TLI = $this->formulaService->formula2($value->transparency);
-                dd($pointElements->where('point_id', '=', $value->point_id)->get());
+                dd($pointElements->where('point_id', '=', $value->point_id));
 
                 $value->elements = $pointElements->where('point_id', '=', $value->point_id)->each(function ($item){
                     $item->tli = call_user_func([$this->formulaService, $item->element->TLI_formula], $item->item);
