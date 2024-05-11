@@ -26,7 +26,8 @@ class ControlPointController extends Controller
 
         $result = ControlPoint::all();
         $result->each(function ($item) use ($data) {
-            dd($item->points->whereYear('date', $data['year']));
+//            dd($item->points->whereYear('date', $data['year']));
+            dd($item->points);
         });
         dd($result);
     }
