@@ -118,12 +118,12 @@ class TrophicStateIndexService
                 }
                 foreach ($collection['averageElements'] as $e)
                 {
-                    if(array_key_exists($e->element->name, $elements))
+                    if(array_key_exists($e['name'], $elements))
                     {
-                        array_push($elements[$e->element->name], $e->tsi);
+                        array_push($elements[$e['name']], $e['tsi']);
                     }
                     else{
-                        $elements[$e->element->name] = [$e->tsi];
+                        $elements[$e['name']] = [$e['tsi']];
                     }
                 }
 
