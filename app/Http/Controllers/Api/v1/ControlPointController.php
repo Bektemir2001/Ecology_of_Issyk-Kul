@@ -82,7 +82,7 @@ class ControlPointController extends Controller
                 return $year == strval($date->year);
             });
             $value = $points->avg('element_item');
-            $item->setAttribute('color', $this->getColor($value, $pdk->pdk_up));
+            $item->setAttribute('color', $this->getColor($value, $pdk));
         });
         return $control_points;
     }
