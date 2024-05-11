@@ -105,6 +105,6 @@ class DataController extends Controller
     {
         $this->pointService->clearPoint($point);
         $point->delete();
-        return back()->with(['notification' => 'все данные удалено удачно']);
+        return back()->with(['notification' => 'удалено']);
     }
 }

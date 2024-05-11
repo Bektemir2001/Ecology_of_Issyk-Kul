@@ -109,6 +109,12 @@
     {
         document.getElementById('notification_id').outerHTML = '';
     }
+
+</script>
+<script>
+    function confirmDeletion() {
+        return confirm('Вы уверены, что хотите удалить этот элемент?');
+    }
 </script>
 @yield('charts')
 

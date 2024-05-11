@@ -19,7 +19,7 @@ class TLIController extends Controller
     public function index(string $year, District $district)
     {
         $result = $this->trophicLevelIndexService->getDistrictTLI($year, $district->id);
-
+        dd($result);
         return response(['elements' => $result[0], 'control_points' => $result[1]]);
     }
 }

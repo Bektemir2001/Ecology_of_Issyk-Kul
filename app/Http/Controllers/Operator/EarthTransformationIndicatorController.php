@@ -62,9 +62,10 @@ class EarthTransformationIndicatorController extends Controller
         $result = $this->earthTransformationIndicatorService->update($data, $earthTransformationIndicator);
         return redirect()->route('operator.earth.transformation.indicators.index')->with(['notification' => $result['message']]);
     }
-    public function delete()
+    public function delete(EarthTransformationIndicator $earth_transformation_indicator)
     {
-
+        $earth_transformation_indicator->delete();
+        return back()->with(['notification' => 'удалено']);
     }
 
     public function getAll()
