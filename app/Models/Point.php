@@ -43,6 +43,10 @@ class Point extends Model
     {
         return $this->belongsToMany(MajorIon::class, 'point_major_ions', 'point_id', 'ion_id');
     }
+    public function major_ions(): BelongsToMany
+    {
+        return $this->belongsToMany(MajorIon::class, 'point_major_ions', 'point_id', 'ion_id');
+    }
     public function organic_substances(): BelongsToMany
     {
         return $this->belongsToMany(OrganicSubstance::class, 'point_organic_substances', 'point_id', 'organic_substance_id');

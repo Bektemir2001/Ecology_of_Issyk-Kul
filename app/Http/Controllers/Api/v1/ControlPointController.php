@@ -22,14 +22,26 @@ class ControlPointController extends Controller
     public function getWithPDK(ReportRequest $request)
     {
         $data = $request->validated();
-        if(array_key_exists('children', $data)) {
-            dd("bektemir");
-        }
-
         $result = ControlPoint::all();
         $year = $data['year'];
         $table_field = $data["table_field"];
         $pdk = Field::query()->where('table_field', $table_field)->first();
+        if(array_key_exists('children', $data)) {
+            $result->each(function ($item) use ($year, $table_field, $pdk) {
+                $points = $item->points;
+                $points = $points->filter(function ($point) use ($year) {
+                    $date = Carbon::createFromFormat('Y-m-d', $point->date);
+                    return $year == strval($date->year);
+                });
+
+                $value = $points->avg($table_field);
+                $item->setAttribute('color', $this->getColor($value, $pdk->pdk_up));
+            });
+            return ControlPointResource::collection($result);
+        }
+
+
+
         $result->each(function ($item) use ($year, $table_field, $pdk) {
             $points = $item->points;
             $points = $points->filter(function ($point) use ($year) {

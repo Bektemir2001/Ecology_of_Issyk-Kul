@@ -128,10 +128,10 @@ class TrophicStateIndexService
                 }
 
             }
-//            if(count($elements) != 4)
-//            {
-//                return [[], []];
-//            }
+            if(count($elements) != 4)
+            {
+                return [[], []];
+            }
             return [$elements, $control_points];
         }
         catch (Exception $e)
