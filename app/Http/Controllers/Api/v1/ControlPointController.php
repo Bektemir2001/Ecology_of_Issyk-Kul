@@ -30,6 +30,7 @@ class ControlPointController extends Controller
             $points = $item->points;
             $points = $points->filter(function ($point) use ($year) {
                 $date = Carbon::createFromFormat('Y-m-d', $point->date);
+                dd($date->year, $date, $year);
                 return $year === $date->year;
             });
             dd($points);
