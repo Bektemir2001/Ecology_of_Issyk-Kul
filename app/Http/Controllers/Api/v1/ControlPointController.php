@@ -41,7 +41,7 @@ class ControlPointController extends Controller
         $result = DB::table('points')
             ->join('control_points as cp', 'cp.id', '=', 'points.control_point_id')
             ->select($data['table_field'], 'cp.name')
-            ->whereYear('points.date', '=', $data['year'])
+//            ->whereYear('points.date', '=', $data['year'])
             ->get();
         $result = $this->getAverage($result, 'name');
         return ['items' => $result->pluck($data['table_field']), 'control_points' => $result->pluck('name')];
