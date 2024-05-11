@@ -102,10 +102,7 @@ class TrophicLevelIndexService
                 $count_group = $group->count();
                 $averageElementsRes = [];
                 $iteration += 1;
-                if($iteration == 2)
-                {
-                    dd($averageElements);
-                }
+
 
                 foreach ($averageElements as $element)
                 {
@@ -113,6 +110,10 @@ class TrophicLevelIndexService
 //                    dd($element, $this->formulaService, $element['formula'], $element['tli']);
                     $element['tli'] = call_user_func([$this->formulaService, $element['formula']], $element['tli']);
                     $averageElementsRes[] = $element;
+                }
+                if($iteration == 2)
+                {
+                    dd($averageElements, $averageElementsRes);
                 }
                 $firstItem->SD_TLI = $averageSD_TLI;
                 $firstItem->averageElements = $averageElementsRes;
