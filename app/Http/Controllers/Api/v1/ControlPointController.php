@@ -27,13 +27,22 @@ class ControlPointController extends Controller
         $table_field = $data["table_field"];
         $pdk = Field::query()->where('table_field', $table_field)->first();
         if(array_key_exists('children', $data)) {
+            $model = app()->getNamespace() . 'Models\\' . $pdk->model;
+            $pdk = $model::where('id', $data['children'])->first();
+            $pdk = $pdk->pdk_up;
+
             $result->each(function ($item) use ($year, $table_field, $pdk) {
                 $points = $item->points;
-                $points = $points->filter(function ($point) use ($year) {
+                $points = $points->filter(function ($point) use ($year, $table_field) {
                     $date = Carbon::createFromFormat('Y-m-d', $point->date);
+                    if (!$point->relationLoaded($table_field)) {
+                        $point->load($table_field);
+                    }
                     return $year == strval($date->year);
                 });
-
+                foreach ($points as $point) {
+                    dd($point->getRelationValue($table_field));
+                }
                 $value = $points->avg($table_field);
                 $item->setAttribute('color', $this->getColor($value, $pdk->pdk_up));
             });
