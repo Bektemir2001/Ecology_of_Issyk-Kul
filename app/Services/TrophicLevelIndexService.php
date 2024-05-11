@@ -147,11 +147,8 @@ class TrophicLevelIndexService
                     }
                 }
 
-                    dd($collection, $elements);
-
 
             }
-            dd($elements);
             if(count($elements) != 4)
             {
                 return [[], []];
