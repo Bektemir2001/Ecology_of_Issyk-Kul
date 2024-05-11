@@ -119,7 +119,7 @@ class TrophicLevelIndexService
                 $firstItem->averageElements = $averageElementsRes;
                 return (array)$firstItem;
             });
-            dd($processedCollection);
+            dd($processedCollection['8']);
             $elements = [];
             $control_points = $processedCollection->pluck('c_point_name');
             foreach ($processedCollection as $collection)
