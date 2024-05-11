@@ -125,9 +125,9 @@ class TrophicLevelIndexService
                         $elements[$e->element->name] = [$e->tli];
                     }
                 }
+                dd($elements);
 
             }
-            dd($elements);
 //            if(count($elements) != 4)
 //            {
 //                return [[], []];
