@@ -37,7 +37,7 @@ class ControlPointController extends Controller
             $value = $points->avg($table_field);
             $item->setAttribute('color', $this->getColor($value, $pdk->pdk_up));
         });
-        dd($result);
+        return ControlPointResource::collection($result);
     }
 
     public function getColor($item, $pdk)
