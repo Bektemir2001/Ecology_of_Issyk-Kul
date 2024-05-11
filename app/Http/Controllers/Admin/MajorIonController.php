@@ -44,7 +44,7 @@ class MajorIonController extends Controller
 
     public function edit(MajorIon $majorIon): View
     {
-        return view('admin.major_ion.edit', compact(['item' => $majorIon]));
+        return view('admin.major_ion.edit', ['item' => $majorIon]);
     }
     public function update(UpdateRequest $request, MajorIon $majorIon): RedirectResponse
     {
