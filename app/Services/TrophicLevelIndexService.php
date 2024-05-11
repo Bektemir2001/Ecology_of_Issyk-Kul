@@ -63,15 +63,8 @@ class TrophicLevelIndexService
             $data = $data[0];
             $data->each(function ($value) use ($pointElements){
                 $value->SD_TLI = $this->formulaService->formula2($value->transparency);
-                $crack = [];
-                $value->elements = $pointElements->where('point_id', '=', $value->point_id)->each(function ($item) use ($crack){
+                $value->elements = $pointElements->where('point_id', '=', $value->point_id)->each(function ($item){
                     $item->tli = call_user_func([$this->formulaService, $item->element->TLI_formula], $item->item);
-//                    dd($item->id);
-                    if($item->element_id == 9)
-                    {
-                        dd($item);
-
-                    }
                 });
             });
 
@@ -135,10 +128,10 @@ class TrophicLevelIndexService
 
 
             }
-//            if(count($elements) != 4)
-//            {
-//                return [[], []];
-//            }
+            if(count($elements) != 4)
+            {
+                return [[], []];
+            }
             return [$elements, $control_points];
         }
         catch (Exception $e)
