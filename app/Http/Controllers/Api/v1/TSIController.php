@@ -35,8 +35,12 @@ class TSIController extends Controller
 	{
 		try {
 			$result = $this->trophicStateIndexService->getTSIPoint($year);
-			$result = TSIService::calculateClassification($result[0], $result[1]);
-			return response(['data' => $result]);
+			if(count($result[0]) != 0)
+			{
+				$result = TSIService::calculateClassification($result[0], $result[1]);
+				return response(['data' => $result]);
+			}
+			return response(['data' => []]);
 		}
 		catch (\Exception $e)
 		{

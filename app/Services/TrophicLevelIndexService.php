@@ -151,11 +151,110 @@ class TrophicLevelIndexService
         }
         catch (Exception $e)
         {
-            dd($e->getMessage());
             return [[], []];
         }
 
     }
+
+	public function getTLIPoint(string $year)
+	{
+		try{
+			$data = $this->TLIRepository->getTLIDataPoint($year);
+			$pointElements = $data[1];
+			$data = $data[0];
+			$data->each(function ($value) use ($pointElements) {
+				$value->SD_TLI = $value->transparency;
+
+				$value->elements = $pointElements->where('point_id', '=', $value->point_id)->each(function ($item){
+					$item->tli = $item->item;
+				});
+			});
+
+			$grouped_data = $data->groupBy('control_point_id');
+			$iteration = 0;
+			$processedCollection = $grouped_data->map(function ($group) use(&$iteration) {
+				$averageSD_TLI = $this->formulaService->formula2($group->avg('SD_TLI'));
+				$firstItem = $group->first();
+
+				$averageElements = [];
+				foreach ($group as $item){
+					if(isset($item->elements))
+					{
+						foreach ($item->elements as $element)
+						{
+							if(array_key_exists($element->element_id, $averageElements))
+							{
+								$averageElements[$element->element_id]['tli'] += $element->tli;
+								$averageElements[$element->element_id]['array'][] = $element->tli;
+							}
+							else{
+								$averageElements[$element->element_id] = [
+									'element_id' => $element->element_id,
+									'name' => $element->element->name,
+									'tli' => $element->tli,
+									'formula' => $element->element->TLI_formula,
+									'array' => [$element->tli]
+								];
+							}
+						}
+					}
+				}
+				$count_group = $group->count();
+				$averageElementsRes = [];
+				$iteration += 1;
+
+
+				foreach ($averageElements as $element)
+				{
+					$element['tli'] /= $count_group;
+					$element['tli'] = call_user_func([$this->formulaService, $element['formula']], $element['tli']);
+					$averageElementsRes[] = $element;
+				}
+				$firstItem->SD_TLI = $averageSD_TLI;
+				$firstItem->averageElements = $averageElementsRes;
+				return (array)$firstItem;
+			});
+
+			$elements = [];
+			$control_points = $processedCollection->pluck('control_point_id');
+			$iteration = 0;
+			foreach ($processedCollection as $collection)
+			{
+				$iteration += 1;
+
+
+				if(array_key_exists('sd_tli', $elements))
+				{
+					array_push($elements['sd_tli'], $collection['SD_TLI']);
+				}
+				else{
+					$elements['sd_tli'] = [$collection['SD_TLI']];
+				}
+//                dd($collection['elements'], $collection);
+				foreach ($collection['averageElements'] as $e)
+				{
+					if(array_key_exists($e['name'], $elements))
+					{
+						$elements[$e['name']][] =  $e['tli'];
+					}
+					else{
+						$elements[$e['name']] = [$e['tli']];
+					}
+				}
+
+
+			}
+			if(count($elements) != 4)
+			{
+				return [[], []];
+			}
+			return [$elements, $control_points];
+		}
+		catch (Exception $e)
+		{
+			return [[], []];
+		}
+	}
 
 
     public function getDistrictTLIO(string $year, int $district_id=null)

@@ -38,6 +38,7 @@ Route::get('/transformation/indicator/{year}/{district}', [TransformationIndicat
 Route::get('/tsi/{year}/{district}', [TSIController::class, 'index']);
 Route::get('/tsi/for/points/{year}', [TSIController::class, 'getTSIPoints']);
 Route::get('/tli/{year}/{district}', [TLIController::class, 'index']);
+Route::get('/tli/for/points/{year}', [TLIController::class, 'getTLIPoints']);
 
 Route::post('/calculate/horizontal/buffer/zone', [CoastalBufferZoneController::class, 'horizontalCalculation']);
 
